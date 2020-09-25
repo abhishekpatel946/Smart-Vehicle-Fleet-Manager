@@ -7,8 +7,10 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "antd": "^4.6.5",
+    "fusioncharts": "^3.15.3",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-fusioncharts": "^3.1.2",
     "react-scripts": "3.4.3"
   },
   "scripts": {

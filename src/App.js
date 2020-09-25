@@ -1,15 +1,25 @@
 import React from 'react';
 import './App.css';
-import { Layout, Menu, Breadcrumb } from 'antd';
+import { 
+  Layout, 
+  Menu, 
+  Breadcrumb,
+  Divider, 
+  Row,
+  Col,
+  Typography, } from 'antd';
 import {
   DesktopOutlined,
   PieChartOutlined,
   FileOutlined,
   TeamOutlined,
-  UserOutlined,
-} from '@ant-design/icons';
-import { Typography } from 'antd';
+  UserOutlined, } from '@ant-design/icons';
 
+const style = { 
+  textAlign: 'center',
+  color: 'white',
+  background: '#192A56',
+  padding: '16px 0' };
 const { Title } = Typography;
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -27,8 +37,8 @@ class App extends React.Component {
   render() {
     return (
       <Layout>
-        <Header className="site-layout-background" style={{ padding: 0 }} >
-        <Title style={{background: 'white'}} level={3}>Abhishek</Title>
+        <Header theme="dark" className="site-layout-background" style={{ padding: 0 }} >
+          <Title style={{color: '#EAF0F1', padding: 15 }} level={3}>Smart Vehicle Fleet Manager</Title>
         </Header>
           <Layout style={{ minHeight: '100vh' }}>
             <Sider collapsible collapsed={this.state.collapsed} onCollapse={this.onCollapse}>
@@ -58,11 +68,61 @@ class App extends React.Component {
                   <Breadcrumb.Item>Abhishek</Breadcrumb.Item>
                   <Breadcrumb.Item>Dashboard</Breadcrumb.Item>
                 </Breadcrumb>
-                <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
-                  AREA 51....
+                <div className="site-layout-background" style={{ padding: 24, minHeight: 460 }}>
+                <Divider orientation="left">Chart;s area</Divider>
+                  <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+                    <Col className="gutter-row" span={6}>
+                      <div style={style}>GPS</div>
+                    </Col>
+                    <Col className="gutter-row" span={6}>
+                      <div style={style}>Accelerometer</div>
+                    </Col>
+                    <Col className="gutter-row" span={6}>
+                      <div style={style}>Fuel Level Sensor</div>
+                    </Col>
+                  </Row>
+
+                  <Divider orientation="left">Log;s area</Divider>
+                  <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+                    <Col className="gutter-row" span={6}>
+                      <div style={style}>Location history</div>
+                    </Col>
+                    <Col className="gutter-row" span={6}>
+                      <div style={style}>Speed history</div>
+                    </Col>
+                    <Col className="gutter-row" span={6}>
+                      <div style={style}>Total distance travelled</div>
+                    </Col>
+                    <Col className="gutter-row" span={6}>
+                      <div style={style}>Fuel refill history</div>
+                    </Col>
+                  </Row>
+
+                  <Divider orientation="left">Button;s area</Divider>
+                  <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+                    <Col className="gutter-row" span={6}>
+                      <div style={style}>Emergency Button</div>
+                    </Col>
+                    <Col className="gutter-row" span={6}>
+                      <div style={style}>Turn-Off Button</div>
+                    </Col>
+                  </Row>
+
+                  <Divider orientation="left">Notification;s area</Divider>
+                  <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+                    <Col className="gutter-row" span={6}>
+                      <div style={style}>Accident alert</div>
+                    </Col>
+                    <Col className="gutter-row" span={6}>
+                      <div style={style}>OverSpeeding instances</div>
+                    </Col>
+                  </Row>
                 </div>
               </Content>
-              <Footer theme="dark" style={{ textAlign: 'center' }}>Ant Design ©2020 Created by DEV.Abhishek</Footer>
+              <Footer style={{ background: '#282c34', color: 'white', textAlign: 'center' }}>
+                <link rel="stylesheet" type="text/css" href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
+                  Made with <i class="icon ion-heart"></i> by Abhishek. Copyright@2020 reseverd by Smart Vehicle Fleet Manager.
+              </Footer>
             </Layout>
           </Layout>
         </Layout>
