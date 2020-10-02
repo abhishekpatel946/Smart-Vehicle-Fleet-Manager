@@ -1,0 +1,20 @@
+@import '~antd/dist/antd.css';
+
+#components-layout-demo-side .logo {
+  height: 42px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 16px;
+}
+
+.site-layout .site-layout-background {
+  background: #fff;
+}
+
+.App {
+  text-align: left;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
