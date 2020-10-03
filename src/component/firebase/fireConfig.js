@@ -2,7 +2,7 @@ import firebase from 'firebase';
 require('dotenv').config();
 
 var firebaseConfig = {
-    apiKey: process.env.FIRE_API_KEY,
+    apiKey: process.env.NODE_ENV,
     authDomain: "smart-vehicle-fleet-manager.firebaseapp.com",
     databaseURL: "https://smart-vehicle-fleet-manager.firebaseio.com",
     projectId: "smart-vehicle-fleet-manager",
@@ -13,7 +13,5 @@ var firebaseConfig = {
 };
 
 const fireConfig = firebase.initializeApp(firebaseConfig);
-
-// console.log(process.env.FIRE_API_KEY);
 
 export default fireConfig;

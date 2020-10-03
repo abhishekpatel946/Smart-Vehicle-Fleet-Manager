@@ -12,6 +12,7 @@ import {
   MDBInput,
 } from "mdbreact";
 import "./home.css";
+import fireConfig from '../firebase/fireConfig';
 
 class Home extends React.Component {
   state = {
@@ -23,6 +24,33 @@ class Home extends React.Component {
       collapsed: !this.state.collapsed
     });
   };
+
+  login(){
+    const email = document.querySelector("#login_email").value;
+    const password = document.querySelector("#login_password").value;
+
+    fireConfig.auth().signInWithEmailAndPassword(email, password)
+        .then((u) => {
+            console.log("Successfully loggedIn.!!!");
+        })
+        .catch((err) => {
+            console.log("Error" + err.toString());
+        })
+    }
+
+    signUp(e) {
+      const email = document.querySelector("#register_email").value;
+      const password = document.querySelector("#register_password").value;
+  
+      fireConfig.auth().createUserWithEmailAndPassword(email, password)
+          .then((u) => {
+              console.log("Successfully Registered.!!!");
+          })
+          .catch((err) => {
+              console.log("Error" + err.toString());
+        })
+    }
+
 
   render() {
     return (
@@ -58,11 +86,28 @@ class Home extends React.Component {
                         <form>
                             <p className="h5 text-center mb-4 white-text">Sign in</p>
                             <div className="white-text">
-                            <MDBInput className="white-text" label="Type your email" icon="envelope" group type="email" validate error="wrong" success="right" />
-                            <MDBInput className="white-text" label="Type your password" icon="lock" group type="password" validate />
+                            <MDBInput 
+                              className="white-text" 
+                              label="Type your email" 
+                              icon="envelope"
+                              id="login_email" 
+                              group type="email" 
+                              validate error="wrong" 
+                              success="right" />
+                            <MDBInput 
+                              className="white-text" 
+                              label="Type your password" 
+                              icon="lock" 
+                              id="login_password"
+                              group type="password" 
+                              validate />
                             </div>
                             <div className="text-center">
-                            <MDBBtn outline color="white" gradient="blue">Login</MDBBtn>
+                            <MDBBtn 
+                              outline color="white" 
+                              gradient="blue"
+                              onClick={this.login}
+                            >Login</MDBBtn>
                             </div>
                         </form>
                         </MDBCol>
@@ -74,14 +119,35 @@ class Home extends React.Component {
                         <form>
                             <p className="h5 text-center mb-4 white-text">Sign up</p>
                             <div className="white-text">
-                            <MDBInput className="white-text" label="Your name" icon="user" group type="text" validate error="wrong"
-                                success="right" />
-                            <MDBInput className="white-text" label="Your email" icon="envelope" group type="email" validate error="wrong"
-                                success="right" />
-                            <MDBInput className="white-text" label="Your password" icon="lock" group type="password" validate />
+                            <MDBInput 
+                              className="white-text" 
+                              label="Your name" 
+                              icon="user" 
+                              group type="text" 
+                              validate error="wrong"
+                              success="right" />
+                            <MDBInput 
+                              className="white-text" 
+                              label="Your email" 
+                              icon="envelope" 
+                              id="register_email" 
+                              group type="email" 
+                              validate error="wrong"
+                              success="right" />
+                            <MDBInput 
+                              className="white-text" 
+                              label="Your password" 
+                              icon="lock" 
+                              id="register_password" 
+                              group type="password" 
+                              validate />
                             </div>
                             <div className="text-center">
-                            <MDBBtn outline color="white" gradient="blue">Register</MDBBtn>
+                            <MDBBtn 
+                              outline color="white" 
+                              gradient="blue"
+                              onClick={this.signUp}
+                            >Register</MDBBtn>
                             </div>
                         </form>
                         </MDBCol>
