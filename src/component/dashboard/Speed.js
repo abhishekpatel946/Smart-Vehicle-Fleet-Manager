@@ -21,7 +21,7 @@ const style = {
 const { Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 
-class Dashboard extends React.Component {
+class Speed extends React.Component {
   state = {
     collapsed: false,
   };
@@ -78,24 +78,15 @@ class Dashboard extends React.Component {
                     <Col className="gutter-row" span={6}>
                       <div style={style}>Accelerometer</div>
                     </Col>
-                    <Col className="gutter-row" span={6}>
-                      <div style={style}>Fuel Level Sensor</div>
-                    </Col>
                   </Row>
 
                   <Divider orientation="left">Log;s area</Divider>
                   <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
                     <Col className="gutter-row" span={6}>
-                      <div style={style}>Location history</div>
-                    </Col>
-                    <Col className="gutter-row" span={6}>
                       <div style={style}>Speed history</div>
                     </Col>
                     <Col className="gutter-row" span={6}>
                       <div style={style}>Total distance travelled</div>
-                    </Col>
-                    <Col className="gutter-row" span={6}>
-                      <div style={style}>Fuel refill history</div>
                     </Col>
                   </Row>
 
@@ -122,7 +113,7 @@ class Dashboard extends React.Component {
               </Content>
               <Footer style={{ background: '#282c34', color: 'white', textAlign: 'center' }}>
                 <link rel="stylesheet" type="text/css" href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
-                  Made with <i className="icon ion-heart"></i> by Abhishek. Copyright@2020 reseverd by Smart Vehicle Fleet Manager.
+                  Made with <i class="icon ion-heart"></i> by Abhishek. Copyright@2020 reseverd by Smart Vehicle Fleet Manager.
               </Footer>
             </Layout>
           </Layout>
@@ -132,4 +123,4 @@ class Dashboard extends React.Component {
 }
 
 
-export default Dashboard;
+export default Speed;

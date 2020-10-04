@@ -31,10 +31,12 @@ class Home extends React.Component {
 
     fireConfig.auth().signInWithEmailAndPassword(email, password)
         .then((u) => {
-            console.log("Successfully loggedIn.!!!");
+          console.log("Successfully loggedIn.!!!");
+          alert('Successful LoggedIn...!!!');
         })
         .catch((err) => {
-            console.log("Error" + err.toString());
+          console.log("Error" + err.toString());
+          alert('Incorrect Username or Password...!');
         })
     }
 
@@ -45,12 +47,13 @@ class Home extends React.Component {
       fireConfig.auth().createUserWithEmailAndPassword(email, password)
           .then((u) => {
               console.log("Successfully Registered.!!!");
+              alert('Successfully Registered.!!!"');
           })
           .catch((err) => {
               console.log("Error" + err.toString());
+              alert('Incorrect Username or Password...!');
         })
     }
-
 
   render() {
     return (
@@ -104,7 +107,7 @@ class Home extends React.Component {
                             </div>
                             <div className="text-center">
                             <MDBBtn 
-                              outline color="white" 
+                              // outline color="white" 
                               gradient="blue"
                               onClick={this.login}
                             >Login</MDBBtn>
@@ -144,7 +147,7 @@ class Home extends React.Component {
                             </div>
                             <div className="text-center">
                             <MDBBtn 
-                              outline color="white" 
+                              // outline color="white" 
                               gradient="blue"
                               onClick={this.signUp}
                             >Register</MDBBtn>
