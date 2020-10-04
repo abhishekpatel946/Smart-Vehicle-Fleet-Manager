@@ -7,8 +7,6 @@
 
 # Api Key
 .env
-# firebase config
-fireConfig.js
 
 # testing
 /coverage
