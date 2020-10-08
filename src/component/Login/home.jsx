@@ -11,6 +11,7 @@ import {
   MDBContainer,
   MDBInput,
 } from "mdbreact";
+import { Image } from "antd";
 import "./home.css";
 import fireConfig from "../firebase/fireConfig";
 
@@ -74,9 +75,12 @@ class Home extends React.Component {
             >
               <MDBContainer>
                 <MDBNavbarBrand>
-                  <strong className="white-text">
-                    Smart Vehicle Fleet Manager
-                  </strong>
+                  <MDBCol>
+                    <Image width={100} src="../../images/Logo.png" alt="logo" />
+                    <strong className="white-text">
+                      Smart Vehicle Fleet Manager
+                    </strong>
+                  </MDBCol>
                 </MDBNavbarBrand>
               </MDBContainer>
             </MDBNavbar>
