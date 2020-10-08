@@ -17,6 +17,7 @@ const style = {
 };
 const { Content, Sider } = Layout;
 const { SubMenu } = Menu;
+
 class Dashboard extends React.Component {
   state = {
     collapsed: false,
@@ -72,7 +73,7 @@ class Dashboard extends React.Component {
               </Breadcrumb>
               <div
                 className="site-layout-background"
-                style={{ padding: 24, minHeight: 460 }}
+                style={{ padding: 24, minHeight: 760 }}
               >
                 <Divider orientation="left">Chart;s area</Divider>
                 <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
