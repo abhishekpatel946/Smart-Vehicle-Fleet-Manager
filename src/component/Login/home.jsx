@@ -76,7 +76,8 @@ class Home extends React.Component {
               <MDBContainer>
                 <MDBNavbarBrand>
                   <MDBCol>
-                    <Image width={100} src="../../images/Logo.png" alt="logo" />
+                    <img src="../../assets/Logo.png" 
+                    className="img-fluid float-left" alt="resposive logo" style={{width: "200px"}} />
                     <strong className="white-text">
                       Smart Vehicle Fleet Manager
                     </strong>
