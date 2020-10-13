@@ -16,7 +16,6 @@ import {
   PieChartOutlined,
   FileOutlined,
 } from "@ant-design/icons";
-import Firedata from "../Logs/Firedata";
 
 const style = {
   textAlign: "center",
@@ -35,7 +34,7 @@ ReactFC.fcRoot(FusionCharts, Widgets, FusionTheme);
 const simpleChartConfigs = {
   type: "column2d",
   width: 600,
-  height: 400,
+  height: 300,
   dataFormat: "json",
   dataSource: {
     chart: {
