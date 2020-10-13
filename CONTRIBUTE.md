@@ -25,6 +25,12 @@ npm start
 ### Problem
 
 In the Smart Vehicle Fleet Manager using Firestore database to store all the data. The problem with how to fetch those data from firestore and represent that data into the logs table.
+<br>
+In the Dashboard there will be two parts- 1. Charts  2. Log table
+<br>
+Fetch the recent updated data from firestore and visualize through using this chart.
+<br>
+And keep all the records in log table and most recently data will be shown in log table to better to readability.
 
 NOTE:- All data on firestore are real-time data which coming from IoT sensors and store on firestore. So be careful with visualization will be real-time up-to-date with data and 
 the log table will be maintain to all the record and updated if new data comes in.
