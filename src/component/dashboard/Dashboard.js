@@ -786,6 +786,7 @@ class Dashboard extends React.Component {
                   <Col className="gutter-row" span={6}>
                     <div style={style}>GPS</div>
                   </Col>
+                  <Fuel />
                 </Row>
               </div>
             </Content>
@@ -797,12 +798,13 @@ class Dashboard extends React.Component {
   }
 }
 
-function Fuel({ level, timestamp }) {
-  console.log({ level, timestamp });
+function Fuel({ speed, timestamp }) {
+  // look into the console; why it is undefined?
+  console.log({ speed, timestamp });
   return (
     <div>
       <h4>
-        {level} {timestamp}
+        {speed} {timestamp}
         <span>{new Date(timestamp?.toDate()).toUTCString()}</span>
       </h4>
     </div>

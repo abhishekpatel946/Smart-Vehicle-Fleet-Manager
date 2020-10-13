@@ -11,7 +11,6 @@ import {
   MDBContainer,
   MDBInput,
 } from "mdbreact";
-import { Image } from "antd";
 import "./home.css";
 import fireConfig from "../firebase/fireConfig";
 

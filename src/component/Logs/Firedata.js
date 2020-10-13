@@ -15,10 +15,15 @@ function Firedata() {
       );
   }, []);
 
+  //   debugging & look into the data
+  db.collection("vehicle").onSnapshot(function (doc) {
+    console.log("Current Data", doc.data());
+  });
+
   return (
     <div>
-      {setSpeed.map(({ speed, timestamp }) => (
-        <Fuel level={speed} timestamp={timestamp} />
+      {speed.map(({ speed, timestamp }) => (
+        <Fuel speed={speed} timestamp={timestamp} />
       ))}
     </div>
   );
