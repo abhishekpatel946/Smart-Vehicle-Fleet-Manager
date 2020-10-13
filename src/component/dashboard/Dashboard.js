@@ -16,6 +16,7 @@ import {
   PieChartOutlined,
   FileOutlined,
 } from "@ant-design/icons";
+import Firedata from "../Logs/Firedata";
 
 const style = {
   textAlign: "center",
@@ -795,6 +796,18 @@ class Dashboard extends React.Component {
       </Layout>
     );
   }
+}
+
+function Fuel({ level, timestamp }) {
+  console.log({ level, timestamp });
+  return (
+    <div>
+      <h4>
+        {level} {timestamp}
+        <span>{new Date(timestamp?.toDate()).toUTCString()}</span>
+      </h4>
+    </div>
+  );
 }
 
 export default Dashboard;
