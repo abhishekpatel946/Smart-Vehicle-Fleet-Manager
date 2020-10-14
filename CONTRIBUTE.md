@@ -60,4 +60,4 @@ After code merged successfully then we'll store actual IoT sensors data and visu
  - Firebase
    * [Firebase docs](https://firebase.google.com/docs/firestore/quickstart)
 
-### **If you have any better idea to change in database or code too. So feel free to reach me out and tell us!**
+### **If you have any better idea to change in database or code too. So feel free to reach me out and tell us! `abhishekpatel946@gmail.com`**
