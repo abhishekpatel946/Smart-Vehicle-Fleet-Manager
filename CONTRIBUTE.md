@@ -46,5 +46,18 @@ The data will be store in firestore like this.
 At this time Firestore database will have only store dummy data for testing.
 After code merged successfully then we'll store actual IoT sensors data and visualizing through our charts and maintain logs table for each data record.
 
+### References
+
+- CSS lib
+  * [AntDesign](https://ant.design/docs/react/getting-started)
+  * [MDBreact](https://mdbootstrap.com/docs/react/getting-started/quick-start/)
+
+- Chart's & Widget
+  * [Guage Widget](https://www.fusioncharts.com/charts/gauges/rating-meter-gauge?framework=react)
+  * [Bar Chart](https://www.fusioncharts.com/charts/column-bar-charts/simple-column-chart?framework=react)
+  * [Line Chart](https://www.fusioncharts.com/charts/line-area-charts/line-chart-with-scrolling-only?framework=react)
+  
+ - Firebase
+   * [Firebase docs](https://firebase.google.com/docs/firestore/quickstart)
 
 **If you have any better idea to change in database or code too. So feel free to reach me out and tell us! **
