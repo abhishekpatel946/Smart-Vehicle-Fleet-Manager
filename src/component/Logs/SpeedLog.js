@@ -1,7 +1,7 @@
 import React from "react";
 import { MDBDataTableV5 } from "mdbreact";
 
-export default function Pagination() {
+export default function SpeedLog() {
   const [datatable, setDatatable] = React.useState({
     columns: [
       {
@@ -22,23 +22,23 @@ export default function Pagination() {
     rows: [
       {
         timestamp: "Sat, 10 Oct 2020 18:30:00 GMT",
-        speed: "20",
+        speed: "0",
       },
       {
         timestamp: "Sat, 10 Oct 2020 18:32:00 GMT",
-        speed: "25",
+        speed: "5",
       },
       {
         timestamp: "Sat, 10 Oct 2020 18:34:00 GMT",
-        speed: "15",
-      },
-      {
-        timestamp: "Sat, 10 Oct 2020 18:36:00 GMT",
         speed: "10",
       },
       {
+        timestamp: "Sat, 10 Oct 2020 18:36:00 GMT",
+        speed: "15",
+      },
+      {
         timestamp: "Sat, 10 Oct 2020 18:38:00 GMT",
-        speed: "0",
+        speed: "20",
       },
     ],
   });

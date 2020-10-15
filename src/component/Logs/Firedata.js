@@ -16,14 +16,14 @@ function Firedata() {
   }, []);
 
   //   debugging & look into the data
-  db.collection("vehicle").onSnapshot(function (doc) {
-    console.log("Current Data", doc.data());
-  });
+  // db.collection("vehicle").onSnapshot(function (doc) {
+  //   console.log("Current Data", doc.data());
+  // });
 
   return (
     <div>
-      {speed.map(({ speed, timestamp }) => (
-        <Fuel speed={speed} timestamp={timestamp} />
+      {speed.map(({ timestamp }) => (
+        <Fuel timestamp={timestamp} />
       ))}
     </div>
   );

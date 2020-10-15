@@ -8,7 +8,9 @@ import ReactFusioncharts from "react-fusioncharts";
 import fireConfig from "../firebase/fireConfig";
 import HeaderLayout from "../dashboard_common/HeaderLayout";
 import FooterLayout from "../dashboard_common/FooterLayout";
-import Pagination from "../Logs/Pagination";
+import SpeedLog from "../Logs/SpeedLog";
+import FuelRefillLog from "../Logs/FuelRefillLog";
+import OverSpeedLog from "../Logs/OversSpeedLog";
 import { Layout, Menu, Breadcrumb, Divider, Row, Col } from "antd";
 import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
 import {
@@ -29,410 +31,6 @@ const { SubMenu } = Menu;
 // define chart props
 ReactFC.fcRoot(FusionCharts, Charts, FusionTheme);
 ReactFC.fcRoot(FusionCharts, Widgets, FusionTheme);
-
-// config simple_chart
-const simpleChartConfigs = {
-  type: "column2d",
-  width: 600,
-  height: 300,
-  dataFormat: "json",
-  dataSource: {
-    chart: {
-      caption: "Vehicle Fuel level In [litre]",
-      subCaption: "In litres",
-      xAxisName: "Timestamp",
-      yAxisName: "Fuel (litre)",
-      numberSuffix: "Lt.",
-      theme: "fusion",
-    },
-    data: [
-      {
-        label: "Venezuela",
-        value: "290",
-      },
-      {
-        label: "Saudi",
-        value: "260",
-      },
-      {
-        label: "Canada",
-        value: "180",
-      },
-      {
-        label: "Iran",
-        value: "140",
-      },
-      {
-        label: "Russia",
-        value: "115",
-      },
-      {
-        label: "UAE",
-        value: "100",
-      },
-      {
-        label: "US",
-        value: "30",
-      },
-      {
-        label: "China",
-        value: "30",
-      },
-      {
-        label: "Venezuela",
-        value: "290",
-      },
-      {
-        label: "Saudi",
-        value: "260",
-      },
-      {
-        label: "Canada",
-        value: "180",
-      },
-      {
-        label: "Iran",
-        value: "140",
-      },
-      {
-        label: "Russia",
-        value: "115",
-      },
-      {
-        label: "UAE",
-        value: "100",
-      },
-      {
-        label: "US",
-        value: "30",
-      },
-      {
-        label: "China",
-        value: "30",
-      },
-      {
-        label: "Venezuela",
-        value: "290",
-      },
-      {
-        label: "Saudi",
-        value: "260",
-      },
-      {
-        label: "Canada",
-        value: "180",
-      },
-      {
-        label: "Iran",
-        value: "140",
-      },
-      {
-        label: "Russia",
-        value: "115",
-      },
-      {
-        label: "UAE",
-        value: "100",
-      },
-      {
-        label: "US",
-        value: "30",
-      },
-      {
-        label: "China",
-        value: "30",
-      },
-      {
-        label: "Venezuela",
-        value: "290",
-      },
-      {
-        label: "Saudi",
-        value: "260",
-      },
-      {
-        label: "Canada",
-        value: "180",
-      },
-      {
-        label: "Iran",
-        value: "140",
-      },
-      {
-        label: "Russia",
-        value: "115",
-      },
-      {
-        label: "UAE",
-        value: "100",
-      },
-      {
-        label: "US",
-        value: "30",
-      },
-      {
-        label: "China",
-        value: "30",
-      },
-      {
-        label: "Venezuela",
-        value: "290",
-      },
-      {
-        label: "Saudi",
-        value: "260",
-      },
-      {
-        label: "Canada",
-        value: "180",
-      },
-      {
-        label: "Iran",
-        value: "140",
-      },
-      {
-        label: "Russia",
-        value: "115",
-      },
-      {
-        label: "UAE",
-        value: "100",
-      },
-      {
-        label: "US",
-        value: "30",
-      },
-      {
-        label: "China",
-        value: "30",
-      },
-      {
-        label: "Venezuela",
-        value: "290",
-      },
-      {
-        label: "Saudi",
-        value: "260",
-      },
-      {
-        label: "Canada",
-        value: "180",
-      },
-      {
-        label: "Iran",
-        value: "140",
-      },
-      {
-        label: "Russia",
-        value: "115",
-      },
-      {
-        label: "UAE",
-        value: "100",
-      },
-      {
-        label: "US",
-        value: "30",
-      },
-      {
-        label: "China",
-        value: "30",
-      },
-      {
-        label: "Venezuela",
-        value: "290",
-      },
-      {
-        label: "Saudi",
-        value: "260",
-      },
-      {
-        label: "Canada",
-        value: "180",
-      },
-      {
-        label: "Iran",
-        value: "140",
-      },
-      {
-        label: "Russia",
-        value: "115",
-      },
-      {
-        label: "UAE",
-        value: "100",
-      },
-      {
-        label: "US",
-        value: "30",
-      },
-      {
-        label: "China",
-        value: "30",
-      },
-      {
-        label: "Venezuela",
-        value: "290",
-      },
-      {
-        label: "Saudi",
-        value: "260",
-      },
-      {
-        label: "Canada",
-        value: "180",
-      },
-      {
-        label: "Iran",
-        value: "140",
-      },
-      {
-        label: "Russia",
-        value: "115",
-      },
-      {
-        label: "UAE",
-        value: "100",
-      },
-      {
-        label: "US",
-        value: "30",
-      },
-      {
-        label: "China",
-        value: "30",
-      },
-      {
-        label: "Venezuela",
-        value: "290",
-      },
-      {
-        label: "Saudi",
-        value: "260",
-      },
-      {
-        label: "Canada",
-        value: "180",
-      },
-      {
-        label: "Iran",
-        value: "140",
-      },
-      {
-        label: "Russia",
-        value: "115",
-      },
-      {
-        label: "UAE",
-        value: "100",
-      },
-      {
-        label: "US",
-        value: "30",
-      },
-      {
-        label: "China",
-        value: "30",
-      },
-      {
-        label: "Venezuela",
-        value: "290",
-      },
-      {
-        label: "Saudi",
-        value: "260",
-      },
-      {
-        label: "Canada",
-        value: "180",
-      },
-      {
-        label: "Iran",
-        value: "140",
-      },
-      {
-        label: "Russia",
-        value: "115",
-      },
-      {
-        label: "UAE",
-        value: "100",
-      },
-      {
-        label: "US",
-        value: "30",
-      },
-      {
-        label: "China",
-        value: "30",
-      },
-      {
-        label: "Venezuela",
-        value: "290",
-      },
-      {
-        label: "Saudi",
-        value: "260",
-      },
-      {
-        label: "Canada",
-        value: "180",
-      },
-      {
-        label: "Iran",
-        value: "140",
-      },
-      {
-        label: "Russia",
-        value: "115",
-      },
-      {
-        label: "UAE",
-        value: "100",
-      },
-      {
-        label: "US",
-        value: "30",
-      },
-      {
-        label: "China",
-        value: "30",
-      },
-      {
-        label: "Venezuela",
-        value: "290",
-      },
-      {
-        label: "Saudi",
-        value: "260",
-      },
-      {
-        label: "Canada",
-        value: "180",
-      },
-      {
-        label: "Iran",
-        value: "140",
-      },
-      {
-        label: "Russia",
-        value: "115",
-      },
-      {
-        label: "UAE",
-        value: "100",
-      },
-      {
-        label: "US",
-        value: "30",
-      },
-      {
-        label: "China",
-        value: "30",
-      },
-    ],
-  },
-};
 
 // config simple guage
 const simpleGuageConfigs = {
@@ -472,10 +70,50 @@ const simpleGuageConfigs = {
     dials: {
       dial: [
         {
-          value: "68",
+          value: "20",
         },
       ],
     },
+  },
+};
+
+// config simple_chart
+const simpleChartConfigs = {
+  type: "column2d",
+  width: 600,
+  height: 300,
+  dataFormat: "json",
+  dataSource: {
+    chart: {
+      caption: "Vehicle Fuel level In [litre]",
+      subCaption: "In litres",
+      xAxisName: "Timestamp",
+      yAxisName: "Fuel (litre)",
+      numberSuffix: "Lt.",
+      theme: "fusion",
+    },
+    data: [
+      {
+        label: "Sat, 10 Oct 2020 18:30:00 GMT",
+        value: "50",
+      },
+      {
+        label: "Sat, 12 Oct 2020 18:32:00 GMT",
+        value: "50",
+      },
+      {
+        label: "Sat, 14 Oct 2020 18:34:00 GMT",
+        value: "50",
+      },
+      {
+        label: "Sat, 16 Oct 2020 18:36:00 GMT",
+        value: "50",
+      },
+      {
+        label: "Sat, 18 Oct 2020 18:38:00 GMT",
+        value: "50",
+      },
+    ],
   },
 };
 
@@ -494,76 +132,19 @@ const dataSource = {
     {
       category: [
         {
-          label: "1994",
+          label: "Sat, 1 Oct 2020 18:30:00 GMT",
         },
         {
-          label: "1995",
+          label: "Sat, 10 Oct 2020 18:32:00 GMT",
         },
         {
-          label: "1996",
+          label: "Sat, 15 Oct 2020 18:34:00 GMT",
         },
         {
-          label: "1997",
+          label: "Sat, 16 Oct 2020 18:36:00 GMT",
         },
         {
-          label: "1998",
-        },
-        {
-          label: "1999",
-        },
-        {
-          label: "2000",
-        },
-        {
-          label: "2001",
-        },
-        {
-          label: "2002",
-        },
-        {
-          label: "2003",
-        },
-        {
-          label: "2004",
-        },
-        {
-          label: "2005",
-        },
-        {
-          label: "2006",
-        },
-        {
-          label: "2007",
-        },
-        {
-          label: "2008",
-        },
-        {
-          label: "2009",
-        },
-        {
-          label: "2010",
-        },
-        {
-          label: "2011",
-        },
-        {
-          label: "2012",
-        },
-        {
-          label: "2013",
-        },
-        {
-          label: "2014",
-        },
-        {
-          label: "2015",
-        },
-        {
-          label: "2016",
-        },
-        {
-          label: "2017",
+          label: "Sat, 20 Oct 2020 18:38:00 GMT",
         },
       ],
     },
@@ -572,76 +153,19 @@ const dataSource = {
     {
       data: [
         {
-          value: "15622",
+          value: "70",
         },
         {
-          value: "10612",
+          value: "85",
         },
         {
-          value: "15820",
+          value: "85",
         },
         {
-          value: "26723",
+          value: "70",
         },
         {
-          value: "35415",
-        },
-        {
-          value: "25555",
-        },
-        {
-          value: "81803",
-        },
-        {
-          value: "47950",
-        },
-        {
-          value: "42396",
-        },
-        {
-          value: "19435",
-        },
-        {
-          value: "9780",
-        },
-        {
-          value: "23243",
-        },
-        {
-          value: "28619",
-        },
-        {
-          value: "8477",
-        },
-        {
-          value: "3503",
-        },
-        {
-          value: "14278",
-        },
-        {
-          value: "30522",
-        },
-        {
-          value: "61518",
-        },
-        {
-          value: "24819",
-        },
-        {
-          value: "16437",
-        },
-        {
-          value: "21171",
-        },
-        {
-          value: "1690",
-        },
-        {
-          value: "2418",
-        },
-        {
-          value: "11253",
+          value: "80",
         },
       ],
     },
@@ -720,7 +244,7 @@ class Dashboard extends React.Component {
                       <ReactFC {...simpleGuageConfigs} />
                     </MDBCol>
                     <MDBCol>
-                      <Pagination />
+                      <SpeedLog />
                     </MDBCol>
                   </MDBRow>
                 </MDBContainer>
@@ -742,7 +266,7 @@ class Dashboard extends React.Component {
                       <ReactFC {...simpleChartConfigs} />
                     </MDBCol>
                     <MDBCol>
-                      <Pagination />
+                      <FuelRefillLog />
                     </MDBCol>
                   </MDBRow>
                 </MDBContainer>
@@ -771,7 +295,7 @@ class Dashboard extends React.Component {
                       />
                     </MDBCol>
                     <MDBCol>
-                      <Pagination />
+                      <OverSpeedLog />
                     </MDBCol>
                   </MDBRow>
                 </MDBContainer>
@@ -798,13 +322,13 @@ class Dashboard extends React.Component {
   }
 }
 
-function Fuel({ speed, timestamp }) {
+function Fuel({ timestamp }) {
   // look into the console; why it is undefined?
-  console.log({ speed, timestamp });
+  console.log({ timestamp });
   return (
     <div>
       <h4>
-        {speed} {timestamp}
+        {timestamp}
         <span>{new Date(timestamp?.toDate()).toUTCString()}</span>
       </h4>
     </div>
