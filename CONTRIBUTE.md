@@ -22,7 +22,7 @@ npm start
 ```
 
 
-### Problem
+### [Issue#10](https://github.com/abhishekpatel946/Smart-Vehicle-Fleet-Manager/issues/10)
 
 In the Smart Vehicle Fleet Manager using Firestore database to store all the data. The problem with how to fetch those data from firestore and represent that data into the logs table.
 <br>
@@ -45,6 +45,16 @@ The data will be store in firestore like this.
 
 At this time Firestore database will have only store dummy data for testing.
 After code merged successfully then we'll store actual IoT sensors data and visualizing through our charts and maintain logs table for each data record.
+
+
+### [Issue#12](https://github.com/abhishekpatel946/Smart-Vehicle-Fleet-Manager/issues/12)
+
+Data fetch successfully from firestore but it can't store in SpeedLog pagination table. And also the most recent data display using charts.
+<br>
+Make sure the all the data record fetch from firestore and keep it in pagination table as a logs history and most recently data used to display using react-fusion charts or widget.
+<br>
+<br>
+Additional if you can improve the performance of fetching data from firestore and rendering it on Dashboard. It will be usefull for us.
 
 ### References
 
