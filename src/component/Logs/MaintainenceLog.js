@@ -21,24 +21,24 @@ export default function OverSpeedLog() {
     ],
     rows: [
       {
-        timestamp: "Sat, 1 Oct 2020 18:30:00 GMT",
-        overspeed: "70",
+        timestamp: "Sat, 1 Oct 2015 18:30:00 GMT",
+        overspeed: "7000",
       },
       {
-        timestamp: "Sat, 10 Oct 2020 18:32:00 GMT",
-        overspeed: "85",
+        timestamp: "Sat, 10 Oct 2016 18:32:00 GMT",
+        overspeed: "8500",
       },
       {
-        timestamp: "Sat, 15 Oct 2020 18:34:00 GMT",
-        overspeed: "85",
+        timestamp: "Sat, 15 Oct 2017 18:34:00 GMT",
+        overspeed: "8500",
       },
       {
-        timestamp: "Sat, 16 Oct 2020 18:36:00 GMT",
-        overspeed: "70",
+        timestamp: "Sat, 16 Oct 2018 18:36:00 GMT",
+        overspeed: "7000",
       },
       {
-        timestamp: "Sat, 20 Oct 2020 18:38:00 GMT",
-        overspeed: "80",
+        timestamp: "Sat, 20 Oct 2019 18:38:00 GMT",
+        overspeed: "8000",
       },
     ],
   });

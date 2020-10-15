@@ -1,7 +1,7 @@
 import React from "react";
 import { MDBDataTableV5 } from "mdbreact";
 
-export default function Pagination() {
+export default function FuelRefillLog() {
   const [datatable, setDatatable] = React.useState({
     columns: [
       {

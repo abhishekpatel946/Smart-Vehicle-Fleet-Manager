@@ -10,6 +10,8 @@ import {
   MDBView,
   MDBContainer,
   MDBInput,
+  MDBAnimation,
+  MDBTypography,
 } from "mdbreact";
 import "./home.css";
 import fireConfig from "../firebase/fireConfig";
@@ -75,11 +77,7 @@ class Home extends React.Component {
               <MDBContainer>
                 <MDBNavbarBrand>
                   <MDBCol>
-                    <img src="../../assets/Logo.png" 
-                    className="img-fluid float-left" alt="resposive logo" style={{width: "200px"}} />
-                    <strong className="white-text">
-                      Smart Vehicle Fleet Manager
-                    </strong>
+                  <MDBTypography tag='h3' variant="h3-responsive" style={{ color: "#EAF0F1" }}>Smart Vehicle Fleet Manager</MDBTypography>
                   </MDBCol>
                 </MDBNavbarBrand>
               </MDBContainer>
@@ -89,7 +87,16 @@ class Home extends React.Component {
         <MDBView>
           <MDBMask className="d-flex justify-content-center align-items-center gradient">
             <MDBContainer>
-              <MDBRow></MDBRow>
+              <MDBRow>
+                <MDBAnimation type='fadeInLeft' delay='.3s'>
+                    <img
+                      src='https://mdbootstrap.com/img/Mockups/Transparent/Small/admin-new.png'
+                      alt=''
+                      className='img-fluid'
+                      style={{ padding: "40px", marginTop: "50px" }}
+                    />
+                  </MDBAnimation>
+                </MDBRow>
             </MDBContainer>
             <MDBContainer>
               <MDBRow>

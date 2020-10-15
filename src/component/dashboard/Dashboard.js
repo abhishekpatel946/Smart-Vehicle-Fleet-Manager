@@ -1,4 +1,5 @@
 import React from "react";
+import { db } from "../firebase/fireConfig";
 import FusionCharts from "fusioncharts";
 import Charts from "fusioncharts/fusioncharts.charts";
 import ReactFC from "react-fusioncharts";
@@ -11,7 +12,9 @@ import FooterLayout from "../dashboard_common/FooterLayout";
 import SpeedLog from "../Logs/SpeedLog";
 import FuelRefillLog from "../Logs/FuelRefillLog";
 import OverSpeedLog from "../Logs/OversSpeedLog";
-import { Layout, Menu, Breadcrumb, Divider, Row, Col } from "antd";
+import MaintainenceLog from "../Logs/MaintainenceLog";
+import FuelLog from "../Logs/FuelLog";
+import { Layout, Menu, Breadcrumb, Divider } from "antd";
 import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
 import {
   DesktopOutlined,
@@ -19,12 +22,7 @@ import {
   FileOutlined,
 } from "@ant-design/icons";
 
-const style = {
-  textAlign: "center",
-  color: "white",
-  background: "#192A56",
-  padding: "16px 0",
-};
+// Layout and Menu
 const { Content, Sider } = Layout;
 const { SubMenu } = Menu;
 
@@ -32,8 +30,8 @@ const { SubMenu } = Menu;
 ReactFC.fcRoot(FusionCharts, Charts, FusionTheme);
 ReactFC.fcRoot(FusionCharts, Widgets, FusionTheme);
 
-// config simple guage
-const simpleGuageConfigs = {
+// config speed guage
+const speedGuageConfigs = {
   type: "angulargauge",
   width: 500,
   height: 400,
@@ -77,8 +75,48 @@ const simpleGuageConfigs = {
   },
 };
 
-// config simple_chart
-const simpleChartConfigs = {
+// config fuel level chat
+const fuelLevelChartConfigs = {
+  type: "column2d",
+  width: 600,
+  height: 400,
+  dataFormat: "json",
+  dataSource: {
+    chart: {
+      caption: "Vehicle Fuel level In [litre]",
+      subCaption: "In litres",
+      xAxisName: "Timestamp",
+      yAxisName: "Fuel (litre)",
+      numberSuffix: "Lt.",
+      theme: "fusion",
+    },
+    data: [
+      {
+        label: "Sat, 18 Oct 2020 10:00:00 GMT",
+        value: "50",
+      },
+      {
+        label: "Sat, 18 Oct 2020 12:00:00 GMT",
+        value: "45",
+      },
+      {
+        label: "Sat, 18 Oct 2020 14:00:00 GMT",
+        value: "40",
+      },
+      {
+        label: "Sat, 18 Oct 2020 16:00:00 GMT",
+        value: "35",
+      },
+      {
+        label: "Sat, 18 Oct 2020 18:00:00 GMT",
+        value: "30",
+      },
+    ],
+  },
+};
+
+// config fuel refill chart
+const fuelRefillChartConfigs = {
   type: "column2d",
   width: 600,
   height: 400,
@@ -117,9 +155,9 @@ const simpleChartConfigs = {
   },
 };
 
-// config line with scrolling
+// config overspeed line with scrolling
 Charts(FusionCharts);
-const dataSource = {
+const overspeedingSouce = {
   chart: {
     caption: "Vehicle OverSpeeding Instaces",
     subcaption: "(As per recommended)",
@@ -172,6 +210,61 @@ const dataSource = {
   ],
 };
 
+// config maintainence line with scrolling
+Charts(FusionCharts);
+const maintainenceSource = {
+  chart: {
+    caption: "Vehicle OverSpeeding Instaces",
+    subcaption: "(As per recommended)",
+    showvalues: "0",
+    numvisibleplot: "12",
+    plottooltext: "<b>$dataValue</b> Speed of Vehicle at $label",
+    theme: "fusion",
+  },
+  categories: [
+    {
+      category: [
+        {
+          label: "Sat, 1 Oct 2015 18:30:00 GMT",
+        },
+        {
+          label: "Sat, 10 Oct 2016 18:32:00 GMT",
+        },
+        {
+          label: "Sat, 15 Oct 2017 18:34:00 GMT",
+        },
+        {
+          label: "Sat, 16 Oct 2018 18:36:00 GMT",
+        },
+        {
+          label: "Sat, 20 Oct 2019 18:38:00 GMT",
+        },
+      ],
+    },
+  ],
+  dataset: [
+    {
+      data: [
+        {
+          value: "7000",
+        },
+        {
+          value: "8500",
+        },
+        {
+          value: "8500",
+        },
+        {
+          value: "7000",
+        },
+        {
+          value: "8000",
+        },
+      ],
+    },
+  ],
+};
+
 class Dashboard extends React.Component {
   state = {
     collapsed: true,
@@ -187,9 +280,34 @@ class Dashboard extends React.Component {
     fireConfig.auth().signOut();
   }
 
+  // speed state
+  state = {
+    speeds: null,
+  };
+
+  // Mount the firestore
+  componentDidMount() {
+    console.log("mounted");
+    db.collection("vehicle")
+      .doc("speed_sensor")
+      .collection("speed")
+      .get()
+      .then((snapshot) => {
+        const speed_data = [];
+        snapshot.forEach((doc) => {
+          const data = doc.data();
+          speed_data.push(data);
+          console.log(`SpeedData := ${data.speed}`);
+        });
+        this.setState({ speeds: speed_data });
+      })
+      .catch((error) => console.log(error));
+  }
+
   render() {
     return (
       <Layout>
+        {/* Header Section */}
         <HeaderLayout />
         <Layout style={{ minHeight: "100vh" }}>
           <Sider
@@ -219,6 +337,8 @@ class Dashboard extends React.Component {
               </Menu.Item>
             </Menu>
           </Sider>
+
+          {/* Breadcrum Naming */}
           <Layout className="site-layout">
             <Content style={{ margin: "0 16px" }}>
               <Breadcrumb style={{ margin: "16px 0" }}>
@@ -229,60 +349,59 @@ class Dashboard extends React.Component {
                 className="site-layout-background"
                 style={{ padding: 24, minHeight: 760 }}
               >
+                {/* Speed Section */}
                 <Divider orientation="left">Speed area</Divider>
-                <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
-                  <Col className="gutter-row" span={6}>
-                    <div style={style}>Accelerometer</div>
-                  </Col>
-                  <Col className="gutter-row" span={6}>
-                    <div style={style}>Speed history</div>
-                  </Col>
-                </Row>
                 <MDBContainer>
                   <MDBRow>
                     <MDBCol>
-                      <ReactFC {...simpleGuageConfigs} />
+                      <ReactFC {...speedGuageConfigs} />
                     </MDBCol>
                     <MDBCol>
                       <SpeedLog />
                     </MDBCol>
+                    <MDBCol>
+                      <h1> speed </h1>
+                      {this.state.speed &&
+                        this.state.speeds.map((speed_data) => {
+                          return (
+                            <div>
+                              <p> Here is speed... </p>
+                              <p>{speed_data.speeds}</p>
+                            </div>
+                          );
+                        })}
+                    </MDBCol>
                   </MDBRow>
                 </MDBContainer>
+
+                {/* Fuel Section */}
                 <Divider orientation="left">Fuel area</Divider>
-                <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
-                  <Col className="gutter-row" span={6}>
-                    <div style={style}>Location history</div>
-                  </Col>
-                  <Col className="gutter-row" span={6}>
-                    <div style={style}>Fuel Level Sensor</div>
-                  </Col>
-                  <Col className="gutter-row" span={6}>
-                    <div style={style}>Fuel refill history</div>
-                  </Col>
-                </Row>
                 <MDBContainer>
                   <MDBRow>
                     <MDBCol>
-                      <ReactFC {...simpleChartConfigs} />
+                      <ReactFC {...fuelLevelChartConfigs} />
+                    </MDBCol>
+                    <MDBCol>
+                      <FuelLog />
+                    </MDBCol>
+                  </MDBRow>
+                </MDBContainer>
+
+                {/* Fuel Refill Section */}
+                <Divider orientation="left">Fuel Refill area</Divider>
+                <MDBContainer>
+                  <MDBRow>
+                    <MDBCol>
+                      <ReactFC {...fuelRefillChartConfigs} />
                     </MDBCol>
                     <MDBCol>
                       <FuelRefillLog />
                     </MDBCol>
                   </MDBRow>
                 </MDBContainer>
-                <Divider orientation="left">OverSpeeding area</Divider>
-                <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
-                  <Col className="gutter-row" span={6}>
-                    <div style={style}>OverSpeeding instances</div>
-                  </Col>
 
-                  <Col className="gutter-row" span={6}>
-                    <div style={style}>Emergency Button</div>
-                  </Col>
-                  <Col className="gutter-row" span={6}>
-                    <div style={style}>Turn-Off Button</div>
-                  </Col>
-                </Row>
+                {/* OverSpeeding Section */}
+                <Divider orientation="left">OverSpeeding area</Divider>
                 <MDBContainer>
                   <MDBRow>
                     <MDBCol>
@@ -291,7 +410,7 @@ class Dashboard extends React.Component {
                         width="100%"
                         height="200%"
                         dataFormat="JSON"
-                        dataSource={dataSource}
+                        dataSource={overspeedingSouce}
                       />
                     </MDBCol>
                     <MDBCol>
@@ -299,19 +418,27 @@ class Dashboard extends React.Component {
                     </MDBCol>
                   </MDBRow>
                 </MDBContainer>
+
+                {/* Maintainence Section */}
                 <Divider orientation="left">Maintainance area</Divider>
-                <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
-                  <Col className="gutter-row" span={6}>
-                    <div style={style}>Accident alert</div>
-                  </Col>
-                  <Col className="gutter-row" span={6}>
-                    <div style={style}>Total distance travelled</div>
-                  </Col>
-                  <Col className="gutter-row" span={6}>
-                    <div style={style}>GPS</div>
-                  </Col>
-                  <Fuel />
-                </Row>
+                <MDBContainer>
+                  <MDBRow>
+                    <MDBCol>
+                      <ReactFusioncharts
+                        type="scrollline2d"
+                        width="100%"
+                        height="200%"
+                        dataFormat="JSON"
+                        dataSource={maintainenceSource}
+                      />
+                    </MDBCol>
+                    <MDBCol>
+                      <MaintainenceLog />
+                    </MDBCol>
+                  </MDBRow>
+                </MDBContainer>
+
+                {/* End */}
               </div>
             </Content>
             <FooterLayout />
@@ -320,19 +447,6 @@ class Dashboard extends React.Component {
       </Layout>
     );
   }
-}
-
-function Fuel({ timestamp }) {
-  // look into the console; why it is undefined?
-  console.log({ timestamp });
-  return (
-    <div>
-      <h4>
-        {timestamp}
-        <span>{new Date(timestamp?.toDate()).toUTCString()}</span>
-      </h4>
-    </div>
-  );
 }
 
 export default Dashboard;

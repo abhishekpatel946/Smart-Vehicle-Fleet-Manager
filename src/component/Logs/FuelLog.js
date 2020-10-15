@@ -1,7 +1,7 @@
 import React from "react";
 import { MDBDataTableV5 } from "mdbreact";
 
-export default function OverSpeedLog() {
+export default function FuelLog() {
   const [datatable, setDatatable] = React.useState({
     columns: [
       {
@@ -14,31 +14,31 @@ export default function OverSpeedLog() {
         },
       },
       {
-        label: "OverSpeed",
-        field: "overspeed",
+        label: "Fuel",
+        field: "fuel",
         width: 40,
       },
     ],
     rows: [
       {
-        timestamp: "Sat, 1 Oct 2020 18:30:00 GMT",
-        overspeed: "70",
+        timestamp: "Sat, 18 Oct 2020 10:00:00 GMT",
+        fuel: "50",
       },
       {
-        timestamp: "Sat, 10 Oct 2020 18:32:00 GMT",
-        overspeed: "85",
+        timestamp: "Sat, 18 Oct 2020 12:00:00 GMT",
+        fuel: "45",
       },
       {
-        timestamp: "Sat, 15 Oct 2020 18:34:00 GMT",
-        overspeed: "85",
+        timestamp: "Sat, 18 Oct 2020 14:00:00 GMT",
+        fuel: "40",
       },
       {
-        timestamp: "Sat, 16 Oct 2020 18:36:00 GMT",
-        overspeed: "70",
+        timestamp: "Sat, 18 Oct 2020 16:00:00 GMT",
+        fuel: "35",
       },
       {
-        timestamp: "Sat, 20 Oct 2020 18:38:00 GMT",
-        overspeed: "80",
+        timestamp: "Sat, 18 Oct 2020 18:00:00 GMT",
+        fuel: "30",
       },
     ],
   });

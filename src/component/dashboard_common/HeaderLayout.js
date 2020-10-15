@@ -21,12 +21,6 @@ class HeaderLayout extends React.Component {
           style={{ padding: 0 }}
         >
           <Title style={{ color: "#EAF0F1", padding: 15 }} level={3}>
-            <img
-              src="../../assets/Logo.png"
-              alt="Logo"
-              height="10px"
-              width="12px"
-            />
             Smart Vehicle Fleet Manager
             <Button
               ghost
