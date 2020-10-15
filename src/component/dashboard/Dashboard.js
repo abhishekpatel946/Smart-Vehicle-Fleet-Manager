@@ -293,13 +293,13 @@ class Dashboard extends React.Component {
       .collection("speed")
       .get()
       .then((snapshot) => {
-        const speed_data = [];
+        const speeds = [];
         snapshot.forEach((doc) => {
           const data = doc.data();
-          speed_data.push(data);
+          speeds.push(data);
           console.log(`SpeedData := ${data.speed}`);
         });
-        this.setState({ speeds: speed_data });
+        this.setState({ speeds: speeds });
       })
       .catch((error) => console.log(error));
   }
@@ -363,12 +363,12 @@ class Dashboard extends React.Component {
                       {/* Why the data not be extract from list */}
                       <h1> speed </h1>
                       {this.state.speed &&
-                        this.state.speeds.map((speed_data) => {
+                        this.state.speeds.map((index) => {
                           return (
                             <div>
                               <p> Here is speed... </p>
                               {/* how to fetch data from 'speed_data' list */}
-                              <p>{speed_data.speeds}</p>
+                              <p>{index.speed}</p>
                             </div>
                           );
                         })}
