@@ -35,7 +35,7 @@ ReactFC.fcRoot(FusionCharts, Widgets, FusionTheme);
 // config simple guage
 const simpleGuageConfigs = {
   type: "angulargauge",
-  width: 600,
+  width: 500,
   height: 400,
   dataFormat: "json",
   dataSource: {
@@ -81,7 +81,7 @@ const simpleGuageConfigs = {
 const simpleChartConfigs = {
   type: "column2d",
   width: 600,
-  height: 300,
+  height: 400,
   dataFormat: "json",
   dataSource: {
     chart: {
@@ -289,7 +289,7 @@ class Dashboard extends React.Component {
                       <ReactFusioncharts
                         type="scrollline2d"
                         width="100%"
-                        height="300%"
+                        height="200%"
                         dataFormat="JSON"
                         dataSource={dataSource}
                       />
