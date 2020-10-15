@@ -360,12 +360,14 @@ class Dashboard extends React.Component {
                       <SpeedLog />
                     </MDBCol>
                     <MDBCol>
+                      {/* Why the data not be extract from list */}
                       <h1> speed </h1>
                       {this.state.speed &&
                         this.state.speeds.map((speed_data) => {
                           return (
                             <div>
                               <p> Here is speed... </p>
+                              {/* how to fetch data from 'speed_data' list */}
                               <p>{speed_data.speeds}</p>
                             </div>
                           );
