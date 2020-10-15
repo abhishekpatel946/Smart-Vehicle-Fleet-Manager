@@ -21,6 +21,30 @@ git clone https://github.com/abhishekpatel946/Smart-Vehicle-Fleet-Manager
 npm start
 ```
 
+## Folder Structure
+```
+├───public                                                                            
+└───src 
+    ├───assets                                                                            
+    └───component                                                                               
+        ├───dashboard
+        |   └───Dashboard.js
+        ├───dashboard_common
+        |   └───FooterLayout.js
+        |   └───HeaderLayout.js
+        ├───firebase
+        |   └───FireConfig.js
+        ├───Login
+        |   └───home.css
+        |   └───home.jsx
+        └───Logs
+            └───Firedata.js
+            └───FuelLog.js
+            └───FuelRefill.js
+            └───MaintainanceLog.js
+            └───OverSpeedLog.js
+            └───SpeedLog.js
+```
 
 ### [Issue#10](https://github.com/abhishekpatel946/Smart-Vehicle-Fleet-Manager/issues/10)
 
