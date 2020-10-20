@@ -9,11 +9,7 @@ import ReactFusioncharts from "react-fusioncharts";
 import fireConfig from "../firebase/fireConfig";
 import HeaderLayout from "../dashboard_common/HeaderLayout";
 import FooterLayout from "../dashboard_common/FooterLayout";
-import SpeedLog from "../Logs/SpeedLog";
-import FuelRefillLog from "../Logs/FuelRefillLog";
-import OverSpeedLog from "../Logs/OversSpeedLog";
-import MaintainenceLog from "../Logs/MaintainenceLog";
-import FuelLog from "../Logs/FuelLog";
+import SpeedTable from "../Logs/SpeedLog";
 import { Layout, Menu, Breadcrumb, Divider } from "antd";
 import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
 import {
@@ -271,8 +267,8 @@ class Dashboard extends React.Component {
   };
 
   onCollapse = (collapsed) => {
-    console.log(collapsed);
     this.setState({ collapsed });
+    console.log(collapsed);
   };
 
   // logout
@@ -282,7 +278,7 @@ class Dashboard extends React.Component {
 
   // speed state
   state = {
-    speeds: null,
+    students: null,
   };
 
   // Mount the firestore
@@ -291,15 +287,16 @@ class Dashboard extends React.Component {
     db.collection("vehicle")
       .doc("speed_sensor")
       .collection("speed")
+      .orderBy("timestamp", "asc")
       .get()
       .then((snapshot) => {
-        const speeds = [];
+        const students = [];
         snapshot.forEach((doc) => {
           const data = doc.data();
-          speeds.push(data);
+          students.push(data);
           console.log(`SpeedData := ${data.speed}`);
         });
-        this.setState({ speeds: speeds });
+        this.setState({ students: students });
       })
       .catch((error) => console.log(error));
   }
@@ -357,22 +354,24 @@ class Dashboard extends React.Component {
                       <ReactFC {...speedGuageConfigs} />
                     </MDBCol>
                     <MDBCol>
-                      <SpeedLog />
+                      <SpeedTable />
                     </MDBCol>
-                    <MDBCol>
-                      {/* Why the data not be extract from list */}
+                    {/* <MDBCol>
                       <h1> speed </h1>
-                      {this.state.speed &&
-                        this.state.speeds.map((index) => {
+                      {this.state.students &&
+                        this.state.students.map((index) => {
                           return (
                             <div>
-                              <p> Here is speed... </p>
-                              {/* how to fetch data from 'speed_data' list */}
-                              <p>{index.speed}</p>
+                              <p>
+                                {index.speed}{" "}
+                                {new Date(
+                                  index.timestamp?.toDate()
+                                ).toUTCString()}{" "}
+                              </p>
                             </div>
                           );
                         })}
-                    </MDBCol>
+                    </MDBCol> */}
                   </MDBRow>
                 </MDBContainer>
 
@@ -384,7 +383,8 @@ class Dashboard extends React.Component {
                       <ReactFC {...fuelLevelChartConfigs} />
                     </MDBCol>
                     <MDBCol>
-                      <FuelLog />
+                      {/* <FuelLog /> */}
+                      <SpeedTable />
                     </MDBCol>
                   </MDBRow>
                 </MDBContainer>
@@ -396,9 +396,7 @@ class Dashboard extends React.Component {
                     <MDBCol>
                       <ReactFC {...fuelRefillChartConfigs} />
                     </MDBCol>
-                    <MDBCol>
-                      <FuelRefillLog />
-                    </MDBCol>
+                    <MDBCol>{/* <FuelRefillLog /> */}</MDBCol>
                   </MDBRow>
                 </MDBContainer>
 
@@ -415,9 +413,7 @@ class Dashboard extends React.Component {
                         dataSource={overspeedingSouce}
                       />
                     </MDBCol>
-                    <MDBCol>
-                      <OverSpeedLog />
-                    </MDBCol>
+                    <MDBCol>{/* <OverSpeedLog /> */}</MDBCol>
                   </MDBRow>
                 </MDBContainer>
 
@@ -434,9 +430,7 @@ class Dashboard extends React.Component {
                         dataSource={maintainenceSource}
                       />
                     </MDBCol>
-                    <MDBCol>
-                      <MaintainenceLog />
-                    </MDBCol>
+                    <MDBCol>{/* <MaintainenceLog /> */}</MDBCol>
                   </MDBRow>
                 </MDBContainer>
 

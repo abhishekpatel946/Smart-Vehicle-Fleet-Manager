@@ -34,13 +34,13 @@ class Home extends React.Component {
     fireConfig
       .auth()
       .signInWithEmailAndPassword(email, password)
-      .then((u) => {
-        console.log("Successfully loggedIn.!!!");
-        alert("Successful LoggedIn...!!!");
+      .then((event) => {
+        console.log(event.message);
+        alert('Successful loggedIn...');
       })
       .catch((err) => {
         console.log("Error" + err.toString());
-        alert("Incorrect Username or Password...!");
+        alert(err.message);
       });
   }
 
@@ -51,13 +51,13 @@ class Home extends React.Component {
     fireConfig
       .auth()
       .createUserWithEmailAndPassword(email, password)
-      .then((u) => {
-        console.log("Successfully Registered.!!!");
-        alert('Successfully Registered.!!!"');
+      .then((event) => {
+        console.log(event.message);
+        alert('successful registerd...');
       })
       .catch((err) => {
         console.log("Error" + err.toString());
-        alert("Incorrect Username or Password...!");
+        alert(err.message);
       });
   }
 
