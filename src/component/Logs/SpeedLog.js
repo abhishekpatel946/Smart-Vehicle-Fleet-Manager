@@ -41,14 +41,7 @@ export default function SpeedLog() {
         setSpeedTimestamp(speed_time);
       })
       .catch((error) => console.log(error));
-  }, [speedData]);
-
-  speedData.forEach((speed) => {
-    console.log(speed);
-  });
-  speedTimestamp.forEach((time) => {
-    console.log(time);
-  });
+  }, []);
 
   const [datatable, setDatatable] = React.useState({
     columns: [
@@ -67,10 +60,11 @@ export default function SpeedLog() {
         width: 40,
       },
     ],
+
     rows: [
       {
-        speed: "",
-        timestamp: "",
+        speed: "speed",
+        timestamp: "timestamp",
       },
     ],
   });

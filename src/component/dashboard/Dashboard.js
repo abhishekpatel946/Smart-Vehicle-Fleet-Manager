@@ -1,5 +1,4 @@
 import React from "react";
-import { db } from "../firebase/fireConfig";
 import FusionCharts from "fusioncharts";
 import Charts from "fusioncharts/fusioncharts.charts";
 import ReactFC from "react-fusioncharts";
@@ -9,9 +8,9 @@ import ReactFusioncharts from "react-fusioncharts";
 import fireConfig from "../firebase/fireConfig";
 import HeaderLayout from "../dashboard_common/HeaderLayout";
 import FooterLayout from "../dashboard_common/FooterLayout";
-import SpeedTable from "../Logs/SpeedLog";
-// import Table from "../Logs/Table";
-import { Layout, Menu, Breadcrumb, Divider } from "antd";
+// import SpeedTable from "../Logs/SpeedLog";
+import Table from "../Logs/Table";
+import { Layout, Menu, Breadcrumb, Divider, Button } from "antd";
 import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
 import {
   DesktopOutlined,
@@ -277,31 +276,6 @@ class Dashboard extends React.Component {
     fireConfig.auth().signOut();
   }
 
-  // // speed state
-  // state = {
-  //   students: null,
-  // };
-
-  // Mount the firestore
-  // componentDidMount() {
-  //   console.log("mounted");
-  //   db.collection("vehicle")
-  //     .doc("speed_sensor")
-  //     .collection("speed")
-  //     .orderBy("timestamp", "asc")
-  //     .get()
-  //     .then((snapshot) => {
-  //       const students = [];
-  //       snapshot.forEach((doc) => {
-  //         const data = doc.data();
-  //         students.push(data);
-  //         // console.log(`SpeedData := ${data.speed}`);
-  //       });
-  //       this.setState({ students: students });
-  //     })
-  //     .catch((error) => console.log(error));
-  // }
-
   render() {
     return (
       <Layout>
@@ -355,8 +329,8 @@ class Dashboard extends React.Component {
                       <ReactFC {...speedGuageConfigs} />
                     </MDBCol>
                     <MDBCol>
-                      <SpeedTable />
-                      {/* <Table /> */}
+                      {/* <SpeedTable /> */}
+                      <Table />
                     </MDBCol>
                   </MDBRow>
                 </MDBContainer>
