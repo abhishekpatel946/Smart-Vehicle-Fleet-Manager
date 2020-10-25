@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./App.css";
 // import { BounceLoader } from "react-spinners";
 import Dashboard from "./component/dashboard/Dashboard";

@@ -1,4 +1,5 @@
 import React from "react";
+// import { db } from "../firebase/fireConfig";
 import FusionCharts from "fusioncharts";
 import Charts from "fusioncharts/fusioncharts.charts";
 import ReactFC from "react-fusioncharts";
@@ -13,7 +14,7 @@ import FuelLog from "../Logs/FuelLog";
 import FuelRefillLog from "../Logs/FuelRefillLog";
 import MaintainenceLog from "../Logs/MaintainenceLog";
 import OverSpeedLog from "../Logs/OversSpeedLog";
-import { Layout, Menu, Breadcrumb, Divider, Button } from "antd";
+import { Layout, Menu, Breadcrumb, Divider } from "antd";
 import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
 import {
   DesktopOutlined,
@@ -67,7 +68,7 @@ const speedGuageConfigs = {
     dials: {
       dial: [
         {
-          value: "20",
+          value: "53",
         },
       ],
     },
@@ -371,7 +372,7 @@ class Dashboard extends React.Component {
                       <ReactFusioncharts
                         type="scrollline2d"
                         width="100%"
-                        height="200%"
+                        height="800%"
                         dataFormat="JSON"
                         dataSource={overspeedingSouce}
                       />
@@ -390,7 +391,7 @@ class Dashboard extends React.Component {
                       <ReactFusioncharts
                         type="scrollline2d"
                         width="100%"
-                        height="200%"
+                        height="800%"
                         dataFormat="JSON"
                         dataSource={maintainenceSource}
                       />
