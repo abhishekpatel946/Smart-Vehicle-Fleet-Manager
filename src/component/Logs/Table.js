@@ -6,6 +6,7 @@ import * as ReactBootstrap from "react-bootstrap";
 
 function Table() {
   const [speedData, setSpeedData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     db.collection("vehicle")
@@ -19,6 +20,7 @@ function Table() {
           speed_value.push(doc.data());
         });
         setSpeedData(speed_value);
+        setLoading(true);
       })
       .catch((error) => console.log(error));
   }, []);
@@ -36,12 +38,16 @@ function Table() {
 
   return (
     <div>
-      <BootstrapTable
-        keyField="timestamp"
-        data={speedData}
-        columns={columns}
-        pagination={paginationFactory()}
-      />
+      {loading ? (
+        <BootstrapTable
+          keyField="timestamp"
+          data={speedData}
+          columns={columns}
+          pagination={paginationFactory()}
+        />
+      ) : (
+        <ReactBootstrap.Spinner animation="border" />
+      )}
     </div>
   );
 }
