@@ -3,22 +3,52 @@ import { MDBDataTableV5 } from "mdbreact";
 import { db } from "../firebase/fireConfig";
 
 export default function SpeedLog() {
+  // const [speedData, setSpeedData] = useState([]);
+
+  // useEffect(() => {
+  //   let unsubscribe;
+  //   unsubscribe = db
+  //     .collection("vehicle")
+  //     .doc("speed_sensor")
+  //     .collection("speed")
+  //     .orderBy("time stamp", "asc")
+  //     .onSnapshot((snapshot) => {
+  //       setSpeedData(snapshot.docs.map((doc) => doc.data()));
+  //     });
+  //   return () => {
+  //     unsubscribe();
+  //   };
+  // }, []);
+
   const [speedData, setSpeedData] = useState([]);
+  const [speedTimestamp, setSpeedTimestamp] = useState([]);
 
   useEffect(() => {
-    let unsubscribe;
-    unsubscribe = db
-      .collection("vehicle")
+    db.collection("vehicle")
       .doc("speed_sensor")
       .collection("speed")
       .orderBy("timestamp", "asc")
-      .onSnapshot((snapshot) => {
-        setSpeedData(snapshot.docs.map((doc) => doc.data()));
-      });
-    return () => {
-      unsubscribe();
-    };
-  }, []);
+      .get()
+      .then((snapshot) => {
+        const speed_value = [];
+        const speed_time = [];
+        snapshot.forEach((doc) => {
+          const data = doc.data();
+          speed_value.push(data.speed);
+          speed_time.push(data.timestamp.toDate().toUTCString());
+        });
+        setSpeedData(speed_value);
+        setSpeedTimestamp(speed_time);
+      })
+      .catch((error) => console.log(error));
+  }, [speedData]);
+
+  speedData.forEach((speed) => {
+    console.log(speed);
+  });
+  speedTimestamp.forEach((time) => {
+    console.log(time);
+  });
 
   const [datatable, setDatatable] = React.useState({
     columns: [
@@ -37,20 +67,18 @@ export default function SpeedLog() {
         width: 40,
       },
     ],
-    // { speedData.map((index) => (
     rows: [
       {
-        timestamp: "Sat, 10 Oct 2020 18:30:00 GMT",
-        speed: "0",
+        speed: "",
+        timestamp: "",
       },
     ],
-    // ))}
   });
 
   return (
     <MDBDataTableV5
       hover
-      entriesOptions={[5, 20, 25]}
+      entriesOptions={[5, 25, 50]}
       entries={5}
       pagesAmount={4}
       data={setDatatable}

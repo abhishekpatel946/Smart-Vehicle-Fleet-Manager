@@ -10,6 +10,7 @@ import fireConfig from "../firebase/fireConfig";
 import HeaderLayout from "../dashboard_common/HeaderLayout";
 import FooterLayout from "../dashboard_common/FooterLayout";
 import SpeedTable from "../Logs/SpeedLog";
+// import Table from "../Logs/Table";
 import { Layout, Menu, Breadcrumb, Divider } from "antd";
 import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
 import {
@@ -276,30 +277,30 @@ class Dashboard extends React.Component {
     fireConfig.auth().signOut();
   }
 
-  // speed state
-  state = {
-    students: null,
-  };
+  // // speed state
+  // state = {
+  //   students: null,
+  // };
 
   // Mount the firestore
-  componentDidMount() {
-    console.log("mounted");
-    db.collection("vehicle")
-      .doc("speed_sensor")
-      .collection("speed")
-      .orderBy("timestamp", "asc")
-      .get()
-      .then((snapshot) => {
-        const students = [];
-        snapshot.forEach((doc) => {
-          const data = doc.data();
-          students.push(data);
-          console.log(`SpeedData := ${data.speed}`);
-        });
-        this.setState({ students: students });
-      })
-      .catch((error) => console.log(error));
-  }
+  // componentDidMount() {
+  //   console.log("mounted");
+  //   db.collection("vehicle")
+  //     .doc("speed_sensor")
+  //     .collection("speed")
+  //     .orderBy("timestamp", "asc")
+  //     .get()
+  //     .then((snapshot) => {
+  //       const students = [];
+  //       snapshot.forEach((doc) => {
+  //         const data = doc.data();
+  //         students.push(data);
+  //         // console.log(`SpeedData := ${data.speed}`);
+  //       });
+  //       this.setState({ students: students });
+  //     })
+  //     .catch((error) => console.log(error));
+  // }
 
   render() {
     return (
@@ -355,23 +356,8 @@ class Dashboard extends React.Component {
                     </MDBCol>
                     <MDBCol>
                       <SpeedTable />
+                      {/* <Table /> */}
                     </MDBCol>
-                    {/* <MDBCol>
-                      <h1> speed </h1>
-                      {this.state.students &&
-                        this.state.students.map((index) => {
-                          return (
-                            <div>
-                              <p>
-                                {index.speed}{" "}
-                                {new Date(
-                                  index.timestamp?.toDate()
-                                ).toUTCString()}{" "}
-                              </p>
-                            </div>
-                          );
-                        })}
-                    </MDBCol> */}
                   </MDBRow>
                 </MDBContainer>
 
@@ -382,10 +368,7 @@ class Dashboard extends React.Component {
                     <MDBCol>
                       <ReactFC {...fuelLevelChartConfigs} />
                     </MDBCol>
-                    <MDBCol>
-                      {/* <FuelLog /> */}
-                      <SpeedTable />
-                    </MDBCol>
+                    <MDBCol>{/* <FuelLog /> */}</MDBCol>
                   </MDBRow>
                 </MDBContainer>
 
