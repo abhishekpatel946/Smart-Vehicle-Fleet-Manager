@@ -8,8 +8,11 @@ import ReactFusioncharts from "react-fusioncharts";
 import fireConfig from "../firebase/fireConfig";
 import HeaderLayout from "../dashboard_common/HeaderLayout";
 import FooterLayout from "../dashboard_common/FooterLayout";
-// import SpeedTable from "../Logs/SpeedLog";
-import Table from "../Logs/Table";
+import SpeedLog from "../Logs/SpeedLog";
+import FuelLog from "../Logs/FuelLog";
+import FuelRefillLog from "../Logs/FuelRefillLog";
+import MaintainenceLog from "../Logs/MaintainenceLog";
+import OverSpeedLog from "../Logs/OversSpeedLog";
 import { Layout, Menu, Breadcrumb, Divider, Button } from "antd";
 import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
 import {
@@ -329,8 +332,7 @@ class Dashboard extends React.Component {
                       <ReactFC {...speedGuageConfigs} />
                     </MDBCol>
                     <MDBCol>
-                      {/* <SpeedTable /> */}
-                      <Table />
+                      <SpeedLog />
                     </MDBCol>
                   </MDBRow>
                 </MDBContainer>
@@ -342,7 +344,9 @@ class Dashboard extends React.Component {
                     <MDBCol>
                       <ReactFC {...fuelLevelChartConfigs} />
                     </MDBCol>
-                    <MDBCol>{/* <FuelLog /> */}</MDBCol>
+                    <MDBCol>
+                      <FuelLog />
+                    </MDBCol>
                   </MDBRow>
                 </MDBContainer>
 
@@ -353,7 +357,9 @@ class Dashboard extends React.Component {
                     <MDBCol>
                       <ReactFC {...fuelRefillChartConfigs} />
                     </MDBCol>
-                    <MDBCol>{/* <FuelRefillLog /> */}</MDBCol>
+                    <MDBCol>
+                      <FuelRefillLog />
+                    </MDBCol>
                   </MDBRow>
                 </MDBContainer>
 
@@ -370,7 +376,9 @@ class Dashboard extends React.Component {
                         dataSource={overspeedingSouce}
                       />
                     </MDBCol>
-                    <MDBCol>{/* <OverSpeedLog /> */}</MDBCol>
+                    <MDBCol>
+                      <OverSpeedLog />
+                    </MDBCol>
                   </MDBRow>
                 </MDBContainer>
 
@@ -387,7 +395,9 @@ class Dashboard extends React.Component {
                         dataSource={maintainenceSource}
                       />
                     </MDBCol>
-                    <MDBCol>{/* <MaintainenceLog /> */}</MDBCol>
+                    <MDBCol>
+                      <MaintainenceLog />
+                    </MDBCol>
                   </MDBRow>
                 </MDBContainer>
 

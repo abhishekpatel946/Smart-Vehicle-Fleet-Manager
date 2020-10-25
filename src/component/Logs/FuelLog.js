@@ -1,56 +1,55 @@
-import React from "react";
-import { MDBDataTableV5 } from "mdbreact";
+import React, { useEffect, useState } from "react";
+import { db } from "../firebase/fireConfig";
+import BootstrapTable from "react-bootstrap-table-next";
+import paginationFactory from "react-bootstrap-table2-paginator";
+import * as ReactBootstrap from "react-bootstrap";
 
-export default function FuelLog() {
-  const [datatable, setDatatable] = React.useState({
-    columns: [
-      {
-        label: "Timestamp",
-        field: "timestamp",
-        width: 50,
-        attributes: {
-          "aria-controls": "DataTable",
-          "aria-label": "Timestamp",
-        },
-      },
-      {
-        label: "Fuel",
-        field: "fuel",
-        width: 40,
-      },
-    ],
-    rows: [
-      {
-        timestamp: "Sat, 18 Oct 2020 10:00:00 GMT",
-        fuel: "50",
-      },
-      {
-        timestamp: "Sat, 18 Oct 2020 12:00:00 GMT",
-        fuel: "45",
-      },
-      {
-        timestamp: "Sat, 18 Oct 2020 14:00:00 GMT",
-        fuel: "40",
-      },
-      {
-        timestamp: "Sat, 18 Oct 2020 16:00:00 GMT",
-        fuel: "35",
-      },
-      {
-        timestamp: "Sat, 18 Oct 2020 18:00:00 GMT",
-        fuel: "30",
-      },
-    ],
-  });
+function FuelLog() {
+  const [fuelData, setFuelData] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    db.collection("vehicle")
+      .doc("fuel_sensor")
+      .collection("fuel")
+      .orderBy("timestamp", "asc")
+      .get()
+      .then((snapshot) => {
+        const fuel_value = [];
+        snapshot.forEach((doc) => {
+          fuel_value.push(doc.data());
+        });
+        setFuelData(fuel_value);
+        setLoading(true);
+      })
+      .catch((error) => console.log(error));
+  }, []);
+
+  const columns = [
+    {
+      text: "AMOUNT",
+      dataField: "amount",
+    },
+    {
+      text: "TIMESTAMP",
+      dataField: "timestamp",
+    },
+  ];
 
   return (
-    <MDBDataTableV5
-      hover
-      entriesOptions={[5, 20, 25]}
-      entries={5}
-      pagesAmount={4}
-      data={datatable}
-      fullPagination
-    />
+    <div>
+      {loading ? (
+        <BootstrapTable
+          keyField="timestamp"
+          data={fuelData}
+          columns={columns}
+          pagination={paginationFactory()}
+        />
+      ) : (
+        <ReactBootstrap.Spinner animation="border" />
+      )}
+    </div>
   );
 }
+
+export default FuelLog;

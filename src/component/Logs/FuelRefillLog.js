@@ -1,56 +1,55 @@
-import React from "react";
-import { MDBDataTableV5 } from "mdbreact";
+import React, { useEffect, useState } from "react";
+import { db } from "../firebase/fireConfig";
+import BootstrapTable from "react-bootstrap-table-next";
+import paginationFactory from "react-bootstrap-table2-paginator";
+import * as ReactBootstrap from "react-bootstrap";
 
-export default function FuelRefillLog() {
-  const [datatable, setDatatable] = React.useState({
-    columns: [
-      {
-        label: "Timestamp",
-        field: "timestamp",
-        width: 50,
-        attributes: {
-          "aria-controls": "DataTable",
-          "aria-label": "Timestamp",
-        },
-      },
-      {
-        label: "Refill",
-        field: "refill",
-        width: 40,
-      },
-    ],
-    rows: [
-      {
-        timestamp: "Sat, 10 Oct 2020 18:30:00 GMT",
-        refill: "50",
-      },
-      {
-        timestamp: "Sat, 12 Oct 2020 18:32:00 GMT",
-        refill: "50",
-      },
-      {
-        timestamp: "Sat, 14 Oct 2020 18:34:00 GMT",
-        refill: "50",
-      },
-      {
-        timestamp: "Sat, 16 Oct 2020 18:36:00 GMT",
-        refill: "50",
-      },
-      {
-        timestamp: "Sat, 18 Oct 2020 18:38:00 GMT",
-        refill: "50",
-      },
-    ],
-  });
+function FuelRefillLog() {
+  const [fuelRefillData, setFuelRefillData] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    db.collection("vehicle")
+      .doc("fuel_refill_sensor")
+      .collection("fuel_refill")
+      .orderBy("timestamp", "asc")
+      .get()
+      .then((snapshot) => {
+        const fuleRefill_value = [];
+        snapshot.forEach((doc) => {
+          fuleRefill_value.push(doc.data());
+        });
+        setFuelRefillData(fuleRefill_value);
+        setLoading(true);
+      })
+      .catch((error) => console.log(error));
+  }, []);
+
+  const columns = [
+    {
+      text: "AMOUNT",
+      dataField: "amount",
+    },
+    {
+      text: "TIMESTAMP",
+      dataField: "timestamp",
+    },
+  ];
 
   return (
-    <MDBDataTableV5
-      hover
-      entriesOptions={[5, 20, 25]}
-      entries={5}
-      pagesAmount={4}
-      data={datatable}
-      fullPagination
-    />
+    <div>
+      {loading ? (
+        <BootstrapTable
+          keyField="timestamp"
+          data={fuelRefillData}
+          columns={columns}
+          pagination={paginationFactory()}
+        />
+      ) : (
+        <ReactBootstrap.Spinner animation="border" />
+      )}
+    </div>
   );
 }
+
+export default FuelRefillLog;

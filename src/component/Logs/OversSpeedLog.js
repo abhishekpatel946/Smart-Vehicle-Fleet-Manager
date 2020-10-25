@@ -1,56 +1,55 @@
-import React from "react";
-import { MDBDataTableV5 } from "mdbreact";
+import React, { useEffect, useState } from "react";
+import { db } from "../firebase/fireConfig";
+import BootstrapTable from "react-bootstrap-table-next";
+import paginationFactory from "react-bootstrap-table2-paginator";
+import * as ReactBootstrap from "react-bootstrap";
 
-export default function OverSpeedLog() {
-  const [datatable, setDatatable] = React.useState({
-    columns: [
-      {
-        label: "Timestamp",
-        field: "timestamp",
-        width: 50,
-        attributes: {
-          "aria-controls": "DataTable",
-          "aria-label": "Timestamp",
-        },
-      },
-      {
-        label: "OverSpeed",
-        field: "overspeed",
-        width: 40,
-      },
-    ],
-    rows: [
-      {
-        timestamp: "Sat, 1 Oct 2020 18:30:00 GMT",
-        overspeed: "70",
-      },
-      {
-        timestamp: "Sat, 10 Oct 2020 18:32:00 GMT",
-        overspeed: "85",
-      },
-      {
-        timestamp: "Sat, 15 Oct 2020 18:34:00 GMT",
-        overspeed: "85",
-      },
-      {
-        timestamp: "Sat, 16 Oct 2020 18:36:00 GMT",
-        overspeed: "70",
-      },
-      {
-        timestamp: "Sat, 20 Oct 2020 18:38:00 GMT",
-        overspeed: "80",
-      },
-    ],
-  });
+function OverSpeedLog() {
+  const [overSpeedData, setOverSpeedData] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    db.collection("vehicle")
+      .doc("overspeed_sensor")
+      .collection("overspeed")
+      .orderBy("timestamp", "asc")
+      .get()
+      .then((snapshot) => {
+        const overSpeed_value = [];
+        snapshot.forEach((doc) => {
+          overSpeed_value.push(doc.data());
+        });
+        setOverSpeedData(overSpeed_value);
+        setLoading(true);
+      })
+      .catch((error) => console.log(error));
+  }, []);
+
+  const columns = [
+    {
+      text: "OVERSPEED",
+      dataField: "speed",
+    },
+    {
+      text: "TIMESTAMP",
+      dataField: "timestamp",
+    },
+  ];
 
   return (
-    <MDBDataTableV5
-      hover
-      entriesOptions={[5, 20, 25]}
-      entries={5}
-      pagesAmount={4}
-      data={datatable}
-      fullPagination
-    />
+    <div>
+      {loading ? (
+        <BootstrapTable
+          keyField="timestamp"
+          data={overSpeedData}
+          columns={columns}
+          pagination={paginationFactory()}
+        />
+      ) : (
+        <ReactBootstrap.Spinner animation="border" />
+      )}
+    </div>
   );
 }
+
+export default OverSpeedLog;

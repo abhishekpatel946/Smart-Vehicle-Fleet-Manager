@@ -1,27 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { MDBDataTableV5 } from "mdbreact";
+import React, { useEffect, useState } from "react";
 import { db } from "../firebase/fireConfig";
+import BootstrapTable from "react-bootstrap-table-next";
+import paginationFactory from "react-bootstrap-table2-paginator";
+import * as ReactBootstrap from "react-bootstrap";
 
-export default function SpeedLog() {
-  // const [speedData, setSpeedData] = useState([]);
-
-  // useEffect(() => {
-  //   let unsubscribe;
-  //   unsubscribe = db
-  //     .collection("vehicle")
-  //     .doc("speed_sensor")
-  //     .collection("speed")
-  //     .orderBy("time stamp", "asc")
-  //     .onSnapshot((snapshot) => {
-  //       setSpeedData(snapshot.docs.map((doc) => doc.data()));
-  //     });
-  //   return () => {
-  //     unsubscribe();
-  //   };
-  // }, []);
-
+function SpeedLog() {
   const [speedData, setSpeedData] = useState([]);
-  const [speedTimestamp, setSpeedTimestamp] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     db.collection("vehicle")
@@ -31,52 +16,40 @@ export default function SpeedLog() {
       .get()
       .then((snapshot) => {
         const speed_value = [];
-        const speed_time = [];
         snapshot.forEach((doc) => {
-          const data = doc.data();
-          speed_value.push(data.speed);
-          speed_time.push(data.timestamp.toDate().toUTCString());
+          speed_value.push(doc.data());
         });
         setSpeedData(speed_value);
-        setSpeedTimestamp(speed_time);
+        setLoading(true);
       })
       .catch((error) => console.log(error));
   }, []);
 
-  const [datatable, setDatatable] = React.useState({
-    columns: [
-      {
-        label: "Timestamp",
-        field: "timestamp",
-        width: 50,
-        attributes: {
-          "aria-controls": "DataTable",
-          "aria-label": "Timestamp",
-        },
-      },
-      {
-        label: "Speed",
-        field: "speed",
-        width: 40,
-      },
-    ],
-
-    rows: [
-      {
-        speed: "speed",
-        timestamp: "timestamp",
-      },
-    ],
-  });
+  const columns = [
+    {
+      text: "SPEED",
+      dataField: "speed",
+    },
+    {
+      text: "TIMESTAMP",
+      dataField: "timestamp",
+    },
+  ];
 
   return (
-    <MDBDataTableV5
-      hover
-      entriesOptions={[5, 25, 50]}
-      entries={5}
-      pagesAmount={4}
-      data={setDatatable}
-      fullPagination
-    />
+    <div>
+      {loading ? (
+        <BootstrapTable
+          keyField="timestamp"
+          data={speedData}
+          columns={columns}
+          pagination={paginationFactory()}
+        />
+      ) : (
+        <ReactBootstrap.Spinner animation="border" />
+      )}
+    </div>
   );
 }
+
+export default SpeedLog;
