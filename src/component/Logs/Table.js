@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { db } from "../firebase/fireConfig";
 import BootstrapTable from "react-bootstrap-table-next";
 import paginationFactory from "react-bootstrap-table2-paginator";
-// import * as ReactBootstrap from "react-bootstrap";
+import * as ReactBootstrap from "react-bootstrap";
 
 function Table() {
   const [speedData, setSpeedData] = useState([]);
@@ -16,16 +16,12 @@ function Table() {
       .then((snapshot) => {
         const speed_value = [];
         snapshot.forEach((doc) => {
-          const data = doc.data();
-          speed_value.push(data);
-          console.log(data.timestamp.toDate().toUTCString());
+          speed_value.push(doc.data());
         });
         setSpeedData(speed_value);
       })
       .catch((error) => console.log(error));
   }, []);
-
-  console.log(speedData);
 
   const columns = [
     {
@@ -34,7 +30,7 @@ function Table() {
     },
     {
       text: "TIMESTAMP",
-      dataField: "timestamp.seconds",
+      dataField: "timestamp",
     },
   ];
 
