@@ -106,20 +106,23 @@ A dashboard will be used to show data fetched from the cloud. The data will be v
 This is an example of how you may give instructions on setting up your project locally.
 To get a local copy up and running follow these simple example steps.
 <a name="installation"></a>
-### Installation
+### Installation on your system
 
 1. Clone the repo
 ```sh
 git clone https://github.com/abhishekpatel946/Smart-Vehicle-Fleet-Manager.git
 ```
+2. Open the local copy with a good modern text editor like VS Code or Atom and start coding. 
 
 <a name="contribution"></a>
 <!-- CONTRIBUTING -->
-## Contributing
+## Contribute
 
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create. 
-> We are open to any contributions small or large. 
+```sh
+**Note:** We are open to any contributions small or large. 
 Any contributions you make are **greatly appreciated**.
+```
 
 #### To contribute refer the steps below:
 1. Fork the Project
@@ -127,6 +130,8 @@ Any contributions you make are **greatly appreciated**.
 3. Commit your Changes (`git commit -m 'Add your comment here about your changes'`)
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
+
+> If you need want to feature your name in our contributer's list, Please mention that too
 
 #### You can also refer to this Directory Structure below:
 <a name="dir-str"></a>
