@@ -45,6 +45,7 @@
 * [Installation](#installation)
 * [How to Contribute](#contribution)
 * [Directory Structure](#dir-str)
+* [Project Contributers](#contributers)
 
 <!-- ABOUT THE PROJECT -->
 <a name="about-the-project"></a>
@@ -194,6 +195,15 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 Project Link: [https://github.com/abhishekpatel946/Smart-Vehicle-Fleet-Manager](https://github.com/abhishekpatel946/Smart-Vehicle-Fleet-Manager)
 
+<a name="contributers"></a>
+## Contributers:
+**Core:**
+1. Abhishek Patel
+2. Ashutosh Mourya
+3. Muskan Kabirpanthi
+
+**Additional:**
+1. ............
 
 
 <!-- ACKNOWLEDGEMENTS -->
