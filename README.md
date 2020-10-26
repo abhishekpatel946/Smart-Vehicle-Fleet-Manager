@@ -47,7 +47,7 @@
 -->
 # Smart Vehicle Fleet Manager
 
-###This project is based on real life problem face by departments like RVNL and ITD. 
+### This project is based on real life problem face by departments like RVNL and ITD. 
 
 We are planning to make a system to manage entire fleet of an organisation, the system can enable vehicle tracking via GPS, detect over speeding, fuel levels, accident detection,emergency response, facilitate anti-theft of vehicle and fuel,travel history [24x7] ,record this entire data, store on Cloud and present the data on a dashboard for easy understanding.
 
