@@ -67,8 +67,8 @@ So fetching information can be very easy and convenient.
 2. A **Cloud Storage** Solution
 3. A **Dashboard** to display the data in form of tables,charts and widgets.
 
-> **The vehicle will have following sensors installed:**
-* GPS
+**The vehicle will have following sensors installed:**
+> * GPS
 * Accelerometer
 * Fuel Level Sensor
 * Speedometer
@@ -76,7 +76,7 @@ So fetching information can be very easy and convenient.
 * A relay that can remotely turn off vehicle in case of theft.
 * All the data will be recorded and transmitted via the internet using a GSM module which will enable internet connectivity.
 
-> **The dashboard:**
+**The dashboard:**
 
 A dashboard will be used to show data fetched from the cloud. The data will be viewed vehicle wise and in the form of tables, charts and graphs.
 *The dashboard can be viewed on smartphone but best viewed on desktop/laptop.*
