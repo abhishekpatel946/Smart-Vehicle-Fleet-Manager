@@ -41,6 +41,10 @@
 
 ## Table of Contents:
 * [About the Project](#about-the-project)
+* [System Contents](#system-contents)
+* [Installation](#installation)
+* [How to Contribute](#contribution)
+* [Directory Structure](#dir-str)
 
 <!-- ABOUT THE PROJECT -->
 <a name="about-the-project"></a>
@@ -61,22 +65,23 @@ It can  be installed on government/private bus,trucks,bikes,site-vehicles,etc.
 The details can be monitored from a control room or a simple desktop via a dashboard.
 So fetching information can be very easy and convenient.
 
-
+<a name="system-contents"></a>
 ### What the system will consist of:
 1. **Module** Installed on the Vehicle
 2. A **Cloud Storage** Solution
 3. A **Dashboard** to display the data in form of tables,charts and widgets.
 
+
 **The vehicle will have following sensors installed:**
 > * GPS
-* Accelerometer
-* Fuel Level Sensor
-* Speedometer
-* An Emergency Button *to be used to alert in case of emergency*
-* A relay that can remotely turn off vehicle in case of theft.
-* All the data will be recorded and transmitted via the internet using a GSM module which will enable internet connectivity.
+> * Accelerometer
+> * Fuel Level Sensor
+> * Speedometer
+> * An Emergency Button *to be used to alert in case of emergency*
+> * A relay that can remotely turn off vehicle in case of theft.
+> * All the data will be recorded and transmitted via the internet using a GSM module which will enable internet connectivity.
 
-**The dashboard:**
+### **The dashboard:**
 
 A dashboard will be used to show data fetched from the cloud. The data will be viewed vehicle wise and in the form of tables, charts and graphs.
 *The dashboard can be viewed on smartphone but best viewed on desktop/laptop.*
@@ -100,7 +105,7 @@ A dashboard will be used to show data fetched from the cloud. The data will be v
 
 This is an example of how you may give instructions on setting up your project locally.
 To get a local copy up and running follow these simple example steps.
-
+<a name="installation"></a>
 ### Installation
 
 1. Clone the repo
@@ -108,12 +113,12 @@ To get a local copy up and running follow these simple example steps.
 git clone https://github.com/abhishekpatel946/Smart-Vehicle-Fleet-Manager.git
 ```
 
-
+<a name="contribution"></a>
 <!-- CONTRIBUTING -->
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create. 
-We are open to any contributions small or large. 
+> We are open to any contributions small or large. 
 Any contributions you make are **greatly appreciated**.
 
 #### To contribute refer the steps below:
@@ -124,8 +129,8 @@ Any contributions you make are **greatly appreciated**.
 5. Open a Pull Request
 
 #### You can also refer to this Directory Structure below:
-
-## **Basic Directory Structure of the repositroy:**
+<a name="dir-str"></a>
+## **Basic Directory Structure:**
 ```
 ├── public
 │   ├── index.html
