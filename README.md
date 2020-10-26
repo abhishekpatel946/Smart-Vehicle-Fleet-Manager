@@ -12,9 +12,8 @@
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
+[![Pull Request][issues-pr]][issues-pr]
 [![MIT License][license-shield]][license-url]
-
-
 
 <!-- PROJECT LOGO -->
 <br />
@@ -167,14 +166,15 @@ Project Link: [https://github.com/abhishekpatel946/Smart-Vehicle-Fleet-Manager](
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/abhishekpatel946/Smart-Vehicle-Fleet-Manager.svg?style=flat-square
+[contributors-shield]: https://img.shields.io/github/contributors/abhishekpatel946/Smart-Vehicle-Fleet-Manager.svg?style=flat
 [contributors-url]: https://github.com/abhishekpatel946/Smart-Vehicle-Fleet-Manager//graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/abhishekpatel946/Smart-Vehicle-Fleet-Manager.svg?style=flat-square
+[forks-shield]: https://img.shields.io/github/forks/abhishekpatel946/Smart-Vehicle-Fleet-Manager.svg?style=flat
 [forks-url]: https://github.com/abhishekpatel946/Smart-Vehicle-Fleet-Manager//network/members
-[stars-shield]: https://img.shields.io/github/stars/abhishekpatel946/Smart-Vehicle-Fleet-Manager.svg?style=flat-square
+[stars-shield]: https://img.shields.io/github/stars/abhishekpatel946/Smart-Vehicle-Fleet-Manager.svg?style=flat
 [stars-url]: https://github.com/abhishekpatel946/Smart-Vehicle-Fleet-Manager//stargazers
-[issues-shield]: https://img.shields.io/github/issues/abhishekpatel946/Smart-Vehicle-Fleet-Manager.svg?style=flat-square
+[issues-shield]: https://img.shields.io/github/issues/abhishekpatel946/Smart-Vehicle-Fleet-Manager.svg?style=flat
 [issues-url]: https://github.com/abhishekpatel946/Smart-Vehicle-Fleet-Manager//issues
-[license-shield]: https://img.shields.io/github/license/abhishekpatel946/Smart-Vehicle-Fleet-Manager.svg?style=flat-square
+[license-shield]: https://img.shields.io/github/license/abhishekpatel946/Smart-Vehicle-Fleet-Manager.svg?style=flat
 [license-url]: https://github.com/abhishekpatel946/Smart-Vehicle-Fleet-Manager//blob/master/LICENSE
+[issues-pr]: https://img.shields.io/github/issues-pr/abhishekpatel946/Smart-Vehicle-Fleet-Manager.svg?style=flat
 [product-screenshot]: images/screenshot.png
