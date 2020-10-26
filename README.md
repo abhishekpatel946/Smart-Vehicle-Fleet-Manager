@@ -120,10 +120,10 @@ git clone https://github.com/abhishekpatel946/Smart-Vehicle-Fleet-Manager.git
 
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create. 
 
-<mark style="background-color: lightblue">
+
 **Note:** We are open to any contributions small or large. 
 Any contributions you make are **greatly appreciated**.
-</mark>
+
 
 #### To contribute refer the steps below:
 1. Fork the Project
