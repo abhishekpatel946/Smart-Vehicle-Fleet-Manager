@@ -38,7 +38,7 @@
   </p>
 </p>
 
-## Table of Contents:
+## Table of Contents: 
 * [About the Project](#about-the-project)
 * [System Contents](#system-contents)
 * [Installation](#installation)
@@ -48,7 +48,7 @@
 
 <!-- ABOUT THE PROJECT -->
 <a name="about-the-project"></a>
-## About The Project
+## About The Project 
 <!--
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 -->
@@ -98,15 +98,13 @@ A dashboard will be used to show data fetched from the cloud. The data will be v
 
 
 
-
-
 <!-- GETTING STARTED -->
-## Getting Started
+## Getting Started 📃
 
 This is an example of how you may give instructions on setting up your project locally.
 To get a local copy up and running follow these simple example steps.
 <a name="installation"></a>
-### Installation on your system
+### [Installation](https://github.com/abhishekpatel946/Smart-Vehicle-Fleet-Manager/wiki/Installation) 💡
 
 1. Clone the repo
 ```sh
@@ -116,13 +114,13 @@ git clone https://github.com/abhishekpatel946/Smart-Vehicle-Fleet-Manager.git
 
 <a name="contribution"></a>
 <!-- CONTRIBUTING -->
-## Contribute
+### [Contribute](https://github.com/abhishekpatel946/Smart-Vehicle-Fleet-Manager/wiki/Contribution) 🐛
 
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create. 
 
 
 **Note:** We are open to any contributions small or large. 
-Any contributions you make are **greatly appreciated**.
+Any contributions you make are **greatly appreciated**. Make sure first you read the [CONTRIBUTION.md](https://github.com/abhishekpatel946/Smart-Vehicle-Fleet-Manager/wiki/Contribution) if you want to contribute or issue a bug.
 
 
 #### To contribute refer the steps below:
@@ -137,7 +135,7 @@ If you need want to feature your name in our contributer's list, Please mention 
 ```
 #### You can also refer to this Directory Structure below:
 <a name="dir-str"></a>
-## **Basic Directory Structure:**
+## **Basic Directory Structure:** 📁
 ```
 ├── public
 │   ├── index.html
@@ -183,34 +181,42 @@ If you need want to feature your name in our contributer's list, Please mention 
 ```
 
 <!-- LICENSE -->
-## License
+## License 📄
 
-Distributed under the MIT License. See `LICENSE` for more information.
+Distributed under the MIT License. See [`LICENSE`](https://choosealicense.com) for more information.
 
 
 
 <!-- CONTACT -->
-## Contact
+## Contact ✉️
 
 Project Link: [https://github.com/abhishekpatel946/Smart-Vehicle-Fleet-Manager](https://github.com/abhishekpatel946/Smart-Vehicle-Fleet-Manager)
 
 <a name="contributers"></a>
-## Contributers:
+## Contributers: ✨
 **Core:**
-1. Abhishek Patel
-2. Ashutosh Mourya
-3. Muskan Kabirpanthi
+<table>
+  <tr>
+    <!-- abhishekpatel946 -->
+    <td align="center"><a href="https://github.com/abhishekpatel946"><img src="https://avatars3.githubusercontent.com/u/46045014?s=460&u=bf62a7334b9af734839ac59901016653900bae52&v=4" width="100px;" alt=""/><br /><sub><b>Abhishek Patel</b></sub></a><br/> <a href="https://github.com/abhishekpatel946/Smart-Vehicle-Fleet-Manager/commits?author=abhishekpatel946" title="Code">💻</a> <a href="#design-abhishekpatel946" title="Design">🎨</a> <a href="#design-abhishekpatel946" title="Maintenance">🚧</a> <a href="https://github.com/abhishekpatel946/Smart-Vehicle-Fleet-Manager/pulls?q=is%3Apr+reviewed-by%3Aabhishekpatel946" title="Reviewed Pull Requests">👀</a> <a href="#question-abhishekpatel946" title="Answering Questions">💬</a> <a href="https://github.com/abhishekpatel946/Smart-Vehicle-Fleet-Manager/commits?author=abhishekpatel946" title="Documentation">📖</a> <a href="#talk-kentcdodds" title="Talks">📢</a></td>
+    <!-- ashutoshmourya -->
+    <td align="center"><a href="https://github.com/AshutoshMourya"><img src="https://avatars2.githubusercontent.com/u/46039416?s=460&v=4" width="100px;" alt=""/><br /><sub><b>Ashutosh Mourya</b></sub></a><br /> <a href="#design-AshutoshMourya" title="Design">🎨</a> <a href="https://github.com/abhishekpatel946/Smart-Vehicle-Fleet-Manager/commits?author=AshutoshMourya" title="Documentation">📖</a><a href="#talk-AshutoshMourya" title="Talks">📢</a></td>
+    <!-- muskankabir -->
+    <td align="center"><a href="https://github.com/MuskanKabir
+"><img src="https://avatars2.githubusercontent.com/u/51900911?s=460&v=4" width="100px;" alt=""/><br /><sub><b>MuskanKabir</b></sub></a><br /> <a href="#design-MuskanKabir" title="Design">🎨</a> <a href="https://github.com/abhishekpatel946/Smart-Vehicle-Fleet-Manager/commits?author=MuskanKabir" title="Documentation">📖</a> <a href="#talk-MuskanKabir" title="Talks">📢</a>
+  </tr>
+</table>
+
 
 **Additional:**
 1. ............
 
 
 <!-- ACKNOWLEDGEMENTS -->
-## Acknowledgements
+## Acknowledgements 
 * [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
 * [Img Shields](https://shields.io)
 * [Choose an Open Source License](https://choosealicense.com)
-* [GitHub Pages](https://pages.github.com)
 * [Font Awesome](https://fontawesome.com)
 
 
