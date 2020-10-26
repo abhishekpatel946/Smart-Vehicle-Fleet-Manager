@@ -73,13 +73,13 @@ So fetching information can be very easy and convenient.
 
 
 **The vehicle will have following sensors installed:**
-> * GPS
-> * Accelerometer
-> * Fuel Level Sensor
-> * Speedometer
-> * An Emergency Button *to be used to alert in case of emergency*
-> * A relay that can remotely turn off vehicle in case of theft.
-> * All the data will be recorded and transmitted via the internet using a GSM module which will enable internet connectivity.
+* GPS
+* Accelerometer
+* Fuel Level Sensor
+* Speedometer
+* An Emergency Button *to be used to alert in case of emergency*
+* A relay that can remotely turn off vehicle in case of theft.
+* All the data will be recorded and transmitted via the internet using a GSM module which will enable internet connectivity.
 
 ### **The dashboard:**
 
@@ -119,10 +119,11 @@ git clone https://github.com/abhishekpatel946/Smart-Vehicle-Fleet-Manager.git
 ## Contribute
 
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create. 
-```sh
+
+<span style="background-color: #87ceeb">
 **Note:** We are open to any contributions small or large. 
 Any contributions you make are **greatly appreciated**.
-```
+</span>
 
 #### To contribute refer the steps below:
 1. Fork the Project
@@ -131,8 +132,9 @@ Any contributions you make are **greatly appreciated**.
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-> If you need want to feature your name in our contributer's list, Please mention that too
-
+```sh
+If you need want to feature your name in our contributer's list, Please mention that too
+```
 #### You can also refer to this Directory Structure below:
 <a name="dir-str"></a>
 ## **Basic Directory Structure:**
