@@ -39,8 +39,11 @@
   </p>
 </p>
 
+## Table of Contents:
+* [About the Project](#about-the-project)
 
 <!-- ABOUT THE PROJECT -->
+<a name="about-the-project"></a>
 ## About The Project
 <!--
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
@@ -74,6 +77,7 @@ So fetching information can be very easy and convenient.
 * All the data will be recorded and transmitted via the internet using a GSM module which will enable internet connectivity.
 
 > **The dashboard:**
+
 A dashboard will be used to show data fetched from the cloud. The data will be viewed vehicle wise and in the form of tables, charts and graphs.
 *The dashboard can be viewed on smartphone but best viewed on desktop/laptop.*
 
@@ -108,15 +112,20 @@ git clone https://github.com/abhishekpatel946/Smart-Vehicle-Fleet-Manager.git
 <!-- CONTRIBUTING -->
 ## Contributing
 
-Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+Contributions are what make the open source community such an amazing place to be learn, inspire, and create. 
+We are open to any contributions small or large. 
+Any contributions you make are **greatly appreciated**.
 
+#### To contribute refer the steps below:
 1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+2. Create your Feature Branch 
+3. Commit your Changes (`git commit -m 'Add your comment here about your changes'`)
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-##**Basic Directory Structure of the repositroy:**
+#### You can also refer to this Directory Structure below:
+
+## **Basic Directory Structure of the repositroy:**
 ```
 ├── public
 │   ├── index.html
