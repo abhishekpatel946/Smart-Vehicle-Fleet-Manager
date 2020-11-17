@@ -3,6 +3,7 @@ import React from "react";
 import FusionCharts from "fusioncharts";
 import Charts from "fusioncharts/fusioncharts.charts";
 import ReactFC from "react-fusioncharts";
+import Widgets from "fusioncharts/fusioncharts.widgets";
 import FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
 import ReactFusioncharts from "react-fusioncharts";
 import fireConfig from "../firebase/fireConfig";
@@ -27,6 +28,53 @@ const { SubMenu } = Menu;
 
 // define chart props
 ReactFC.fcRoot(FusionCharts, Charts, FusionTheme);
+ReactFC.fcRoot(FusionCharts, Widgets, FusionTheme);
+
+// config speed guage
+const speedGuageConfigs = {
+  type: "angulargauge",
+  width: 500,
+  height: 400,
+  dataFormat: "json",
+  dataSource: {
+    chart: {
+      caption: "Vehicle Speed In [KMPH]",
+      lowerLimit: "0",
+      upperLimit: "100",
+      showValue: "1",
+      numberSuffix: "%",
+      theme: "fusion",
+      showToolTip: "0",
+    },
+    colorRange: {
+      color: [
+        {
+          minValue: "0",
+          maxValue: "50",
+          code: "#62B58F",
+        },
+        {
+          minValue: "50",
+          maxValue: "75",
+          code: "#FFC533",
+        },
+        {
+          minValue: "75",
+          maxValue: "100",
+          code: "#F2726F",
+        },
+      ],
+    },
+    dials: {
+      dial: [
+        {
+          value: "70",
+        },
+      ],
+    },
+  },
+};
+
 // config fuel level chat
 const fuelLevelChartConfigs = {
   type: "column2d",
@@ -281,6 +329,9 @@ class Dashboard extends React.Component {
                 <Divider orientation="left">Speed area</Divider>
                 <MDBContainer>
                   <MDBRow>
+                    <MDBCol>
+                      <ReactFC {...speedGuageConfigs} />
+                    </MDBCol>
                     <MDBCol>
                       <SpeedLog />
                     </MDBCol>
