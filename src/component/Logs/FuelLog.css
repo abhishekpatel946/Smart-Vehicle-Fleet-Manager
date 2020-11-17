@@ -1,0 +1,17 @@
+.fuelLog {
+  display: flex;
+}
+
+.fuelLog_chart {
+  /* margin: 0, 20px; */
+  padding: 20px;
+}
+
+.fuelLog_table {
+  margin: 0, 20px;
+  padding: 20px;
+}
+
+.fuelLog_btn {
+  display: flex;
+}

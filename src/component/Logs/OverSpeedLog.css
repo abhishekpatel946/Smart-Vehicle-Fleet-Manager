@@ -1,0 +1,17 @@
+.fuelRefillLog {
+  display: flex;
+}
+
+.fuelRefillLog_chart {
+  /* margin: 0, 20px; */
+  padding: 20px;
+}
+
+.fuelRefillLog_table {
+  margin: 0, 20px;
+  padding: 20px;
+}
+
+.fuelRefillLog_btn {
+  display: flex;
+}

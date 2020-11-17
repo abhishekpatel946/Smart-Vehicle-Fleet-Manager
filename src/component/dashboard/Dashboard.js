@@ -1,5 +1,4 @@
 import React from "react";
-// import { db } from "../firebase/fireConfig";
 import FusionCharts from "fusioncharts";
 import Charts from "fusioncharts/fusioncharts.charts";
 import ReactFC from "react-fusioncharts";
@@ -12,7 +11,7 @@ import SpeedLog from "../Logs/SpeedLog";
 import FuelLog from "../Logs/FuelLog";
 import FuelRefillLog from "../Logs/FuelRefillLog";
 import MaintainenceLog from "../Logs/MaintainenceLog";
-import OverSpeedLog from "../Logs/OversSpeedLog";
+import OverSpeedLog from "../Logs/OverSpeedLog";
 import { Layout, Menu, Breadcrumb, Divider } from "antd";
 import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
 import {
@@ -27,140 +26,6 @@ const { SubMenu } = Menu;
 
 // define chart props
 ReactFC.fcRoot(FusionCharts, Charts, FusionTheme);
-// config fuel level chat
-const fuelLevelChartConfigs = {
-  type: "column2d",
-  width: 600,
-  height: 400,
-  dataFormat: "json",
-  dataSource: {
-    chart: {
-      caption: "Vehicle Fuel level In [litre]",
-      subCaption: "In litres",
-      xAxisName: "Timestamp",
-      yAxisName: "Fuel (litre)",
-      numberSuffix: "Lt.",
-      theme: "fusion",
-    },
-    data: [
-      {
-        label: "Sat, 18 Oct 2020 10:00:00 GMT",
-        value: "50",
-      },
-      {
-        label: "Sat, 18 Oct 2020 12:00:00 GMT",
-        value: "45",
-      },
-      {
-        label: "Sat, 18 Oct 2020 14:00:00 GMT",
-        value: "40",
-      },
-      {
-        label: "Sat, 18 Oct 2020 16:00:00 GMT",
-        value: "35",
-      },
-      {
-        label: "Sat, 18 Oct 2020 18:00:00 GMT",
-        value: "30",
-      },
-    ],
-  },
-};
-
-// config fuel refill chart
-const fuelRefillChartConfigs = {
-  type: "column2d",
-  width: 600,
-  height: 400,
-  dataFormat: "json",
-  dataSource: {
-    chart: {
-      caption: "Vehicle Fuel level In [litre]",
-      subCaption: "In litres",
-      xAxisName: "Timestamp",
-      yAxisName: "Fuel (litre)",
-      numberSuffix: "Lt.",
-      theme: "fusion",
-    },
-    data: [
-      {
-        label: "Sat, 10 Oct 2020 18:30:00 GMT",
-        value: "50",
-      },
-      {
-        label: "Sat, 12 Oct 2020 18:32:00 GMT",
-        value: "50",
-      },
-      {
-        label: "Sat, 14 Oct 2020 18:34:00 GMT",
-        value: "50",
-      },
-      {
-        label: "Sat, 16 Oct 2020 18:36:00 GMT",
-        value: "50",
-      },
-      {
-        label: "Sat, 18 Oct 2020 18:38:00 GMT",
-        value: "50",
-      },
-    ],
-  },
-};
-
-// config overspeed line with scrolling
-Charts(FusionCharts);
-const overspeedingSouce = {
-  chart: {
-    caption: "Vehicle OverSpeeding Instaces",
-    subcaption: "(As per recommended)",
-    showvalues: "0",
-    numvisibleplot: "12",
-    plottooltext: "<b>$dataValue</b> Speed of Vehicle at $label",
-    theme: "fusion",
-  },
-  categories: [
-    {
-      category: [
-        {
-          label: "Sat, 1 Oct 2020 18:30:00 GMT",
-        },
-        {
-          label: "Sat, 10 Oct 2020 18:32:00 GMT",
-        },
-        {
-          label: "Sat, 15 Oct 2020 18:34:00 GMT",
-        },
-        {
-          label: "Sat, 16 Oct 2020 18:36:00 GMT",
-        },
-        {
-          label: "Sat, 20 Oct 2020 18:38:00 GMT",
-        },
-      ],
-    },
-  ],
-  dataset: [
-    {
-      data: [
-        {
-          value: "70",
-        },
-        {
-          value: "85",
-        },
-        {
-          value: "85",
-        },
-        {
-          value: "70",
-        },
-        {
-          value: "80",
-        },
-      ],
-    },
-  ],
-};
 
 // config maintainence line with scrolling
 Charts(FusionCharts);
@@ -292,9 +157,6 @@ class Dashboard extends React.Component {
                 <MDBContainer>
                   <MDBRow>
                     <MDBCol>
-                      <ReactFC {...fuelLevelChartConfigs} />
-                    </MDBCol>
-                    <MDBCol>
                       <FuelLog />
                     </MDBCol>
                   </MDBRow>
@@ -304,12 +166,7 @@ class Dashboard extends React.Component {
                 <Divider orientation="left">Fuel Refill area</Divider>
                 <MDBContainer>
                   <MDBRow>
-                    <MDBCol>
-                      <ReactFC {...fuelRefillChartConfigs} />
-                    </MDBCol>
-                    <MDBCol>
-                      <FuelRefillLog />
-                    </MDBCol>
+                    <FuelRefillLog />
                   </MDBRow>
                 </MDBContainer>
 
@@ -317,18 +174,7 @@ class Dashboard extends React.Component {
                 <Divider orientation="left">OverSpeeding area</Divider>
                 <MDBContainer>
                   <MDBRow>
-                    <MDBCol>
-                      <ReactFusioncharts
-                        type="scrollline2d"
-                        width="100%"
-                        height="800%"
-                        dataFormat="JSON"
-                        dataSource={overspeedingSouce}
-                      />
-                    </MDBCol>
-                    <MDBCol>
-                      <OverSpeedLog />
-                    </MDBCol>
+                    <OverSpeedLog />
                   </MDBRow>
                 </MDBContainer>
 

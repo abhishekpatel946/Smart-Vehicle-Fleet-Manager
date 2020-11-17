@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import { db } from "../firebase/fireConfig";
 import BootstrapTable from "react-bootstrap-table-next";
 import paginationFactory from "react-bootstrap-table2-paginator";
+import ToolkitProvider, { Search } from "react-bootstrap-table2-toolkit";
 import * as ReactBootstrap from "react-bootstrap";
 import Widgets from "fusioncharts/fusioncharts.widgets";
 import FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
 import ReactFC from "react-fusioncharts";
 import FusionCharts from "fusioncharts";
+import "./SpeedLog.css";
 
 function SpeedLog() {
   // define chart props
@@ -101,19 +103,61 @@ function SpeedLog() {
     },
   ];
 
+  const defaultSorted = [
+    {
+      dataField: "id",
+      order: "asc",
+    },
+  ];
+
+  const { SearchBar, ClearSearchButton } = Search;
+  const MyExportCSV = (props) => {
+    const handleClick = () => {
+      props.onExport();
+    };
+    return (
+      <div>
+        <button className="btn btn-success" onClick={handleClick}>
+          Export to CSV
+        </button>
+      </div>
+    );
+  };
+
   return (
-    <div>
-      <ReactFC {...speedGuageConfigs} />
-      {loading ? (
-        <BootstrapTable
-          keyField="timestamp"
-          data={speedData}
-          columns={columns}
-          pagination={paginationFactory()}
-        />
-      ) : (
-        <ReactBootstrap.Spinner animation="border" />
-      )}
+    <div className="speedlog">
+      <div className="speedlog_widget">
+        <ReactFC {...speedGuageConfigs} />
+      </div>
+      <div className="speedlog_table">
+        {loading ? (
+          <ToolkitProvider
+            bootstrap4
+            keyField="id"
+            data={speedData}
+            columns={columns}
+            search
+          >
+            {(props) => (
+              <div>
+                <div className="speedlog_btn">
+                  <SearchBar {...props.searchProps} />
+                  <ClearSearchButton {...props.searchProps} />
+                  <MyExportCSV {...props.csvProps} />
+                </div>
+                <hr />
+                <BootstrapTable
+                  defaultSorted={defaultSorted}
+                  pagination={paginationFactory()}
+                  {...props.baseProps}
+                />
+              </div>
+            )}
+          </ToolkitProvider>
+        ) : (
+          <ReactBootstrap.Spinner animation="border" />
+        )}
+      </div>
     </div>
   );
 }

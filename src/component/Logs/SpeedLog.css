@@ -1,0 +1,17 @@
+.speedlog {
+  display: flex;
+}
+
+.speedlog_widget {
+  margin: 0, 20px;
+  padding: 20px;
+}
+
+.speedlog_table {
+  margin: 0, 20px;
+  padding: 20px;
+}
+
+.speedlog_btn {
+  display: flex;
+}
