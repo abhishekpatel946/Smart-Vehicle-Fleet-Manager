@@ -7,7 +7,6 @@ import Widgets from "fusioncharts/fusioncharts.widgets";
 import FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
 import ReactFC from "react-fusioncharts";
 import FusionCharts from "fusioncharts";
-import moment from "moment";
 
 function SpeedLog() {
   // define chart props
