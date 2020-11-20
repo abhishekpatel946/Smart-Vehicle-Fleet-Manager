@@ -44,6 +44,18 @@ class Home extends React.Component {
       });
   }
 
+  forgotPass() {
+    const email = document.querySelector("#login_email").value;
+
+    fireConfig
+      .auth().sendPasswordResetEmail(email)
+      .then(function (user) {
+      alert('Please check your email...')
+    }).catch(function (err) {
+      console.log(err)
+    })
+  }
+
   signUp(e) {
     const email = document.querySelector("#register_email").value;
     const password = document.querySelector("#register_password").value;
@@ -127,11 +139,16 @@ class Home extends React.Component {
                     </div>
                     <div className="text-center">
                       <MDBBtn
-                        // outline color="white"
                         gradient="blue"
                         onClick={this.login}
                       >
                         Login
+                      </MDBBtn>
+                      <MDBBtn
+                        gradient="peach"
+                        onClick={this.forgotPass}
+                      >
+                        Forgot Pass
                       </MDBBtn>
                     </div>
                   </form>
