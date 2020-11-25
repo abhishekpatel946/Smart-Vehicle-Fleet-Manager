@@ -86,6 +86,20 @@ function SpeedLog() {
         dial: [
           {
             value: lastSpeed,
+            tooltext: "<b>65%</b> lesser that overspeed",
+          },
+        ],
+      },
+      trendpoints: {
+        point: [
+          {
+            startvalue: "65",
+            displayvalue: "OverSpeed",
+            thickness: "2",
+            color: "#E15A26",
+            usemarker: "1",
+            markerbordercolor: "#E15A26",
+            markertooltext: "65%",
           },
         ],
       },
@@ -142,7 +156,10 @@ function SpeedLog() {
               <div>
                 <div className="speedlog_btn">
                   <SearchBar {...props.searchProps} />
-                  <ClearSearchButton {...props.searchProps} />
+                  <ClearSearchButton
+                    className="btn btn-success"
+                    {...props.searchProps}
+                  />
                   <MyExportCSV {...props.csvProps} />
                 </div>
                 <hr />

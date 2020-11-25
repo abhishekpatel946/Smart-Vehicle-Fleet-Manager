@@ -1,9 +1,4 @@
 import React from "react";
-import FusionCharts from "fusioncharts";
-import Charts from "fusioncharts/fusioncharts.charts";
-import ReactFC from "react-fusioncharts";
-import FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
-import ReactFusioncharts from "react-fusioncharts";
 import fireConfig from "../firebase/fireConfig";
 import HeaderLayout from "../dashboard_common/HeaderLayout";
 import FooterLayout from "../dashboard_common/FooterLayout";
@@ -19,69 +14,11 @@ import {
   PieChartOutlined,
   FileOutlined,
 } from "@ant-design/icons";
+import "./Dashboard.css";
 
 // Layout and Menu
 const { Content, Sider } = Layout;
 const { SubMenu } = Menu;
-
-// define chart props
-ReactFC.fcRoot(FusionCharts, Charts, FusionTheme);
-
-// config maintainence line with scrolling
-Charts(FusionCharts);
-const maintainenceSource = {
-  chart: {
-    caption: "Vehicle OverSpeeding Instaces",
-    subcaption: "(As per recommended)",
-    showvalues: "0",
-    numvisibleplot: "12",
-    plottooltext: "<b>$dataValue</b> Speed of Vehicle at $label",
-    theme: "fusion",
-  },
-  categories: [
-    {
-      category: [
-        {
-          label: "Sat, 1 Oct 2015 18:30:00 GMT",
-        },
-        {
-          label: "Sat, 10 Oct 2016 18:32:00 GMT",
-        },
-        {
-          label: "Sat, 15 Oct 2017 18:34:00 GMT",
-        },
-        {
-          label: "Sat, 16 Oct 2018 18:36:00 GMT",
-        },
-        {
-          label: "Sat, 20 Oct 2019 18:38:00 GMT",
-        },
-      ],
-    },
-  ],
-  dataset: [
-    {
-      data: [
-        {
-          value: "7000",
-        },
-        {
-          value: "8500",
-        },
-        {
-          value: "8500",
-        },
-        {
-          value: "7000",
-        },
-        {
-          value: "8000",
-        },
-      ],
-    },
-  ],
-};
-
 class Dashboard extends React.Component {
   state = {
     collapsed: true,
@@ -140,33 +77,19 @@ class Dashboard extends React.Component {
               </Breadcrumb>
               <div
                 className="site-layout-background"
-                style={{ padding: 24, minHeight: 760 }}
+                style={{ padding: 24, minHeight: 560 }}
               >
                 {/* Speed Section */}
                 <Divider orientation="left">Speed area</Divider>
                 <MDBContainer>
-                  <MDBRow>
-                    <MDBCol>
-                      <SpeedLog />
-                    </MDBCol>
-                  </MDBRow>
+                  <SpeedLog />
                 </MDBContainer>
 
                 {/* Fuel Section */}
                 <Divider orientation="left">Fuel area</Divider>
                 <MDBContainer>
                   <MDBRow>
-                    <MDBCol>
-                      <FuelLog />
-                    </MDBCol>
-                  </MDBRow>
-                </MDBContainer>
-
-                {/* Fuel Refill Section */}
-                <Divider orientation="left">Fuel Refill area</Divider>
-                <MDBContainer>
-                  <MDBRow>
-                    <FuelRefillLog />
+                    <FuelLog />
                   </MDBRow>
                 </MDBContainer>
 
@@ -178,22 +101,19 @@ class Dashboard extends React.Component {
                   </MDBRow>
                 </MDBContainer>
 
+                {/* Fuel Refill Section */}
+                <Divider orientation="left">Fuel Refill area</Divider>
+                <MDBContainer>
+                  <MDBRow>
+                    <FuelRefillLog />
+                  </MDBRow>
+                </MDBContainer>
+
                 {/* Maintainence Section */}
                 <Divider orientation="left">Maintainance area</Divider>
                 <MDBContainer>
                   <MDBRow>
-                    <MDBCol>
-                      <ReactFusioncharts
-                        type="scrollline2d"
-                        width="100%"
-                        height="800%"
-                        dataFormat="JSON"
-                        dataSource={maintainenceSource}
-                      />
-                    </MDBCol>
-                    <MDBCol>
-                      <MaintainenceLog />
-                    </MDBCol>
+                    <MaintainenceLog />
                   </MDBRow>
                 </MDBContainer>
 

@@ -48,7 +48,7 @@ function OverSpeedLog() {
       if (key === "id") {
         lastId.push(value);
       }
-      if (key === "amount") {
+      if (key === "speed") {
         lastOverSpeed.push(value);
       }
       if (key === "timestamp") {
@@ -137,8 +137,8 @@ function OverSpeedLog() {
       <div className="fuelRefillLog_chart">
         <ReactFusioncharts
           type="scrollline2d"
-          width="45%"
-          height="35%"
+          width="32%"
+          height="40%"
           dataFormat="JSON"
           dataSource={overspeedingSource}
         />
@@ -156,7 +156,10 @@ function OverSpeedLog() {
               <div>
                 <div className="fuelRefillLog_btn">
                   <SearchBar {...props.searchProps} />
-                  <ClearSearchButton {...props.searchProps} />
+                  <ClearSearchButton
+                    className="btn btn-success"
+                    {...props.searchProps}
+                  />
                   <MyExportCSV {...props.csvProps} />
                 </div>
                 <hr />

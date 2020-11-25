@@ -59,12 +59,12 @@ function FuelRefillLog() {
   // config fuel refill chart
   const fuelRefillChartConfigs = {
     type: "column2d",
-    width: 600,
+    width: 500,
     height: 400,
     dataFormat: "json",
     dataSource: {
       chart: {
-        caption: "Vehicle Fuel level In [litre]",
+        caption: "Vehicle Fuel Refill In [litre]",
         subCaption: "In litres",
         xAxisName: "Timestamp",
         yAxisName: "Fuel (litre)",
@@ -72,18 +72,18 @@ function FuelRefillLog() {
         theme: "fusion",
       },
       data: [
-        {
-          label: lastTimestamp[lastTimestamp.length - 10],
-          value: lastFuelRefill[lastFuelRefill.length - 10],
-        },
-        {
-          label: lastTimestamp[lastTimestamp.length - 9],
-          value: lastFuelRefill[lastFuelRefill.length - 9],
-        },
-        {
-          label: lastTimestamp[lastTimestamp.length - 8],
-          value: lastFuelRefill[lastFuelRefill.length - 8],
-        },
+        // {
+        //   label: lastTimestamp[lastTimestamp.length - 10],
+        //   value: lastFuelRefill[lastFuelRefill.length - 10],
+        // },
+        // {
+        //   label: lastTimestamp[lastTimestamp.length - 9],
+        //   value: lastFuelRefill[lastFuelRefill.length - 9],
+        // },
+        // {
+        //   label: lastTimestamp[lastTimestamp.length - 8],
+        //   value: lastFuelRefill[lastFuelRefill.length - 8],
+        // },
         {
           label: lastTimestamp[lastTimestamp.length - 7],
           value: lastFuelRefill[lastFuelRefill.length - 7],
@@ -166,7 +166,10 @@ function FuelRefillLog() {
               <div>
                 <div className="fuelRefillLog_btn">
                   <SearchBar {...props.searchProps} />
-                  <ClearSearchButton {...props.searchProps} />
+                  <ClearSearchButton
+                    className="btn btn-success"
+                    {...props.searchProps}
+                  />
                   <MyExportCSV {...props.csvProps} />
                 </div>
                 <hr />

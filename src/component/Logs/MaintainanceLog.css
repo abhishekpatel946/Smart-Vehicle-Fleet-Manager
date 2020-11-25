@@ -1,0 +1,17 @@
+.maintainanceLog {
+  display: flex;
+}
+
+.maintainanceLog_chart {
+  /* margin: 0, 20px; */
+  padding: 20px;
+}
+
+.maintainanceLog_table {
+  margin: 0, 20px;
+  padding: 20px;
+}
+
+.maintainanceLog_btn {
+  display: flex;
+}

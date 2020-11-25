@@ -53,6 +53,7 @@ class Home extends React.Component {
       alert('Please check your email...')
     }).catch(function (err) {
       console.log(err)
+      alert(err.message)
     })
   }
 

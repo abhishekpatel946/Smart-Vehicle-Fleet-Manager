@@ -59,7 +59,7 @@ function FuelLog() {
   // config fuel level chat
   const fuelLevelChartConfigs = {
     type: "column2d",
-    width: 600,
+    width: 500,
     height: 400,
     dataFormat: "json",
     dataSource: {
@@ -146,7 +146,10 @@ function FuelLog() {
               <div>
                 <div className="fuelLog_btn">
                   <SearchBar {...props.searchProps} />
-                  <ClearSearchButton {...props.searchProps} />
+                  <ClearSearchButton
+                    className="btn btn-success"
+                    {...props.searchProps}
+                  />
                   <MyExportCSV {...props.csvProps} />
                 </div>
                 <hr />
