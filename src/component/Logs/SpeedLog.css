@@ -4,6 +4,10 @@
 }
 
 .speedlog_widget {
+  /* display: flex;
+  flex: 50%;
+  margin-left: 0;
+  padding: 0; */
 }
 
 .speedlog_table {

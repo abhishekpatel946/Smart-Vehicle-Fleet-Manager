@@ -44,7 +44,6 @@ function MaintainenceLog() {
   Object.keys(maintainenceData).map((key) => {
     lastItem = maintainenceData[key];
     const obj = Object.entries(lastItem);
-    console.log(obj);
     obj.forEach(([key, value]) => {
       if (key === "id") {
         lastId.push(value);

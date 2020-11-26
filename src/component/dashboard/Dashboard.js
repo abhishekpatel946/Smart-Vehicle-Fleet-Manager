@@ -8,7 +8,7 @@ import FuelRefillLog from "../Logs/FuelRefillLog";
 import MaintainenceLog from "../Logs/MaintainenceLog";
 import OverSpeedLog from "../Logs/OverSpeedLog";
 import { Layout, Menu, Breadcrumb, Divider } from "antd";
-import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
+import { MDBContainer, MDBRow } from "mdbreact";
 import {
   DesktopOutlined,
   PieChartOutlined,
@@ -129,4 +129,3 @@ class Dashboard extends React.Component {
 }
 
 export default Dashboard;
-// // >>>>>>> b6011353de8f7552514b0ce4f987931b8b442d3d

@@ -4,6 +4,8 @@ import BootstrapTable from "react-bootstrap-table-next";
 import paginationFactory from "react-bootstrap-table2-paginator";
 import ToolkitProvider, { Search } from "react-bootstrap-table2-toolkit";
 import * as ReactBootstrap from "react-bootstrap";
+import charts from "fusioncharts/fusioncharts.charts";
+import ReactFusioncharts from "react-fusioncharts";
 import Widgets from "fusioncharts/fusioncharts.widgets";
 import FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
 import ReactFC from "react-fusioncharts";
@@ -13,6 +15,9 @@ import "./SpeedLog.css";
 function SpeedLog() {
   // define chart props
   ReactFC.fcRoot(FusionCharts, Widgets, FusionTheme);
+
+  // Resolves charts dependancy
+  charts(FusionCharts);
 
   const [speedData, setSpeedData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -47,62 +52,65 @@ function SpeedLog() {
     });
   }
 
-  // config speed guage
-  const speedGuageConfigs = {
-    type: "angulargauge",
-    width: 500,
-    height: 400,
-    dataFormat: "json",
-    dataSource: {
-      chart: {
-        caption: "Vehicle Speed In [KMPH]",
-        lowerLimit: "0",
-        upperLimit: "100",
-        showValue: "1",
-        numberSuffix: "%",
-        theme: "fusion",
-        showToolTip: "0",
-      },
-      colorRange: {
-        color: [
-          {
-            minValue: "0",
-            maxValue: "50",
-            code: "#62B58F",
-          },
-          {
-            minValue: "50",
-            maxValue: "75",
-            code: "#FFC533",
-          },
-          {
-            minValue: "75",
-            maxValue: "100",
-            code: "#F2726F",
-          },
-        ],
-      },
-      dials: {
-        dial: [
-          {
-            value: lastSpeed,
-            tooltext: "<b>65%</b> lesser that overspeed",
-          },
-        ],
-      },
-      trendpoints: {
-        point: [
-          {
-            startvalue: "65",
-            displayvalue: "OverSpeed",
-            thickness: "2",
-            color: "#E15A26",
-            usemarker: "1",
-            markerbordercolor: "#E15A26",
-            markertooltext: "65%",
-          },
-        ],
-      },
+  // config widget
+  const dataSource = {
+    chart: {
+      captionpadding: "0",
+      origw: "320",
+      origh: "300",
+      gaugeouterradius: "115",
+      gaugestartangle: "270",
+      gaugeendangle: "-25",
+      showvalue: "1",
+      valuefontsize: "30",
+      majortmnumber: "13",
+      majortmthickness: "2",
+      majortmheight: "13",
+      minortmheight: "7",
+      minortmthickness: "1",
+      minortmnumber: "1",
+      showgaugeborder: "0",
+      theme: "fusion",
+    },
+    colorrange: {
+      color: [
+        {
+          minvalue: "0",
+          maxvalue: "85",
+          code: "#999999",
+        },
+        {
+          minvalue: "85",
+          maxvalue: "180",
+          code: "#F6F6F6",
+        },
+      ],
+    },
+    dials: {
+      dial: [
+        {
+          value: lastSpeed,
+          bgcolor: "#F20F2F",
+          basewidth: "8",
+        },
+      ],
+    },
+    annotations: {
+      groups: [
+        {
+          items: [
+            {
+              type: "text",
+              id: "text",
+              text: "kmph",
+              x: "$gaugeCenterX",
+              y: "$gaugeCenterY + 40",
+              fontsize: "20",
+              color: "#555555",
+            },
+          ],
+        },
+      ],
     },
   };
 
@@ -141,7 +149,13 @@ function SpeedLog() {
   return (
     <div className="speedlog">
       <div className="speedlog_widget">
-        <ReactFC {...speedGuageConfigs} />
+        <ReactFusioncharts
+          type="angulargauge"
+          width="50%"
+          height="50%"
+          dataFormat="JSON"
+          dataSource={dataSource}
+        />
       </div>
       <div className="speedlog_table">
         {loading ? (
