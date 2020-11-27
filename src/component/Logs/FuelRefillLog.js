@@ -54,6 +54,7 @@ function FuelRefillLog() {
         lastTimestamp.push(value);
       }
     });
+    return 0;
   });
 
   // config fuel refill chart

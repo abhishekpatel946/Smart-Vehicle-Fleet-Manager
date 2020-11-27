@@ -55,6 +55,7 @@ function MaintainenceLog() {
         lastTimestamp.push(value);
       }
     });
+    return 0;
   });
 
   // config maintainence line with scrolling

@@ -55,6 +55,7 @@ function OverSpeedLog() {
         lastTimestamp.push(value);
       }
     });
+    return 0;
   });
 
   // config overspeed line with scrolling

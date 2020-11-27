@@ -54,6 +54,7 @@ function FuelLog() {
         lastTimestamp.push(value);
       }
     });
+    return 0;
   });
 
   // config fuel level chat

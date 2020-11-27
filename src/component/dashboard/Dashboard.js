@@ -1,5 +1,5 @@
 import React from "react";
-import fireConfig from "../firebase/fireConfig";
+import { auth } from "../firebase/fireConfig";
 import HeaderLayout from "../dashboard_common/HeaderLayout";
 import FooterLayout from "../dashboard_common/FooterLayout";
 import SpeedLog from "../Logs/SpeedLog";
@@ -27,6 +27,7 @@ import "./Dashboard.css";
 // Layout and Menu
 const { Content, Sider } = Layout;
 const { SubMenu } = Menu;
+
 class Dashboard extends React.Component {
   // navbar collapse state
   state = {
@@ -43,6 +44,7 @@ class Dashboard extends React.Component {
     vehicleName: "",
     vehicleId: "",
   };
+
   // form onSubmit handler
   submitHandler = (event) => {
     event.preventDefault();
@@ -53,9 +55,14 @@ class Dashboard extends React.Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
+  // form handleClick
+  handleClick() {
+    alert("Work in Progress...!");
+  }
+
   // logout
   logout() {
-    fireConfig.auth().signOut();
+    auth().signOut();
   }
 
   render() {
@@ -169,10 +176,6 @@ class Dashboard extends React.Component {
                             success="right"
                             required
                           />
-                          <div className="invalid-feedback">
-                            Please provide a valid input.
-                          </div>
-                          <div className="valid-feedback">Looks good!</div>
                           <MDBInput
                             value={this.state.vehicleId}
                             name="vehicleId"
@@ -188,7 +191,12 @@ class Dashboard extends React.Component {
                           />
                         </div>
                         <div className="text-center">
-                          <MDBBtn outline type="submit">
+                          <MDBBtn
+                            outline
+                            type="submit"
+                            onClick={this.handleClick}
+                            // disabled
+                          >
                             Register
                             <MDBIcon far icon="paper-plane" className="ml-1" />
                           </MDBBtn>
