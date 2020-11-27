@@ -1,6 +1,5 @@
 import React from "react";
 import "./App.css";
-// import { BounceLoader } from "react-spinners";
 import Dashboard from "./component/dashboard/Dashboard";
 import firebase from "firebase";
 import Home from "./component/Login/home";
@@ -11,16 +10,8 @@ class App extends React.Component {
     this.state = {
       user: null,
     };
-    // this.state = {
-    //   loading: false,
-    // };
     this.authListner = this.authListner.bind(this);
   }
-
-  // speed state
-  state = {
-    speeds: null,
-  };
 
   // Mount the firestore
   componentDidMount() {

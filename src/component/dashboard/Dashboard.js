@@ -8,11 +8,19 @@ import FuelRefillLog from "../Logs/FuelRefillLog";
 import MaintainenceLog from "../Logs/MaintainenceLog";
 import OverSpeedLog from "../Logs/OverSpeedLog";
 import { Layout, Menu, Breadcrumb, Divider } from "antd";
-import { MDBContainer, MDBRow } from "mdbreact";
+import {
+  MDBBtn,
+  MDBCol,
+  MDBContainer,
+  MDBIcon,
+  MDBInput,
+  MDBRow,
+} from "mdbreact";
 import {
   DesktopOutlined,
   PieChartOutlined,
   FileOutlined,
+  AppstoreAddOutlined,
 } from "@ant-design/icons";
 import "./Dashboard.css";
 
@@ -20,13 +28,29 @@ import "./Dashboard.css";
 const { Content, Sider } = Layout;
 const { SubMenu } = Menu;
 class Dashboard extends React.Component {
+  // navbar collapse state
   state = {
-    collapsed: true,
+    collapsed: false,
   };
 
   onCollapse = (collapsed) => {
     this.setState({ collapsed });
     console.log(collapsed);
+  };
+
+  // form validation state
+  state = {
+    vehicleName: "",
+    vehicleId: "",
+  };
+  // form onSubmit handler
+  submitHandler = (event) => {
+    event.preventDefault();
+    event.target.className += " was-validated";
+  };
+  // form onChange handler
+  changeHandler = (event) => {
+    this.setState({ [event.target.name]: event.target.value });
   };
 
   // logout
@@ -49,7 +73,7 @@ class Dashboard extends React.Component {
             <Menu
               theme="dark"
               defaultSelectedKeys={["stats"]}
-              defaultOpenKeys={[""]}
+              defaultOpenKeys={["track"]}
               mode="inline"
             >
               <Menu.Item key="stats" icon={<PieChartOutlined />}>
@@ -62,7 +86,10 @@ class Dashboard extends React.Component {
                 <Menu.Item key="overspeeding">OverSpeeding</Menu.Item>
                 <Menu.Item key="maintainance">Maintainance</Menu.Item>
               </SubMenu>
-              <Menu.Item key="9" icon={<FileOutlined />}>
+              <Menu.Item key="addVehicle" icon={<AppstoreAddOutlined />}>
+                Add Vehicle
+              </Menu.Item>
+              <Menu.Item key="report" icon={<FileOutlined />}>
                 Report
               </Menu.Item>
             </Menu>
@@ -114,6 +141,60 @@ class Dashboard extends React.Component {
                 <MDBContainer>
                   <MDBRow>
                     <MaintainenceLog />
+                  </MDBRow>
+                </MDBContainer>
+
+                {/* addVehicle Section */}
+                <Divider orientation="left">Add Vehicle</Divider>
+                <MDBContainer>
+                  <MDBRow>
+                    <MDBCol md="6">
+                      <form
+                        className="needs-validation"
+                        onSubmit={this.submitHandler}
+                        noValidate
+                      >
+                        <p className="h5 text-center mb-4">Subscribe</p>
+                        <div className="grey-text">
+                          <MDBInput
+                            value={this.state.vehicleName}
+                            name="vehicleName"
+                            onChange={this.changeHandler}
+                            label="Your vehicle name"
+                            icon="car"
+                            group
+                            type="text"
+                            validate
+                            error="wrong"
+                            success="right"
+                            required
+                          />
+                          <div className="invalid-feedback">
+                            Please provide a valid input.
+                          </div>
+                          <div className="valid-feedback">Looks good!</div>
+                          <MDBInput
+                            value={this.state.vehicleId}
+                            name="vehicleId"
+                            onChange={this.changeHandler}
+                            label="Your vechile reg. number"
+                            icon="registered"
+                            group
+                            type="text"
+                            validate
+                            error="wrong"
+                            success="right"
+                            required
+                          />
+                        </div>
+                        <div className="text-center">
+                          <MDBBtn outline type="submit">
+                            Register
+                            <MDBIcon far icon="paper-plane" className="ml-1" />
+                          </MDBBtn>
+                        </div>
+                      </form>
+                    </MDBCol>
                   </MDBRow>
                 </MDBContainer>
 
