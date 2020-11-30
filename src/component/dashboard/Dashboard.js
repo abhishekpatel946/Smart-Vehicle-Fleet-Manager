@@ -19,7 +19,6 @@ import {
 import {
   DesktopOutlined,
   PieChartOutlined,
-  FileOutlined,
   AppstoreAddOutlined,
 } from "@ant-design/icons";
 import "./Dashboard.css";
@@ -33,13 +32,10 @@ function Dashboard() {
   const [vehicleNAME, setVehicleNAME] = useState("");
   const [vehicleID, setVehicleID] = useState("");
 
-  // navbar collapse state
-  const collap_state = {
-    collapsed: false,
-  };
+  const [collapseState, setCollapseState] = useState(false);
 
   const onCollapse = (collapsed) => {
-    this.setState({ collapsed });
+    setCollapseState({ collapsed });
     console.log(collapsed);
   };
 
@@ -52,6 +48,8 @@ function Dashboard() {
   // form handleClick
   const handleClick = (event) => {
     if (vehicleID && vehicleNAME) {
+      // check if the doc are already available in the DB... then just give the warning to the user!
+
       // create a doc in DB with vehicleID and set it fields
       db.collection("data").doc(vehicleID).set({
         vehicleId: vehicleID,
@@ -104,11 +102,11 @@ function Dashboard() {
   return (
     <Layout>
       {/* Header Section */}
-      <HeaderLayout />
+      <HeaderLayout className="header" />
       <Layout style={{ minHeight: "100vh" }}>
         <Sider
           collapsible
-          collapsed={collap_state.collapsed}
+          collapsed={collapseState.collapsed}
           onCollapse={onCollapse}
         >
           <div className="logo" />
@@ -130,9 +128,6 @@ function Dashboard() {
             </SubMenu>
             <Menu.Item key="addVehicle" icon={<AppstoreAddOutlined />}>
               Add Vehicle
-            </Menu.Item>
-            <Menu.Item key="report" icon={<FileOutlined />}>
-              Report
             </Menu.Item>
           </Menu>
         </Sider>

@@ -19,6 +19,12 @@
   pointer-events: none;
 }
 
+.header {
+  position: sticky;
+  z-index: 0;
+  top: 1;
+}
+
 .container,
 .container-fluid,
 .container-lg,
