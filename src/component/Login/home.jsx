@@ -16,18 +16,9 @@ import {
 import "./home.css";
 import fireConfig from "../firebase/fireConfig";
 
-class Home extends React.Component {
-  state = {
-    collapsed: false,
-  };
-
-  handleTogglerClick = () => {
-    this.setState({
-      collapsed: !this.state.collapsed,
-    });
-  };
-
-  login() {
+function Home() {
+  // login
+  const login = () => {
     const email = document.querySelector("#login_email").value;
     const password = document.querySelector("#login_password").value;
 
@@ -44,7 +35,8 @@ class Home extends React.Component {
       });
   }
 
-  forgotPass() {
+  // forgot password
+  const forgotPass = () => {
     const email = document.querySelector("#login_email").value;
 
     fireConfig
@@ -57,15 +49,16 @@ class Home extends React.Component {
     })
   }
 
-  signUp(e) {
+  // signup
+  const signUp = (e) => {
     const email = document.querySelector("#register_email").value;
     const password = document.querySelector("#register_password").value;
+    // const username = document.querySelector('#register_username').value;
 
     fireConfig
       .auth()
       .createUserWithEmailAndPassword(email, password)
       .then((event) => {
-        console.log(event.message);
         alert('successful registerd...');
       })
       .catch((err) => {
@@ -74,7 +67,6 @@ class Home extends React.Component {
       });
   }
 
-  render() {
     return (
       <div id="apppage">
         <Router>
@@ -141,13 +133,13 @@ class Home extends React.Component {
                     <div className="text-center">
                       <MDBBtn
                         gradient="blue"
-                        onClick={this.login}
+                        onClick={login}
                       >
                         Login
                       </MDBBtn>
                       <MDBBtn
                         gradient="peach"
-                        onClick={this.forgotPass}
+                        onClick={forgotPass}
                       >
                         Forgot Pass
                       </MDBBtn>
@@ -166,6 +158,7 @@ class Home extends React.Component {
                         className="white-text"
                         label="Your name"
                         icon="user"
+                        id='register_username'
                         group
                         type="text"
                         validate
@@ -195,9 +188,8 @@ class Home extends React.Component {
                     </div>
                     <div className="text-center">
                       <MDBBtn
-                        // outline color="white"
                         gradient="blue"
-                        onClick={this.signUp}
+                        onClick={signUp}
                       >
                         Register
                       </MDBBtn>
@@ -210,7 +202,6 @@ class Home extends React.Component {
         </MDBView>
       </div>
     );
-  }
 }
 
 export default Home;

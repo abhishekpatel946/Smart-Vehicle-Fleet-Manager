@@ -1,39 +1,35 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./App.css";
 import Dashboard from "./component/dashboard/Dashboard";
-import firebase from "firebase";
+import { auth } from "firebase";
 import Home from "./component/Login/home";
+import { useStateValue } from "./component/ContextProvider/StateProvider";
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      user: null,
-    };
-    this.authListner = this.authListner.bind(this);
-  }
+function App() {
+  const [{ user }, dispatch] = useStateValue();
 
-  // Mount the firestore
-  componentDidMount() {
-    this.authListner();
-  }
+  useEffect(() => {
+    auth().onAuthStateChanged((authUser) => {
+      if (authUser) {
+        // generate a unique userId for each user
+        // console.log(`user id ==>> ${authUser.uid}`);
 
-  authListner() {
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        this.setState({ user });
-        // this.setState({ loading: true });
+        // the user just logged-in | the user was logged-in
+        dispatch({
+          type: "SET_USER",
+          user: authUser,
+        });
       } else {
-        this.setState({ user: null });
+        // the user is logged-out
+        dispatch({
+          type: "SET_USER",
+          user: null,
+        });
       }
     });
-  }
+  }, []);
 
-  render() {
-    return (
-      <div className="App">{this.state.user ? <Dashboard /> : <Home />}</div>
-    );
-  }
+  return <div className="App">{user ? <Dashboard /> : <Home />}</div>;
 }
 
 export default App;
