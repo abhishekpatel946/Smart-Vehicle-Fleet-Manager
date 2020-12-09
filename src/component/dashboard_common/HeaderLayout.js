@@ -32,13 +32,15 @@ function HeaderLayout() {
               marginRight: "10px",
             }}
           >
-            {user?.email}
+            {user?.displayName || user?.email}
           </span>
           <Button
             ghost
             icon={<PoweroffOutlined />}
             onClick={logout}
-            style={{ float: "right" }}
+            style={{
+              float: "right",
+            }}
           >
             Logout
           </Button>

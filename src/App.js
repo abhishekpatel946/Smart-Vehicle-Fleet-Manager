@@ -9,25 +9,28 @@ function App() {
   const [{ user }, dispatch] = useStateValue();
 
   useEffect(() => {
-    auth().onAuthStateChanged((authUser) => {
-      if (authUser) {
-        // generate a unique userId for each user
-        // console.log(`user id ==>> ${authUser.uid}`);
+    const subscribe = () => {
+      auth().onAuthStateChanged((authUser) => {
+        if (authUser) {
+          // generate a unique userId for each user
+          // console.log(`user id ==>> ${authUser.uid}`);
 
-        // the user just logged-in | the user was logged-in
-        dispatch({
-          type: "SET_USER",
-          user: authUser,
-        });
-      } else {
-        // the user is logged-out
-        dispatch({
-          type: "SET_USER",
-          user: null,
-        });
-      }
-    });
-  }, []);
+          // the user just logged-in | the user was logged-in
+          dispatch({
+            type: "SET_USER",
+            user: authUser,
+          });
+        } else {
+          // the user is logged-out
+          dispatch({
+            type: "SET_USER",
+            user: null,
+          });
+        }
+      });
+    };
+    subscribe();
+  });
 
   return <div className="App">{user ? <Dashboard /> : <Home />}</div>;
 }
