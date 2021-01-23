@@ -22,15 +22,29 @@ import {
   AppstoreAddOutlined,
 } from "@ant-design/icons";
 import "./Dashboard.css";
+import { MuiPickersUtilsProvider } from "@material-ui/pickers";
+import DateFnsUtils from "@date-io/date-fns";
+import { KeyboardDatePicker } from "@material-ui/pickers";
+import moment from "moment";
 
 function Dashboard() {
   // Layout and Menu
   const { Content, Sider } = Layout;
   const { SubMenu } = Menu;
 
-  // vehicleId & vehicleName for db
+  // vehicleId & vehicleName for addVehicle
   const [vehicleNAME, setVehicleNAME] = useState("");
   const [vehicleID, setVehicleID] = useState("");
+
+  // vehicleName, dateTime & cost for maintenace
+  const [vehicleRegNumber, setVehicleRegNumber] = useState("");
+  const [date, setDate] = useState(moment());
+  const [cost, setCost] = useState("");
+
+  // set date
+  const onDateChange = (val) => {
+    setDate(val);
+  };
 
   const [collapseState, setCollapseState] = useState(false);
 
@@ -45,8 +59,8 @@ function Dashboard() {
     event.target.className += " was-validated";
   };
 
-  // form handleClick
-  const handleClick = (event) => {
+  // form vehicleRegister submitHandler
+  const vehicleRegister = (event) => {
     if (vehicleID && vehicleNAME) {
       // check if the doc are already available in the DB... then just give the warning to the user!
 
@@ -96,6 +110,14 @@ function Dashboard() {
     } else {
       alert("Both the fields are mandatory!!!");
     }
+  };
+
+  // from vehicleMaintenace submitHandler
+  const addCost = (event) => {
+    console.log(`Reg. No. ==>> ${vehicleRegNumber}`);
+    console.log(`Date is ==>> ${date}`);
+    console.log(typeof date); // object type date
+    console.log(`Cost is ==>> ${cost}`);
   };
 
   // render() {
@@ -191,7 +213,7 @@ function Dashboard() {
                       onSubmit={submitHandler}
                       noValidate
                     >
-                      <p className="h5 text-center mb-4">Subscribe</p>
+                      <p className="h5 text-center mb-4">Subscribe vehicle</p>
                       <div className="grey-text">
                         <MDBInput
                           className="addVehicle_vehicleNAME"
@@ -225,8 +247,75 @@ function Dashboard() {
                         />
                       </div>
                       <div className="text-center">
-                        <MDBBtn outline type="submit" onClick={handleClick}>
+                        <MDBBtn outline type="submit" onClick={vehicleRegister}>
                           Register
+                          <MDBIcon far icon="paper-plane" className="ml-1" />
+                        </MDBBtn>
+                      </div>
+                    </form>
+                  </MDBCol>
+                  <MDBCol md="6">
+                    <form
+                      className="needs-validation"
+                      onSubmit={submitHandler}
+                      noValidate
+                    >
+                      <p className="h5 text-center mb-4">
+                        Subscribe maintainance
+                      </p>
+                      <div className="grey-text">
+                        <MDBInput
+                          className="addVehicle_vehicleNAME"
+                          name="vehicleName"
+                          onChange={(event) =>
+                            setVehicleRegNumber(event.target.value)
+                          }
+                          value={vehicleRegNumber}
+                          label="Your vehicle Reg number"
+                          icon="registered"
+                          group
+                          type="text"
+                          validate
+                          error="wrong"
+                          success="right"
+                          required
+                        />
+                        <div>
+                          <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                            <KeyboardDatePicker
+                              disableToolbar
+                              fullWidth
+                              variant="inline"
+                              format="dd/MM/yyyy"
+                              margin="normal"
+                              id="date-picker-inline"
+                              label="DD/MM/YYYY"
+                              value={date}
+                              onChange={onDateChange}
+                              KeyboardButtonProps={{
+                                "aria-label": "change date",
+                              }}
+                            />
+                          </MuiPickersUtilsProvider>
+                        </div>
+                        <MDBInput
+                          className="addVehicle_vehicleID"
+                          name="cost"
+                          onChange={(event) => setCost(event.target.value)}
+                          value={cost}
+                          label="Your mainatenace cost..."
+                          icon="rupee-sign"
+                          group
+                          type="text"
+                          validate
+                          error="wrong"
+                          success="right"
+                          required
+                        />
+                      </div>
+                      <div className="text-center">
+                        <MDBBtn outline type="submit" onClick={addCost}>
+                          Add Cost
                           <MDBIcon far icon="paper-plane" className="ml-1" />
                         </MDBBtn>
                       </div>

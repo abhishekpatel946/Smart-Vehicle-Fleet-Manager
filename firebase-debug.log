@@ -1,0 +1,28 @@
+[debug] [2021-01-23T05:53:12.547Z] ----------------------------------------------------------------------
+[debug] [2021-01-23T05:53:12.548Z] Command:       /usr/bin/node /usr/bin/firebase init
+[debug] [2021-01-23T05:53:12.548Z] CLI Version:   8.16.2
+[debug] [2021-01-23T05:53:12.548Z] Platform:      linux
+[debug] [2021-01-23T05:53:12.548Z] Node Version:  v14.15.4
+[debug] [2021-01-23T05:53:12.610Z] Time:          Sat Jan 23 2021 11:23:12 GMT+0530 (India Standard Time)
+[debug] [2021-01-23T05:53:12.610Z] ----------------------------------------------------------------------
+[debug] [2021-01-23T05:53:12.611Z] 
+[debug] [2021-01-23T05:53:12.612Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2021-01-23T05:53:12.740Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-01-23T05:53:12.740Z] > authorizing via signed-in user
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  /home/root-abhi/Desktop/Linux/Smart-Vehicle-Fleet-Manager
+
+Before we get started, keep in mind:
+
+  * You are initializing in an existing Firebase project directory
+
+[debug] [2021-01-23T05:53:14.887Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2021-01-23T05:53:14.887Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}

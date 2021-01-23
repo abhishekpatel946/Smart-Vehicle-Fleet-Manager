@@ -12,8 +12,6 @@ import {
   MDBInput,
   MDBAnimation,
   MDBTypography,
-  MDBCardHeader,
-  MDBIcon,
 } from "mdbreact";
 import "./home.css";
 import fireConfig from "../firebase/fireConfig";
