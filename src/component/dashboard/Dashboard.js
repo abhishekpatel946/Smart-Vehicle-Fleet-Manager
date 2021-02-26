@@ -38,7 +38,7 @@ function Dashboard() {
 
   // vehicleName, dateTime & cost for maintenace
   const [vehicleRegNumber, setVehicleRegNumber] = useState("");
-  const [date, setDate] = useState(moment());
+  const [date, setDate] = useState(moment().toString());
   const [cost, setCost] = useState("");
 
   // set date
@@ -50,7 +50,6 @@ function Dashboard() {
 
   const onCollapse = (collapsed) => {
     setCollapseState({ collapsed });
-    console.log(collapsed);
   };
 
   // form onSubmit handler
@@ -114,10 +113,22 @@ function Dashboard() {
 
   // from vehicleMaintenace submitHandler
   const addCost = (event) => {
-    console.log(`Reg. No. ==>> ${vehicleRegNumber}`);
-    console.log(`Date is ==>> ${date}`);
-    console.log(typeof date); // object type date
-    console.log(`Cost is ==>> ${cost}`);
+    // store maintainance-cost into database
+    db.collection("data")
+      .doc(vehicleRegNumber)
+      .collection("maintainance")
+      .add({
+        id: vehicleRegNumber,
+        cose: cost,
+        timestamp: date,
+      })
+      .then(function () {
+        // success mgs for the all are right
+        alert("Vehicle maintainance added successfully..!!!");
+      })
+      .catch(function (error) {
+        console.error("Error writing maintainance module", error);
+      });
   };
 
   // render() {
