@@ -42,7 +42,7 @@ function SpeedLog() {
           setLoading(true);
         })
         .catch((error) => console.log(error));
-    }, 5000);
+    }, 2000);
   }, []);
 
   lastItem = speedData[speedData.length - 1];

@@ -38,7 +38,7 @@ function FuelRefillLog() {
           setLoading(true);
         })
         .catch((error) => console.log(error));
-    }, 5000);
+    }, 2000);
   }, []);
 
   // last record from data...
