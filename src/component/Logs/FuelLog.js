@@ -23,20 +23,22 @@ function FuelLog() {
   var lastTimestamp = [];
 
   useEffect(() => {
-    db.collection("vehicle")
-      .doc("fuel_sensor")
-      .collection("fuel")
-      .orderBy("id", "asc")
-      .get()
-      .then((snapshot) => {
-        const fuel_value = [];
-        snapshot.forEach((doc) => {
-          fuel_value.push(doc.data());
-        });
-        setFuelData(fuel_value);
-        setLoading(true);
-      })
-      .catch((error) => console.log(error));
+    setTimeout(() => {
+      db.collection("vehicle")
+        .doc("fuel_sensor")
+        .collection("fuel")
+        .orderBy("id", "asc")
+        .get()
+        .then((snapshot) => {
+          const fuel_value = [];
+          snapshot.forEach((doc) => {
+            fuel_value.push(doc.data());
+          });
+          setFuelData(fuel_value);
+          setLoading(true);
+        })
+        .catch((error) => console.log(error));
+    }, 5000);
   }, []);
 
   // last record from data...

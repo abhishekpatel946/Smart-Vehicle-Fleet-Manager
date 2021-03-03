@@ -24,20 +24,22 @@ function MaintainenceLog() {
   var lastTimestamp = [];
 
   useEffect(() => {
-    db.collection("vehicle")
-      .doc("maintainence")
-      .collection("data_records")
-      .orderBy("id", "asc")
-      .get()
-      .then((snapshot) => {
-        const maintainance_value = [];
-        snapshot.forEach((doc) => {
-          maintainance_value.push(doc.data());
-        });
-        setMaintainenceData(maintainance_value);
-        setLoading(true);
-      })
-      .catch((error) => console.log(error));
+    setTimeout(() => {
+      db.collection("vehicle")
+        .doc("maintainence")
+        .collection("data_records")
+        .orderBy("id", "asc")
+        .get()
+        .then((snapshot) => {
+          const maintainance_value = [];
+          snapshot.forEach((doc) => {
+            maintainance_value.push(doc.data());
+          });
+          setMaintainenceData(maintainance_value);
+          setLoading(true);
+        })
+        .catch((error) => console.log(error));
+    }, 5000);
   }, []);
 
   // last record from data...

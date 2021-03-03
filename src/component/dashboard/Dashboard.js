@@ -162,6 +162,9 @@ function Dashboard() {
             <Menu.Item key="addVehicle" icon={<AppstoreAddOutlined />}>
               Add Vehicle
             </Menu.Item>
+            <Menu.Item key="addMaintainance" icon={<AppstoreAddOutlined />}>
+              Add Maintainance
+            </Menu.Item>
           </Menu>
         </Sider>
 
@@ -224,7 +227,7 @@ function Dashboard() {
                       onSubmit={submitHandler}
                       noValidate
                     >
-                      <p className="h5 text-center mb-4">Subscribe vehicle</p>
+                      <p className="h5 text-center mb-4">Register Vehicle</p>
                       <div className="grey-text">
                         <MDBInput
                           className="addVehicle_vehicleNAME"
@@ -260,7 +263,7 @@ function Dashboard() {
                       <div className="text-center">
                         <MDBBtn outline type="submit" onClick={vehicleRegister}>
                           Register
-                          <MDBIcon far icon="paper-plane" className="ml-1" />
+                          <MDBIcon className="ml-1" />
                         </MDBBtn>
                       </div>
                     </form>
@@ -272,7 +275,7 @@ function Dashboard() {
                       noValidate
                     >
                       <p className="h5 text-center mb-4">
-                        Subscribe maintainance
+                        Register Maintainance
                       </p>
                       <div className="grey-text">
                         <MDBInput
@@ -327,7 +330,7 @@ function Dashboard() {
                       <div className="text-center">
                         <MDBBtn outline type="submit" onClick={addCost}>
                           Add Cost
-                          <MDBIcon far icon="paper-plane" className="ml-1" />
+                          <MDBIcon className="ml-1" />
                         </MDBBtn>
                       </div>
                     </form>

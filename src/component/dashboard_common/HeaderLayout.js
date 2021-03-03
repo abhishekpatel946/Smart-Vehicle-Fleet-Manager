@@ -1,36 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import fireConfig from "../firebase/fireConfig";
 import { Layout, Button, Typography } from "antd";
-import { Menu, Dropdown } from "antd";
-import { PoweroffOutlined, CarOutlined } from "@ant-design/icons";
+import { PoweroffOutlined } from "@ant-design/icons";
 import { useStateValue } from "../ContextProvider/StateProvider";
-import { db } from "../firebase/fireConfig";
 
 const { Title } = Typography;
 const { Header } = Layout;
 
 function HeaderLayout() {
   const [{ user }] = useStateValue();
-  const [vehicles, setVehicles] = useState([]);
-
-  // fetch vehicles from database
-  db.collection("data")
-    .get()
-    .then((snapshot) => {
-      const vehicle_value = [];
-      snapshot.forEach((doc) => {
-        vehicle_value.push(doc.data());
-      });
-      setVehicles(vehicle_value);
-    })
-    .catch((error) => console.log(error));
-
-  // vehicle switcher
-  const menu = (
-    <Menu>
-      <Menu.Item>vehicles{vehicles}</Menu.Item>
-    </Menu>
-  );
 
   // logout
   const logout = () => {
@@ -55,26 +33,6 @@ function HeaderLayout() {
               margin: "auto 20px auto 20px",
             }}
           />
-          <Dropdown
-            overlay={menu}
-            placement="bottomCenter"
-            arrow
-            style={{
-              float: "right",
-              margin: "auto 20px auto 20px",
-            }}
-          >
-            <Button
-              ghost
-              icon={<CarOutlined />}
-              style={{
-                float: "right",
-                margin: "auto 20px auto 20px",
-              }}
-            >
-              Swithcer
-            </Button>
-          </Dropdown>
           <span
             style={{
               float: "right",

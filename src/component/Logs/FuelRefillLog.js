@@ -23,20 +23,22 @@ function FuelRefillLog() {
   var lastTimestamp = [];
 
   useEffect(() => {
-    db.collection("vehicle")
-      .doc("fuel_refill_sensor")
-      .collection("fuel_refill")
-      .orderBy("id", "asc")
-      .get()
-      .then((snapshot) => {
-        const fuleRefill_value = [];
-        snapshot.forEach((doc) => {
-          fuleRefill_value.push(doc.data());
-        });
-        setFuelRefillData(fuleRefill_value);
-        setLoading(true);
-      })
-      .catch((error) => console.log(error));
+    setTimeout(() => {
+      db.collection("vehicle")
+        .doc("fuel_refill_sensor")
+        .collection("fuel_refill")
+        .orderBy("id", "asc")
+        .get()
+        .then((snapshot) => {
+          const fuleRefill_value = [];
+          snapshot.forEach((doc) => {
+            fuleRefill_value.push(doc.data());
+          });
+          setFuelRefillData(fuleRefill_value);
+          setLoading(true);
+        })
+        .catch((error) => console.log(error));
+    }, 5000);
   }, []);
 
   // last record from data...

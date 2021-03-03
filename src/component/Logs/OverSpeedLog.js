@@ -24,20 +24,22 @@ function OverSpeedLog() {
   var lastTimestamp = [];
 
   useEffect(() => {
-    db.collection("vehicle")
-      .doc("overspeed_sensor")
-      .collection("overspeed")
-      .orderBy("id", "asc")
-      .get()
-      .then((snapshot) => {
-        const overSpeed_value = [];
-        snapshot.forEach((doc) => {
-          overSpeed_value.push(doc.data());
-        });
-        setOverSpeedData(overSpeed_value);
-        setLoading(true);
-      })
-      .catch((error) => console.log(error));
+    setTimeout(() => {
+      db.collection("vehicle")
+        .doc("overspeed_sensor")
+        .collection("overspeed")
+        .orderBy("id", "asc")
+        .get()
+        .then((snapshot) => {
+          const overSpeed_value = [];
+          snapshot.forEach((doc) => {
+            overSpeed_value.push(doc.data());
+          });
+          setOverSpeedData(overSpeed_value);
+          setLoading(true);
+        })
+        .catch((error) => console.log(error));
+    }, 5000);
   }, []);
 
   // last record from data...

@@ -26,21 +26,34 @@ function SpeedLog() {
   var lastSpeed = 0;
 
   useEffect(() => {
-    db.collection("vehicle")
-      .doc("speed_sensor")
-      .collection("speed")
-      .orderBy("id", "asc")
-      .get()
-      .then((snapshot) => {
-        const speed_value = [];
-        snapshot.forEach((doc) => {
-          speed_value.push(doc.data());
-        });
-        setSpeedData(speed_value);
-        setLoading(true);
-      })
-      .catch((error) => console.log(error));
+    setTimeout(() => {
+      db.collection("vehicle")
+        .doc("speed_sensor")
+        .collection("speed")
+        .orderBy("id", "asc")
+        .get()
+        .then((snapshot) => {
+          const speed_value = [];
+          snapshot.forEach((doc) => {
+            speed_value.push(doc.data());
+            console.log(doc);
+          });
+          setSpeedData(speed_value);
+          setLoading(true);
+        })
+        .catch((error) => console.log(error));
+    }, 5000);
   }, []);
+
+  lastItem = speedData[speedData.length - 1];
+  if (lastItem !== undefined) {
+    const obj = Object.entries(lastItem);
+    obj.forEach(([key, value]) => {
+      if (key === "speed") {
+        lastSpeed = value;
+      }
+    });
+  }
 
   lastItem = speedData[speedData.length - 1];
   if (lastItem !== undefined) {
