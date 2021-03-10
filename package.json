@@ -15,6 +15,7 @@
     "@testing-library/user-event": "^7.1.2",
     "antd": "^4.6.5",
     "bootstrap": "^4.5.3",
+    "cloc": "^2.7.0",
     "date-fns": "^2.16.1",
     "dayjs": "^1.9.7",
     "dotenv": "^8.2.0",
