@@ -11,5 +11,9 @@ jobs:
             - 'v1-dependencies-{{ checksum "package.json" }}'
             - v1-dependencies-
       - run: 'npm install'
+      - save_cache:
+          paths:
+            - node_modules
+          key: 'v1-dependencies-{{ checksum "package.json" }}'
       - run: 'npm build'
-      - run: './node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN'
+      - run: './node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN' 
