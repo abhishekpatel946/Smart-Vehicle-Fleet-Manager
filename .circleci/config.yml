@@ -19,8 +19,8 @@ jobs:
             - 'v1-dependencies-{{ checksum "package.json" }}'
             - v1-dependencies-
       - run: 'npm install'
-      - save_cache:
-          paths:
-            - node_modules
-          key: 'v1-dependencies-{{ checksum "package.json" }}'
-      - run: 'npm test'
+      # - save_cache:
+      #     paths:
+      #       - node_modules
+      #     key: 'v1-dependencies-{{ checksum "package.json" }}'
+      # - run: 'npm test'
