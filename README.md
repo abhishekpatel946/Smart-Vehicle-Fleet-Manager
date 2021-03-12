@@ -12,8 +12,11 @@
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
+[![GitHub release](https://img.shields.io/github/release/Naereen/StrapDown.js.svg)](https://github.com/abhishekpatel946/Smart-Vehicle-Fleet-Manager/releases/)
 [![Pull Request][issues-pr]][issues-pr]
 [![MIT License][license-shield]][license-url]
+[![Open Source? Yes!](https://badgen.net/badge/Open%20Source%20%3F/Yes%21/blue?icon=github)](https://github.com/abhishekpatel946/)
+[![Ask Me Anything !](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg)](https://GitHub.com/abhishekpatel946/Smart-Vehicle-Fleet-Manager/discussions)
 
 <!-- PROJECT LOGO -->
 <br />
@@ -30,7 +33,7 @@
     <a href="https://github.com/abhishekpatel946/Smart-Vehicle-Fleet-Manager"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/abhishekpatel946/Smart-Vehicle-Fleet-Manager">View Demo</a>
+    <a href="https://smart-vehicle-fleet-manager.web.app/">View Demo</a>
     ·
     <a href="https://github.com/abhishekpatel946/Smart-Vehicle-Fleet-Manager/issues">Report Bug</a>
     ·
@@ -137,47 +140,62 @@ If you need want to feature your name in our contributer's list, Please mention 
 <a name="dir-str"></a>
 ## **Basic Directory Structure:** 📁
 ```
-├── public
-│   ├── index.html
-│   ├── logo192.png
-│   ├── logo512.png
-│   ├── manifest.json
-│   └── index.html
-├── src
-│   ├── assets
-|   |   ├── 1.jpg
-|   |   ├── 2jpg.jpg
-|   |   ├── admin-new.png
-|   |   ├── logo-readme.png
-|   |   └── Logo.png
-│   ├── components
-|   |   ├── dashboard
-|   |   |   ├── Dashboard.css
-|   |   |   └── Dashboard.js
-|   |   ├── dashboard-common
-|   |   |   ├── FooterLayout.js
-|   |   |   └── HeaderLayout.js
-|   |   ├── firebase
-|   |   |   └── fireConfig.js
-|   |   ├── Login
-|   |   |   ├── home.css
-|   |   |   └── home.jsx
-|   |   └── Logs
-|   |       ├── FuelLog.js
-|   |       ├── FuelRefillLog.js
-|   |       ├── Maintenence.js
-|   |       ├── OverSpeedLog.js
-|   |       └── SpeedLog.js
-│   ├── App.css
-│   ├── App.js
-│   ├── index.css
-│   ├── index.js
-|   └── serviceWorker.js
-├── .firebaserc
+.
+├── build
+│ 
+├── CODE_OF_CONDUCT.md
+├── CONTRIBUTING.md
+├── firebase.json
+├── images
+│   └── logo-readme.png
 ├── LICENSE
-├── package-lock.json
 ├── package.json
-└── README.md
+├── package-lock.json
+├── public
+│   ├── favicon.ico
+│   ├── index.html
+│   ├── logo192.png
+│   ├── logo512.png
+│   ├── manifest.json
+│   └── robots.txt
+├── README.md
+├── src
+│   ├── App.css
+│   ├── App.js
+│   ├── assets
+│   │   ├── admin-new.png
+│   │   ├── Logo.png
+│   │   └── logo-readme.png
+│   ├── component
+│   │   ├── ContextProvider
+│   │   │   ├── Reducer.js
+│   │   │   └── StateProvider.js
+│   │   ├── dashboard
+│   │   │   ├── Dashboard.css
+│   │   │   └── Dashboard.js
+│   │   ├── dashboard_common
+│   │   │   ├── FooterLayout.js
+│   │   │   └── HeaderLayout.js
+│   │   ├── firebase
+│   │   │   └── fireConfig.js
+│   │   ├── Login
+│   │   │   ├── home.css
+│   │   │   └── home.jsx
+│   │   └── Logs
+│   │       ├── FuelLog.css
+│   │       ├── FuelLog.js
+│   │       ├── FuelRefillLog.css
+│   │       ├── FuelRefillLog.js
+│   │       ├── MaintainanceLog.css
+│   │       ├── MaintainenceLog.js
+│   │       ├── OverSpeedLog.css
+│   │       ├── OverSpeedLog.js
+│   │       ├── SpeedLog.css
+│   │       └── SpeedLog.js
+│   ├── index.css
+│   ├── index.js
+│   └── serviceWorker.js
+└── yarn.lock
 ```
 
 <!-- LICENSE -->
@@ -190,7 +208,7 @@ Distributed under the MIT License. See [`LICENSE`](https://choosealicense.com) f
 <!-- CONTACT -->
 ## Contact ✉️
 
-Project Link: [https://github.com/abhishekpatel946/Smart-Vehicle-Fleet-Manager](https://github.com/abhishekpatel946/Smart-Vehicle-Fleet-Manager)
+[Discussion forem](https://github.com/abhishekpatel946/Smart-Vehicle-Fleet-Manager/discussions)
 
 <a name="contributers"></a>
 ## Contributers: ✨
@@ -208,17 +226,12 @@ Project Link: [https://github.com/abhishekpatel946/Smart-Vehicle-Fleet-Manager](
 </table>
 
 
-**Additional:**
-1. ............
-
-
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements 
 * [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
 * [Img Shields](https://shields.io)
 * [Choose an Open Source License](https://choosealicense.com)
 * [Font Awesome](https://fontawesome.com)
-
 
 
 
