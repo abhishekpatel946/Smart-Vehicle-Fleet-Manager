@@ -3,3 +3,4 @@ build
 .env
 .dockerignore
 Dockerfile
+docker-compose
