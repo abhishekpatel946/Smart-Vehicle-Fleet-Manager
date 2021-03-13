@@ -15,12 +15,21 @@ COPY ./package.json ./
 COPY ./package-lock.json ./
 
 # run installer 
-RUN npm install
-RUN npm install react-scripts@4.0.3 -g
+RUN npm install npm@latest
+RUN npm install react-scripts@latest
+RUN npm run build 
 
 # add app
 COPY . ./
 
+# exposing the specific port
+EXPOSE 3000
 
 # default command
-CMD ["npm", "start"]
+CMD ["npm", "run", "start"]
+
+
+# In case deploying using Nginx & maintain loadbalancing with multiple VM's
+
+# FROM nginx:1.17.1-alpine
+# COPY --from=build-step /app/build/usr/share/nginx/html
