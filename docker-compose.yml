@@ -1,10 +1,11 @@
-version: "3"
+version: "3.8"
 services:
   app:
     build: .
     image: app
     container_name: services.app
     volumes:
-      - .:/usr/src/app
+      - "app/node_modules"
+      - ".:/usr/src/app"
     ports:
       - "3000:3000"

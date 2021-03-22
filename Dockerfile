@@ -17,7 +17,7 @@ COPY ./package-lock.json ./
 # run installer 
 RUN npm install npm@latest
 RUN npm install react-scripts@latest
-RUN npm run build 
+RUN npm run build   
 
 # add app
 COPY . ./
