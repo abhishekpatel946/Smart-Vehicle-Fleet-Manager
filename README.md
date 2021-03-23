@@ -13,6 +13,7 @@
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![Firebase Deploy](https://github.com/abhishekpatel946/Smart-Vehicle-Fleet-Manager/actions/workflows/continous-deploy-firebase.yml/badge.svg)](https://github.com/abhishekpatel946/Smart-Vehicle-Fleet-Manager/actions/workflows/continous-deploy-firebase.yml)
+[![CodeQL](https://github.com/abhishekpatel946/Smart-Vehicle-Fleet-Manager/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/abhishekpatel946/Smart-Vehicle-Fleet-Manager/actions/workflows/codeql-analysis.yml)
 [![GitHub release](https://img.shields.io/github/release/Naereen/StrapDown.js.svg)](https://github.com/abhishekpatel946/Smart-Vehicle-Fleet-Manager/releases/)
 [![Pull Request][issues-pr]][issues-pr]
 [![MIT License][license-shield]][license-url]
