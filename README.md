@@ -12,6 +12,7 @@
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
+[![Deploy to Firebase Hosting on PR](https://github.com/abhishekpatel946/Smart-Vehicle-Fleet-Manager/actions/workflows/firebase-hosting-pull-request.yml/badge.svg)](https://github.com/abhishekpatel946/Smart-Vehicle-Fleet-Manager/actions/workflows/firebase-hosting-pull-request.yml)
 [![GitHub release](https://img.shields.io/github/release/Naereen/StrapDown.js.svg)](https://github.com/abhishekpatel946/Smart-Vehicle-Fleet-Manager/releases/)
 [![Pull Request][issues-pr]][issues-pr]
 [![MIT License][license-shield]][license-url]
