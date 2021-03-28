@@ -13,7 +13,7 @@
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![Firebase Deploy](https://github.com/abhishekpatel946/Smart-Vehicle-Fleet-Manager/actions/workflows/continous-deploy-firebase.yml/badge.svg)](https://github.com/abhishekpatel946/Smart-Vehicle-Fleet-Manager/actions/workflows/continous-deploy-firebase.yml)
-[![GitHub release](https://img.shields.io/github/release/Naereen/StrapDown.js.svg)](https://github.com/abhishekpatel946/Smart-Vehicle-Fleet-Manager/releases/)
+[![GitHub release](https://img.shields.io/static/v1?label=Release&message=Beta&color=green)](https://github.com/abhishekpatel946/Smart-Vehicle-Fleet-Manager/releases/)
 [![Pull Request][issues-pr]][issues-pr]
 [![MIT License][license-shield]][license-url]
 [![Open Source? Yes!](https://badgen.net/badge/Open%20Source%20%3F/Yes%21/blue?icon=github)](https://github.com/abhishekpatel946/)
@@ -142,10 +142,10 @@ If you need want to feature your name in our contributer's list, Please mention 
 ## **Basic Directory Structure:** 📁
 ```
 .
-├── build
-│ 
 ├── CODE_OF_CONDUCT.md
 ├── CONTRIBUTING.md
+├── docker-compose.yml
+├── Dockerfile
 ├── firebase.json
 ├── images
 │   └── logo-readme.png
@@ -197,6 +197,7 @@ If you need want to feature your name in our contributer's list, Please mention 
 │   ├── index.js
 │   └── serviceWorker.js
 └── yarn.lock
+
 ```
 
 <!-- LICENSE -->
