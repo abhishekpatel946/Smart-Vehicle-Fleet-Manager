@@ -2,6 +2,7 @@ import React from "react";
 import fireConfig from "../firebase/fireConfig";
 import { Layout, Button, Typography } from "antd";
 import { PoweroffOutlined } from "@ant-design/icons";
+import Tooltip from "@material-ui/core/Tooltip";
 import { useStateValue } from "../ContextProvider/StateProvider";
 
 const { Title } = Typography;
@@ -24,15 +25,17 @@ function HeaderLayout() {
       >
         <Title style={{ color: "#EAF0F1", padding: 15 }} level={3}>
           Smart Vehicle Fleet Manager
-          <Button
-            ghost
-            icon={<PoweroffOutlined />}
-            onClick={logout}
-            style={{
-              float: "right",
-              margin: "auto 20px auto 20px",
-            }}
-          />
+          <Tooltip title="Logout">
+            <Button
+              ghost
+              icon={<PoweroffOutlined />}
+              onClick={logout}
+              style={{
+                float: "right",
+                margin: "auto 20px auto 20px",
+              }}
+            />
+          </Tooltip>
           <span
             style={{
               float: "right",

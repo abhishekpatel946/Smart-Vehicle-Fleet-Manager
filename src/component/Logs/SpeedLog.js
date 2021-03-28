@@ -36,7 +36,6 @@ function SpeedLog() {
           const speed_value = [];
           snapshot.forEach((doc) => {
             speed_value.push(doc.data());
-            console.log(doc);
           });
           setSpeedData(speed_value);
           setLoading(true);
