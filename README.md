@@ -13,6 +13,11 @@
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![Pull Request][issues-pr]][issues-pr]
+[![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/abhishekpatel946/smart-vehicle-fleet-manager.svg)](http://isitmaintained.com/project/abhishekpatel946/smart-vehicle-fleet-manager "Average time to resolve an issue")
+[![Percentage of issues still open](http://isitmaintained.com/badge/open/abhishekpatel946/smart-vehicle-fleet-manager.svg)](http://isitmaintained.com/project/abhishekpatel946/smart-vehicle-fleet-manager "Percentage of issues still open")
+[![dependencies](https://david-dm.org/abhishekpatel946/smart-vehicle-fleet-manager.svg)](https://david-dm.org/abhishekpatel946/smart-vehicle-fleet-manager.svg "dependecies")
+[![Maintainability](https://api.codeclimate.com/v1/badges/1f45a2b72e443eb3fdce/maintainability)](https://codeclimate.com/github/abhishekpatel946/Smart-Vehicle-Fleet-Manager/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/1f45a2b72e443eb3fdce/test_coverage)](https://codeclimate.com/github/abhishekpatel946/Smart-Vehicle-Fleet-Manager/test_coverage)
 [![Firebase Deploy](https://github.com/abhishekpatel946/Smart-Vehicle-Fleet-Manager/actions/workflows/continous-deploy-firebase.yml/badge.svg)](https://github.com/abhishekpatel946/Smart-Vehicle-Fleet-Manager/actions/workflows/continous-deploy-firebase.yml)
 [![CodeQL](https://github.com/abhishekpatel946/Smart-Vehicle-Fleet-Manager/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/abhishekpatel946/Smart-Vehicle-Fleet-Manager/actions/workflows/codeql-analysis.yml)
 [![GitHub release](https://img.shields.io/static/v1?label=Release&message=Beta&color=green)](https://github.com/abhishekpatel946/Smart-Vehicle-Fleet-Manager/releases/)
@@ -140,7 +145,7 @@ If you need want to feature your name in our contributer's list, Please mention 
 ```
 #### You can also refer to this Directory Structure below:
 <a name="dir-str"></a>
-## **Basic Directory Structure:** 📁****
+## **Basic Directory Structure:** 📁
 ```
 .
 ├── CODE_OF_CONDUCT.md
