@@ -21,16 +21,23 @@ import {
   PieChartOutlined,
   AppstoreAddOutlined,
 } from "@ant-design/icons";
-import "./Dashboard.css";
+import ReportProblemOutlinedIcon from "@material-ui/icons/ReportProblemOutlined";
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
-import DateFnsUtils from "@date-io/date-fns";
 import { KeyboardDatePicker } from "@material-ui/pickers";
+import Link from "@material-ui/core/Link";
+import DateFnsUtils from "@date-io/date-fns";
+import "./Dashboard.css";
 import moment from "moment";
 
 function Dashboard() {
   // Layout and Menu
   const { Content, Sider } = Layout;
   const { SubMenu } = Menu;
+  const preventDefault = (event) => {
+    event.preventDefault();
+    window.location.href =
+      "https://github.com/abhishekpatel946/Smart-Vehicle-Fleet-Manager/issues/new/choose";
+  };
 
   // vehicleId & vehicleName for addVehicle
   const [vehicleNAME, setVehicleNAME] = useState("");
@@ -165,6 +172,14 @@ function Dashboard() {
             <Menu.Item key="addMaintainance" icon={<AppstoreAddOutlined />}>
               Add Maintainance
             </Menu.Item>
+            <Menu.Item key="reportIssue" icon={<ReportProblemOutlinedIcon />}>
+              <Link
+                href="https://github.com/abhishekpatel946/Smart-Vehicle-Fleet-Manager/issues/new/choose"
+                onClick={preventDefault}
+              >
+                Report an issue
+              </Link>
+            </Menu.Item>
           </Menu>
         </Sider>
 
@@ -172,7 +187,7 @@ function Dashboard() {
         <Layout className="site-layout">
           <Content style={{ margin: "0 16px" }}>
             <Breadcrumb style={{ margin: "16px 0" }}>
-              <Breadcrumb.Item>Abhishek</Breadcrumb.Item>
+              <Breadcrumb.Item>User</Breadcrumb.Item>
               <Breadcrumb.Item>Dashboard</Breadcrumb.Item>
             </Breadcrumb>
             <div
