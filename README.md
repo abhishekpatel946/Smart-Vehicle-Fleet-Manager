@@ -14,9 +14,8 @@
 [![Issues][issues-shield]][issues-url]
 [![Pull Request][issues-pr]][issues-pr]
 [![Firebase Deploy](https://github.com/abhishekpatel946/Smart-Vehicle-Fleet-Manager/actions/workflows/continous-deploy-firebase.yml/badge.svg)](https://github.com/abhishekpatel946/Smart-Vehicle-Fleet-Manager/actions/workflows/continous-deploy-firebase.yml)
-[![GitHub release](https://img.shields.io/static/v1?label=Release&message=Beta&color=green)](https://github.com/abhishekpatel946/Smart-Vehicle-Fleet-Manager/releases/)
-=======
 [![CodeQL](https://github.com/abhishekpatel946/Smart-Vehicle-Fleet-Manager/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/abhishekpatel946/Smart-Vehicle-Fleet-Manager/actions/workflows/codeql-analysis.yml)
+[![GitHub release](https://img.shields.io/static/v1?label=Release&message=Beta&color=green)](https://github.com/abhishekpatel946/Smart-Vehicle-Fleet-Manager/releases/)
 [![MIT License][license-shield]][license-url]
 [![Open Source? Yes!](https://badgen.net/badge/Open%20Source%20%3F/Yes%21/blue?icon=github)](https://github.com/abhishekpatel946/)
 [![Ask Me Anything !](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg)](https://GitHub.com/abhishekpatel946/Smart-Vehicle-Fleet-Manager/discussions)
@@ -141,7 +140,7 @@ If you need want to feature your name in our contributer's list, Please mention 
 ```
 #### You can also refer to this Directory Structure below:
 <a name="dir-str"></a>
-## **Basic Directory Structure:** 📁
+## **Basic Directory Structure:** 📁****
 ```
 .
 ├── CODE_OF_CONDUCT.md
