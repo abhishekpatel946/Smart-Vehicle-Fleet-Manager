@@ -45,10 +45,14 @@ function Home() {
       .auth()
       .signInWithEmailAndPassword(email, password)
       .then(() => {
-        // setOpenSuccess(true);
+        setOpenSuccess(false);
+        setOpenError(false);
+        setOpenSignInError(false);
         console.log("SignedIN succeed!!!");
       })
       .catch((err) => {
+        setOpenSuccess(false);
+        setOpenError(false);
         setOpenSignInError(true);
       });
   };
@@ -61,9 +65,13 @@ function Home() {
       .auth()
       .sendPasswordResetEmail(email)
       .then(function (user) {
+        setOpenError(false);
+        setOpenSignInError(false);
         setOpenSuccess(true);
       })
       .catch(function (err) {
+        setOpenSuccess(false);
+        setOpenSignInError(false);
         setOpenError(true);
       });
   };
