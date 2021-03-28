@@ -1,5 +1,5 @@
 {
   "projects": {
-    "default": "smart-vehicle-fleet-manager",
+    "hosting": "smart-vehicle-fleet-manager"
   }
 }
