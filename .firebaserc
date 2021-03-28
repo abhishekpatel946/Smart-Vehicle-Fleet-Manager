@@ -1,6 +1,5 @@
 {
   "projects": {
     "default": "smart-vehicle-fleet-manager",
-    "staging": "smart-vehicle-fleet-manager"
   }
 }
