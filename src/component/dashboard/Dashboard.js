@@ -7,6 +7,7 @@ import FuelLog from "../Logs/FuelLog";
 import FuelRefillLog from "../Logs/FuelRefillLog";
 import MaintainenceLog from "../Logs/MaintainenceLog";
 import OverSpeedLog from "../Logs/OverSpeedLog";
+import AccidentAlert from "../Logs/AccidentAlert";
 import { Layout, Menu, Breadcrumb, Divider } from "antd";
 import {
   MDBBtn,
@@ -22,6 +23,7 @@ import {
   AppstoreAddOutlined,
 } from "@ant-design/icons";
 import ReportProblemOutlinedIcon from "@material-ui/icons/ReportProblemOutlined";
+import NotificationsActiveOutlinedIcon from "@material-ui/icons/NotificationsActiveOutlined";
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import { KeyboardDatePicker } from "@material-ui/pickers";
 import Link from "@material-ui/core/Link";
@@ -33,11 +35,18 @@ function Dashboard() {
   // Layout and Menu
   const { Content, Sider } = Layout;
   const { SubMenu } = Menu;
+
+  // report an issue preventDefault
   const preventDefault = (event) => {
     event.preventDefault();
     window.location.href =
       "https://github.com/abhishekpatel946/Smart-Vehicle-Fleet-Manager/issues/new/choose";
   };
+
+  // navigation preventDefault
+  // const clickPreventDefualt = (event) => {
+  //   event.preventDefault();
+  // };
 
   // vehicleId & vehicleName for addVehicle
   const [vehicleNAME, setVehicleNAME] = useState("");
@@ -160,17 +169,33 @@ function Dashboard() {
               Stats
             </Menu.Item>
             <SubMenu key="track" icon={<DesktopOutlined />} title="Track">
-              <Menu.Item key="speed">Speed</Menu.Item>
-              <Menu.Item key="fuel">Fuel</Menu.Item>
-              <Menu.Item key="fuel_refill">Fuel Refill</Menu.Item>
-              <Menu.Item key="overspeeding">OverSpeeding</Menu.Item>
-              <Menu.Item key="maintainance">Maintainance</Menu.Item>
+              <Menu.Item key="speed">
+                <Link href="#speedSection">Speed</Link>
+              </Menu.Item>
+              <Menu.Item key="fuel">
+                <Link href="#fuelSection">Fuel</Link>
+              </Menu.Item>
+              <Menu.Item key="fuel_refill">
+                <Link href="#fuelRefillSection">Fuel Refill</Link>
+              </Menu.Item>
+              <Menu.Item key="overspeeding">
+                <Link href="#overSpeedingSection">OverSpeeding</Link>
+              </Menu.Item>
+              <Menu.Item key="maintainance">
+                <Link href="#maintainanceSection">Maintainance</Link>
+              </Menu.Item>
             </SubMenu>
+            <Menu.Item
+              key="accidentAlert"
+              icon={<NotificationsActiveOutlinedIcon />}
+            >
+              <Link href="#accidentAlertSection">Accident alert</Link>
+            </Menu.Item>
             <Menu.Item key="addVehicle" icon={<AppstoreAddOutlined />}>
-              Add Vehicle
+              <Link href="#addVehicleSection">Add Vehicle</Link>
             </Menu.Item>
             <Menu.Item key="addMaintainance" icon={<AppstoreAddOutlined />}>
-              Add Maintainance
+              <Link href="#addVehicleSection">Add Maintainance</Link>
             </Menu.Item>
             <Menu.Item key="reportIssue" icon={<ReportProblemOutlinedIcon />}>
               <Link
@@ -195,13 +220,17 @@ function Dashboard() {
               style={{ padding: 24, minHeight: 560 }}
             >
               {/* Speed Section */}
-              <Divider orientation="left">Speed area</Divider>
+              <Divider orientation="left" id="speedSection">
+                Speed area
+              </Divider>
               <MDBContainer>
                 <SpeedLog />
               </MDBContainer>
 
               {/* Fuel Section */}
-              <Divider orientation="left">Fuel area</Divider>
+              <Divider orientation="left" id="fuelSection">
+                Fuel area
+              </Divider>
               <MDBContainer>
                 <MDBRow>
                   <FuelLog />
@@ -209,7 +238,9 @@ function Dashboard() {
               </MDBContainer>
 
               {/* OverSpeeding Section */}
-              <Divider orientation="left">OverSpeeding area</Divider>
+              <Divider orientation="left" id="overSpeedingSection">
+                OverSpeeding area
+              </Divider>
               <MDBContainer>
                 <MDBRow>
                   <OverSpeedLog />
@@ -217,7 +248,9 @@ function Dashboard() {
               </MDBContainer>
 
               {/* Fuel Refill Section */}
-              <Divider orientation="left">Fuel Refill area</Divider>
+              <Divider orientation="left" id="fuelRefillSection">
+                Fuel Refill area
+              </Divider>
               <MDBContainer>
                 <MDBRow>
                   <FuelRefillLog />
@@ -225,15 +258,29 @@ function Dashboard() {
               </MDBContainer>
 
               {/* Maintainence Section */}
-              <Divider orientation="left">Maintainance area</Divider>
+              <Divider orientation="left" id="maintainanceSection">
+                Maintainance area
+              </Divider>
               <MDBContainer>
                 <MDBRow>
                   <MaintainenceLog />
                 </MDBRow>
               </MDBContainer>
 
+              {/* Accident Section */}
+              <Divider orientation="left" id="accidentAlertSection">
+                Accident alert area
+              </Divider>
+              <MDBContainer>
+                <MDBRow>
+                  <AccidentAlert />
+                </MDBRow>
+              </MDBContainer>
+
               {/* addVehicle Section */}
-              <Divider orientation="left">Add Vehicle</Divider>
+              <Divider orientation="left" id="addVehicleSection">
+                Add Vehicle
+              </Divider>
               <MDBContainer>
                 <MDBRow>
                   <MDBCol md="6">
