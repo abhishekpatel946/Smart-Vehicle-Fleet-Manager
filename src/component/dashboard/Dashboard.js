@@ -9,6 +9,8 @@ import MaintainenceLog from "../Logs/MaintainenceLog";
 import OverSpeedLog from "../Logs/OverSpeedLog";
 import AccidentAlert from "../Logs/AccidentAlert";
 import { Layout, Menu, Breadcrumb, Divider } from "antd";
+import { Button } from "antd";
+import NavigationIcon from "@material-ui/icons/Navigation";
 import {
   MDBBtn,
   MDBCol,
@@ -149,7 +151,7 @@ function Dashboard() {
 
   // render() {
   return (
-    <Layout>
+    <Layout id="header">
       {/* Header Section */}
       <HeaderLayout className="header" />
       <Layout style={{ minHeight: "100vh" }}>
@@ -399,6 +401,21 @@ function Dashboard() {
                   </MDBCol>
                 </MDBRow>
               </MDBContainer>
+
+              {/* back to top */}
+              <Link href="#header">
+                <Button
+                  // ghost
+                  icon={<NavigationIcon />}
+                  style={{
+                    float: "right",
+                    margin: "auto 20px 10px 20px",
+                  }}
+                >
+                  {" "}
+                  Back to top{" "}
+                </Button>
+              </Link>
 
               {/* End */}
             </div>
