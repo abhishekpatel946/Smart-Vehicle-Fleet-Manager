@@ -30,7 +30,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/abhishekpatel946/Smart-Vehicle-Fleet-Manager/">
-    <img src="images/logo-readme.png" alt="Logo" width="80" height="80">
+    <img src="src/assets/logo-readme.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Smart-Vehicle-Fleet-Manager</h3>
@@ -149,13 +149,23 @@ If you need want to feature your name in our contributer's list, Please mention 
 ## **Basic Directory Structure:** 📁
 ```
 .
+├── build
+│   ├── asset-manifest.json
+│   ├── favicon.ico
+│   ├── index.html
+│   ├── logo192.png
+│   ├── logo512.png
+│   ├── manifest.json
+│   ├── robots.txt
+│   └── static
+│       ├── css
+│       ├── js
+│       └── media
 ├── CODE_OF_CONDUCT.md
 ├── CONTRIBUTING.md
 ├── docker-compose.yml
 ├── Dockerfile
 ├── firebase.json
-├── images
-│   └── logo-readme.png
 ├── LICENSE
 ├── package.json
 ├── package-lock.json
@@ -167,6 +177,7 @@ If you need want to feature your name in our contributer's list, Please mention 
 │   ├── manifest.json
 │   └── robots.txt
 ├── README.md
+├── SECURITY.md
 ├── src
 │   ├── App.css
 │   ├── App.js
@@ -188,12 +199,14 @@ If you need want to feature your name in our contributer's list, Please mention 
 │   │   │   └── fireConfig.js
 │   │   ├── Login
 │   │   │   ├── home.css
-│   │   │   └── home.jsx
+│   │   │   └── home.js
 │   │   └── Logs
+│   │       ├── AccidentAlert.js
 │   │       ├── FuelLog.css
 │   │       ├── FuelLog.js
 │   │       ├── FuelRefillLog.css
 │   │       ├── FuelRefillLog.js
+│   │       ├── FuelTheftAlert.js
 │   │       ├── MaintainanceLog.css
 │   │       ├── MaintainenceLog.js
 │   │       ├── OverSpeedLog.css
