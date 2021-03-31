@@ -18,15 +18,15 @@ function OverSpeedLog() {
   const [overSpeedData, setOverSpeedData] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  var lastItem = [];
-  var lastId = [];
-  var lastOverSpeed = [];
-  var lastTimestamp = [];
+  let lastItem = [];
+  let lastId = [];
+  let lastOverSpeed = [];
+  let lastTimestamp = [];
 
   useEffect(() => {
     setTimeout(() => {
-      db.collection("vehicle")
-        .doc("overspeed_sensor")
+      db.collection("data")
+        .doc("MP10ME7969")
         .collection("overspeed")
         .orderBy("id", "asc")
         .get()

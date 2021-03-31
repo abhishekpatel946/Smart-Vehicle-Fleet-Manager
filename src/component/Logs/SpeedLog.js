@@ -19,16 +19,16 @@ function SpeedLog() {
   // Resolves charts dependancy
   charts(FusionCharts);
 
-  const [speedData, setSpeedData] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [speedData, setSpeedData] = useState([]);
 
-  var lastItem;
-  var lastSpeed = 0;
+  let lastItem;
+  let lastSpeed = 0;
 
   useEffect(() => {
     setTimeout(() => {
-      db.collection("vehicle")
-        .doc("speed_sensor")
+      db.collection("data")
+        .doc("MP10ME7969")
         .collection("speed")
         .orderBy("id", "asc")
         .get()

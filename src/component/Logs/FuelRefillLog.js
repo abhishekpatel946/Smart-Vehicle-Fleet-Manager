@@ -17,15 +17,15 @@ function FuelRefillLog() {
   const [fuelRefillData, setFuelRefillData] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  var lastItem = [];
-  var lastId = [];
-  var lastFuelRefill = [];
-  var lastTimestamp = [];
+  let lastItem = [];
+  let lastId = [];
+  let lastFuelRefill = [];
+  let lastTimestamp = [];
 
   useEffect(() => {
     setTimeout(() => {
-      db.collection("vehicle")
-        .doc("fuel_refill_sensor")
+      db.collection("data")
+        .doc("MP10ME7969")
         .collection("fuel_refill")
         .orderBy("id", "asc")
         .get()

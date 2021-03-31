@@ -15,19 +15,19 @@ function MaintainenceLog() {
   // define chart props
   ReactFC.fcRoot(FusionCharts, Charts, FusionTheme);
 
-  const [maintainenceData, setMaintainenceData] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [maintainenceData, setMaintainenceData] = useState([]);
 
-  var lastItem = [];
-  var lastId = [];
-  var lastMaintainance = [];
-  var lastTimestamp = [];
+  let lastItem = [];
+  let lastId = [];
+  let lastMaintainance = [];
+  let lastTimestamp = [];
 
   useEffect(() => {
     setTimeout(() => {
-      db.collection("vehicle")
-        .doc("maintainence")
-        .collection("data_records")
+      db.collection("data")
+        .doc("MP10ME7969")
+        .collection("maintainance")
         .orderBy("id", "asc")
         .get()
         .then((snapshot) => {
@@ -50,7 +50,7 @@ function MaintainenceLog() {
       if (key === "id") {
         lastId.push(value);
       }
-      if (key === "cost") {
+      if (key === "Amount") {
         lastMaintainance.push(value);
       }
       if (key === "timestamp") {
@@ -100,7 +100,7 @@ function MaintainenceLog() {
   const columns = [
     {
       text: "COST",
-      dataField: "cost",
+      dataField: "Amount",
     },
     {
       text: "TIMESTAMP",
@@ -115,6 +115,7 @@ function MaintainenceLog() {
     },
   ];
 
+  // export to CSV
   const { SearchBar, ClearSearchButton } = Search;
   const MyExportCSV = (props) => {
     const handleClick = () => {

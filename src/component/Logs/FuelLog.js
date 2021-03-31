@@ -14,18 +14,19 @@ function FuelLog() {
   // define chart props
   ReactFC.fcRoot(FusionCharts, Charts, FusionTheme);
 
-  const [fuelData, setFuelData] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [fuelData, setFuelData] = useState([]);
 
-  var lastItem = [];
-  var lastId = [];
-  var lastFuel = [];
-  var lastTimestamp = [];
+  let lastItem = [];
+  let lastId = [];
+  let lastFuel = [];
+  let lastTimestamp = [];
 
+  // fetch data
   useEffect(() => {
     setTimeout(() => {
-      db.collection("vehicle")
-        .doc("fuel_sensor")
+      db.collection("data")
+        .doc("MP10ME7969")
         .collection("fuel")
         .orderBy("id", "asc")
         .get()
