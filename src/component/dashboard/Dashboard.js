@@ -8,6 +8,7 @@ import FuelRefillLog from "../Logs/FuelRefillLog";
 import MaintainenceLog from "../Logs/MaintainenceLog";
 import OverSpeedLog from "../Logs/OverSpeedLog";
 import AccidentAlert from "../Logs/AccidentAlert";
+import FuelTheftAlert from "../Logs/FuelTheftAlert";
 import { Layout, Menu, Breadcrumb, Divider } from "antd";
 import { Button } from "antd";
 import NavigationIcon from "@material-ui/icons/Navigation";
@@ -19,19 +20,18 @@ import {
   MDBInput,
   MDBRow,
 } from "mdbreact";
-import {
-  DesktopOutlined,
-  PieChartOutlined,
-  AppstoreAddOutlined,
-} from "@ant-design/icons";
+import { DesktopOutlined, PieChartOutlined } from "@ant-design/icons";
+import LocalTaxiIcon from "@material-ui/icons/LocalTaxi";
+import PostAddIcon from "@material-ui/icons/PostAdd";
+import NotificationImportantIcon from "@material-ui/icons/NotificationImportant";
 import ReportProblemOutlinedIcon from "@material-ui/icons/ReportProblemOutlined";
 import NotificationsActiveOutlinedIcon from "@material-ui/icons/NotificationsActiveOutlined";
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import { KeyboardDatePicker } from "@material-ui/pickers";
 import Link from "@material-ui/core/Link";
 import DateFnsUtils from "@date-io/date-fns";
-import "./Dashboard.css";
 import moment from "moment";
+import "./Dashboard.css";
 
 function Dashboard() {
   // Layout and Menu
@@ -65,7 +65,6 @@ function Dashboard() {
   };
 
   const [collapseState, setCollapseState] = useState(false);
-
   const onCollapse = (collapsed) => {
     setCollapseState({ collapsed });
   };
@@ -75,6 +74,25 @@ function Dashboard() {
     event.preventDefault();
     event.target.className += " was-validated";
   };
+
+  // moduleState
+  const [moduleState, setModuleState] = useState([]);
+  let liveState = false;
+  db.collection("data")
+    .doc("MP10ME7969")
+    .collection("module_state")
+    .get()
+    .then((snapshot) => {
+      const currentState = [];
+      snapshot.forEach((doc) => {
+        currentState.push(doc.data());
+      });
+      setModuleState(currentState);
+    });
+
+  moduleState.forEach((data) => {
+    liveState = data.state;
+  });
 
   // form vehicleRegister submitHandler
   const vehicleRegister = (event) => {
@@ -193,10 +211,16 @@ function Dashboard() {
             >
               <Link href="#accidentAlertSection">Accident alert</Link>
             </Menu.Item>
-            <Menu.Item key="addVehicle" icon={<AppstoreAddOutlined />}>
+            <Menu.Item
+              key="fuelTheftAlert"
+              icon={<NotificationImportantIcon />}
+            >
+              <Link href="#fuelTheftAlertSection">FuelTheft alert</Link>
+            </Menu.Item>
+            <Menu.Item key="addVehicle" icon={<LocalTaxiIcon />}>
               <Link href="#addVehicleSection">Add Vehicle</Link>
             </Menu.Item>
-            <Menu.Item key="addMaintainance" icon={<AppstoreAddOutlined />}>
+            <Menu.Item key="addMaintainance" icon={<PostAddIcon />}>
               <Link href="#addVehicleSection">Add Maintainance</Link>
             </Menu.Item>
             <Menu.Item key="reportIssue" icon={<ReportProblemOutlinedIcon />}>
@@ -216,6 +240,9 @@ function Dashboard() {
             <Breadcrumb style={{ margin: "16px 0" }}>
               <Breadcrumb.Item>User</Breadcrumb.Item>
               <Breadcrumb.Item>Dashboard</Breadcrumb.Item>
+              <p className="h6 text-left mb-1">
+                Status : {liveState ? "Active" : "Inactive"}
+              </p>
             </Breadcrumb>
             <div
               className="site-layout-background"
@@ -271,11 +298,21 @@ function Dashboard() {
 
               {/* Accident Section */}
               <Divider orientation="left" id="accidentAlertSection">
-                Accident alert area
+                Accident Alert area
               </Divider>
               <MDBContainer>
                 <MDBRow>
                   <AccidentAlert />
+                </MDBRow>
+              </MDBContainer>
+
+              {/* FuelTheft Section */}
+              <Divider orientation="left" id="fuelTheftAlertSection">
+                FuelTheft Alert area
+              </Divider>
+              <MDBContainer>
+                <MDBRow>
+                  <FuelTheftAlert />
                 </MDBRow>
               </MDBContainer>
 
@@ -425,7 +462,6 @@ function Dashboard() {
       </Layout>
     </Layout>
   );
-  // }
 }
 
 export default Dashboard;
