@@ -24,22 +24,18 @@ function OverSpeedLog() {
   let lastTimestamp = [];
 
   useEffect(() => {
-    setTimeout(() => {
-      db.collection("data")
-        .doc("MP10ME7969")
-        .collection("overspeed")
-        .orderBy("id", "asc")
-        .get()
-        .then((snapshot) => {
-          const overSpeed_value = [];
-          snapshot.forEach((doc) => {
-            overSpeed_value.push(doc.data());
-          });
-          setOverSpeedData(overSpeed_value);
-          setLoading(true);
-        })
-        .catch((error) => console.log(error));
-    }, 2000);
+    db.collection("data")
+      .doc("MP10ME7969")
+      .collection("overspeed")
+      .orderBy("id", "asc")
+      .onSnapshot((docs) => {
+        const overSpeed_value = [];
+        docs.forEach((doc) => {
+          overSpeed_value.push(doc.data());
+        });
+        setOverSpeedData(overSpeed_value);
+        setLoading(true);
+      });
   }, []);
 
   // last record from data...
@@ -75,6 +71,12 @@ function OverSpeedLog() {
       {
         category: [
           {
+            label: lastTimestamp[lastTimestamp.length - 5],
+          },
+          {
+            label: lastTimestamp[lastTimestamp.length - 4],
+          },
+          {
             label: lastTimestamp[lastTimestamp.length - 3],
           },
           {
@@ -89,6 +91,12 @@ function OverSpeedLog() {
     dataset: [
       {
         data: [
+          {
+            value: lastOverSpeed[lastOverSpeed.length - 5],
+          },
+          {
+            value: lastOverSpeed[lastOverSpeed.length - 4],
+          },
           {
             value: lastOverSpeed[lastOverSpeed.length - 3],
           },
@@ -123,7 +131,8 @@ function OverSpeedLog() {
 
   const { SearchBar, ClearSearchButton } = Search;
   const MyExportCSV = (props) => {
-    const handleClick = () => {
+    const handleClick = (event) => {
+      event.preventDefualt();
       props.onExport();
     };
     return (
@@ -157,7 +166,7 @@ function OverSpeedLog() {
           >
             {(props) => (
               <div>
-                <div className="fuelRefillLog_btn">
+                <div className="fuelRefillLog_btn h6 text-right mb-1">
                   <SearchBar {...props.searchProps} />
                   <ClearSearchButton
                     className="btn btn-success"

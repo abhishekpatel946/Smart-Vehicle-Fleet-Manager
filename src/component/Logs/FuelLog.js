@@ -24,22 +24,18 @@ function FuelLog() {
 
   // fetch data
   useEffect(() => {
-    setTimeout(() => {
-      db.collection("data")
-        .doc("MP10ME7969")
-        .collection("fuel")
-        .orderBy("id", "asc")
-        .get()
-        .then((snapshot) => {
-          const fuel_value = [];
-          snapshot.forEach((doc) => {
-            fuel_value.push(doc.data());
-          });
-          setFuelData(fuel_value);
-          setLoading(true);
-        })
-        .catch((error) => console.log(error));
-    }, 2000);
+    db.collection("data")
+      .doc("MP10ME7969")
+      .collection("fuel")
+      .orderBy("id", "asc")
+      .onSnapshot((docs) => {
+        const fuel_value = [];
+        docs.forEach((doc) => {
+          fuel_value.push(doc.data());
+        });
+        setFuelData(fuel_value);
+        setLoading(true);
+      });
   }, []);
 
   // last record from data...
@@ -120,7 +116,8 @@ function FuelLog() {
 
   const { SearchBar, ClearSearchButton } = Search;
   const MyExportCSV = (props) => {
-    const handleClick = () => {
+    const handleClick = (event) => {
+      event.preventDefualt();
       props.onExport();
     };
     return (
@@ -148,7 +145,7 @@ function FuelLog() {
           >
             {(props) => (
               <div>
-                <div className="fuelLog_btn">
+                <div className="fuelLog_btn h6 text-right mb-1">
                   <SearchBar {...props.searchProps} />
                   <ClearSearchButton
                     className="btn btn-success"

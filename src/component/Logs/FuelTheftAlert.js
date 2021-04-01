@@ -16,22 +16,18 @@ function FuelTheftAlert() {
   let lastTimestamp = [];
 
   useEffect(() => {
-    setTimeout(() => {
-      db.collection("data")
-        .doc("MP10ME7969")
-        .collection("fuel_theft_alert")
-        .orderBy("id", "asc")
-        .get()
-        .then((snapshot) => {
-          const fuelTheft_value = [];
-          snapshot.forEach((doc) => {
-            fuelTheft_value.push(doc.data());
-          });
-          setfuelTheftAlert(fuelTheft_value);
-          setLoading(true);
-        })
-        .catch((error) => console.log(error));
-    }, 2000);
+    db.collection("data")
+      .doc("MP10ME7969")
+      .collection("fuel_theft_alert")
+      .orderBy("id", "asc")
+      .onSnapshot((docs) => {
+        const fuelTheft_value = [];
+        docs.forEach((doc) => {
+          fuelTheft_value.push(doc.data());
+        });
+        setfuelTheftAlert(fuelTheft_value);
+        setLoading(true);
+      });
   }, []);
 
   // console.log(fuelTheftAlertData);
@@ -85,18 +81,6 @@ function FuelTheftAlert() {
 
   // export to CSV
   const { SearchBar, ClearSearchButton } = Search;
-  const MyExportCSV = (props) => {
-    const handleClick = () => {
-      props.onExport();
-    };
-    return (
-      <div>
-        <button className="btn btn-success" onClick={handleClick}>
-          Export to CSV
-        </button>
-      </div>
-    );
-  };
 
   return (
     <div className="fuelTheftAlert">
@@ -111,13 +95,12 @@ function FuelTheftAlert() {
           >
             {(props) => (
               <div>
-                <div className="fuelTheftAlert_btn">
+                <div className="fuelTheftAlert_btn h6 text-right mb-1">
                   <SearchBar {...props.searchProps} />
                   <ClearSearchButton
                     className="btn btn-success"
                     {...props.searchProps}
                   />
-                  <MyExportCSV {...props.csvProps} />
                 </div>
                 <hr />
                 <BootstrapTable

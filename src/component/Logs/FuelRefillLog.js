@@ -23,22 +23,18 @@ function FuelRefillLog() {
   let lastTimestamp = [];
 
   useEffect(() => {
-    setTimeout(() => {
-      db.collection("data")
-        .doc("MP10ME7969")
-        .collection("fuel_refill")
-        .orderBy("id", "asc")
-        .get()
-        .then((snapshot) => {
-          const fuleRefill_value = [];
-          snapshot.forEach((doc) => {
-            fuleRefill_value.push(doc.data());
-          });
-          setFuelRefillData(fuleRefill_value);
-          setLoading(true);
-        })
-        .catch((error) => console.log(error));
-    }, 2000);
+    db.collection("data")
+      .doc("MP10ME7969")
+      .collection("fuel_refill")
+      .orderBy("id", "asc")
+      .onSnapshot((docs) => {
+        const fuleRefill_value = [];
+        docs.forEach((doc) => {
+          fuleRefill_value.push(doc.data());
+        });
+        setFuelRefillData(fuleRefill_value);
+        setLoading(true);
+      });
   }, []);
 
   // last record from data...
@@ -75,26 +71,6 @@ function FuelRefillLog() {
         theme: "fusion",
       },
       data: [
-        // {
-        //   label: lastTimestamp[lastTimestamp.length - 10],
-        //   value: lastFuelRefill[lastFuelRefill.length - 10],
-        // },
-        // {
-        //   label: lastTimestamp[lastTimestamp.length - 9],
-        //   value: lastFuelRefill[lastFuelRefill.length - 9],
-        // },
-        // {
-        //   label: lastTimestamp[lastTimestamp.length - 8],
-        //   value: lastFuelRefill[lastFuelRefill.length - 8],
-        // },
-        {
-          label: lastTimestamp[lastTimestamp.length - 7],
-          value: lastFuelRefill[lastFuelRefill.length - 7],
-        },
-        {
-          label: lastTimestamp[lastTimestamp.length - 6],
-          value: lastFuelRefill[lastFuelRefill.length - 6],
-        },
         {
           label: lastTimestamp[lastTimestamp.length - 5],
           value: lastFuelRefill[lastFuelRefill.length - 5],
@@ -139,7 +115,8 @@ function FuelRefillLog() {
 
   const { SearchBar, ClearSearchButton } = Search;
   const MyExportCSV = (props) => {
-    const handleClick = () => {
+    const handleClick = (event) => {
+      event.preventDefualt();
       props.onExport();
     };
     return (
@@ -167,7 +144,7 @@ function FuelRefillLog() {
           >
             {(props) => (
               <div>
-                <div className="fuelRefillLog_btn">
+                <div className="fuelRefillLog_btn h6 text-right mb-1">
                   <SearchBar {...props.searchProps} />
                   <ClearSearchButton
                     className="btn btn-success"

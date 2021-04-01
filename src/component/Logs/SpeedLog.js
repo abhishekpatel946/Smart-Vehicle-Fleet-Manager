@@ -26,22 +26,18 @@ function SpeedLog() {
   let lastSpeed = 0;
 
   useEffect(() => {
-    setTimeout(() => {
-      db.collection("data")
-        .doc("MP10ME7969")
-        .collection("speed")
-        .orderBy("id", "asc")
-        .get()
-        .then((snapshot) => {
-          const speed_value = [];
-          snapshot.forEach((doc) => {
-            speed_value.push(doc.data());
-          });
-          setSpeedData(speed_value);
-          setLoading(true);
-        })
-        .catch((error) => console.log(error));
-    }, 2000);
+    db.collection("data")
+      .doc("MP10ME7969")
+      .collection("speed")
+      .orderBy("id", "asc")
+      .onSnapshot((docs) => {
+        const speed_value = [];
+        docs.forEach((doc) => {
+          speed_value.push(doc.data());
+        });
+        setSpeedData(speed_value);
+        setLoading(true);
+      });
   }, []);
 
   lastItem = speedData[speedData.length - 1];
@@ -146,7 +142,8 @@ function SpeedLog() {
 
   const { SearchBar, ClearSearchButton } = Search;
   const MyExportCSV = (props) => {
-    const handleClick = () => {
+    const handleClick = (event) => {
+      event.preventDefualt();
       props.onExport();
     };
     return (
@@ -180,7 +177,7 @@ function SpeedLog() {
           >
             {(props) => (
               <div>
-                <div className="speedlog_btn">
+                <div className="speedlog_btn h6 text-right mb-1">
                   <SearchBar {...props.searchProps} />
                   <ClearSearchButton
                     className="btn btn-success"

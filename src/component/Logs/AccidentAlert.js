@@ -16,25 +16,19 @@ function AccidentAlert() {
   let lastTimestamp = [];
 
   useEffect(() => {
-    setTimeout(() => {
-      db.collection("data")
-        .doc("MP10ME7969")
-        .collection("accident_alert")
-        .orderBy("id", "asc")
-        .get()
-        .then((snapshot) => {
-          const accident_value = [];
-          snapshot.forEach((doc) => {
-            accident_value.push(doc.data());
-          });
-          setaccidentAlert(accident_value);
-          setLoading(true);
-        })
-        .catch((error) => console.log(error));
-    }, 2000);
+    db.collection("data")
+      .doc("MP10ME7969")
+      .collection("accident_alert")
+      .orderBy("id", "asc")
+      .onSnapshot((docs) => {
+        const accident_value = [];
+        docs.forEach((doc) => {
+          accident_value.push(doc.data());
+        });
+        setaccidentAlert(accident_value);
+        setLoading(true);
+      });
   }, []);
-
-  //   console.log(fuelTheftAlertData);
 
   // last record from data...
   Object.keys(accidentAlertData).map((key) => {
@@ -85,18 +79,6 @@ function AccidentAlert() {
 
   // export to CSV
   const { SearchBar, ClearSearchButton } = Search;
-  const MyExportCSV = (props) => {
-    const handleClick = () => {
-      props.onExport();
-    };
-    return (
-      <div>
-        <button className="btn btn-success" onClick={handleClick}>
-          Export to CSV
-        </button>
-      </div>
-    );
-  };
 
   return (
     <div className="fuelTheftAlert">
@@ -111,13 +93,12 @@ function AccidentAlert() {
           >
             {(props) => (
               <div>
-                <div className="fuelTheftAlert_btn">
+                <div className="fuelTheftAlert_btn h6 text-right mb-1">
                   <SearchBar {...props.searchProps} />
                   <ClearSearchButton
                     className="btn btn-success"
                     {...props.searchProps}
                   />
-                  <MyExportCSV {...props.csvProps} />
                 </div>
                 <hr />
                 <BootstrapTable

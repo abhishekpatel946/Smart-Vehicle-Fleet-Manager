@@ -24,22 +24,18 @@ function MaintainenceLog() {
   let lastTimestamp = [];
 
   useEffect(() => {
-    setTimeout(() => {
-      db.collection("data")
-        .doc("MP10ME7969")
-        .collection("maintainance")
-        .orderBy("id", "asc")
-        .get()
-        .then((snapshot) => {
-          const maintainance_value = [];
-          snapshot.forEach((doc) => {
-            maintainance_value.push(doc.data());
-          });
-          setMaintainenceData(maintainance_value);
-          setLoading(true);
-        })
-        .catch((error) => console.log(error));
-    }, 2000);
+    db.collection("data")
+      .doc("MP10ME7969")
+      .collection("maintainance")
+      .orderBy("id", "asc")
+      .onSnapshot((docs) => {
+        const maintainance_value = [];
+        docs.forEach((doc) => {
+          maintainance_value.push(doc.data());
+        });
+        setMaintainenceData(maintainance_value);
+        setLoading(true);
+      });
   }, []);
 
   // last record from data...
@@ -75,6 +71,15 @@ function MaintainenceLog() {
       {
         category: [
           {
+            label: lastTimestamp[lastTimestamp.length - 5],
+          },
+          {
+            label: lastTimestamp[lastTimestamp.length - 4],
+          },
+          {
+            label: lastTimestamp[lastTimestamp.length - 3],
+          },
+          {
             label: lastTimestamp[lastTimestamp.length - 2],
           },
           {
@@ -86,6 +91,15 @@ function MaintainenceLog() {
     dataset: [
       {
         data: [
+          {
+            value: lastMaintainance[lastMaintainance.length - 5],
+          },
+          {
+            value: lastMaintainance[lastMaintainance.length - 4],
+          },
+          {
+            value: lastMaintainance[lastMaintainance.length - 3],
+          },
           {
             value: lastMaintainance[lastMaintainance.length - 2],
           },
@@ -118,7 +132,8 @@ function MaintainenceLog() {
   // export to CSV
   const { SearchBar, ClearSearchButton } = Search;
   const MyExportCSV = (props) => {
-    const handleClick = () => {
+    const handleClick = (event) => {
+      event.preventDefualt();
       props.onExport();
     };
     return (
@@ -152,7 +167,7 @@ function MaintainenceLog() {
           >
             {(props) => (
               <div>
-                <div className="maintainanceLog_btn">
+                <div className="maintainanceLog_btn h6 text-right mb-1">
                   <SearchBar {...props.searchProps} />
                   <ClearSearchButton
                     className="btn btn-success"
