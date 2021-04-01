@@ -29,9 +29,15 @@ import NotificationsActiveOutlinedIcon from "@material-ui/icons/NotificationsAct
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import { KeyboardDatePicker } from "@material-ui/pickers";
 import Link from "@material-ui/core/Link";
+import Snackbar from "@material-ui/core/Snackbar";
+import MuiAlert from "@material-ui/lab/Alert";
 import DateFnsUtils from "@date-io/date-fns";
 import moment from "moment";
 import "./Dashboard.css";
+
+function Alert(props) {
+  return <MuiAlert elevation={3} variant="filled" {...props} />;
+}
 
 function Dashboard() {
   // Layout and Menu
@@ -45,10 +51,22 @@ function Dashboard() {
       "https://github.com/abhishekpatel946/Smart-Vehicle-Fleet-Manager/issues/new/choose";
   };
 
-  // navigation preventDefault
-  // const clickPreventDefualt = (event) => {
-  //   event.preventDefault();
-  // };
+  // snakbar state
+  const [vehicleAddSuccess, setvehicleAddSuccess] = React.useState(false);
+  const [vehicleAddError, setvehicleAddError] = React.useState(false);
+  const [maintainanceAddSuccess, setmaintainanceAddSuccess] = React.useState(
+    false
+  );
+  const [maintainanceAddError, setmaintainanceAddError] = React.useState(false);
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setvehicleAddSuccess(false);
+    setvehicleAddError(false);
+    setmaintainanceAddSuccess(false);
+    setmaintainanceAddError(false);
+  };
 
   // vehicleId & vehicleName for addVehicle
   const [vehicleNAME, setVehicleNAME] = useState("");
@@ -69,22 +87,45 @@ function Dashboard() {
     setCollapseState({ collapsed });
   };
 
+  // navigation clickHandler
+  const navClickHandle = (event) => {
+    event.preventDefault();
+  };
+
   // form onSubmit handler
   const submitHandler = (event) => {
     event.preventDefault();
     event.target.className += " was-validated";
   };
 
-  // moduleState
+  // fetch vehicle model & regid
+  // const [vehicleInfo, setVehicleInfo] = useState([]);
+  // let vehicleModel = "";
+  // let vehicleModelId = "";
+  // db.collection("data")
+  //   .doc("MP10ME7969")
+  //   .get()
+  //   .then((snapshot) => {
+  //     const currentInfo = [];
+  //     snapshot.forEach((doc) => {
+  //       currentInfo.push(doc.data());
+  //     });
+  //     setVehicleInfo(currentInfo);
+  //   });
+  // vehicleInfo.forEach((data) => {
+  //   vehicleModel = data.vehicleId;
+  //   vehicleModelId = data.vehicleName;
+  // });
+
+  // fetch moduleState
   const [moduleState, setModuleState] = useState([]);
   let liveState = false;
   db.collection("data")
     .doc("MP10ME7969")
     .collection("module_state")
-    .get()
-    .then((snapshot) => {
+    .onSnapshot((docs) => {
       const currentState = [];
-      snapshot.forEach((doc) => {
+      docs.forEach((doc) => {
         currentState.push(doc.data());
       });
       setModuleState(currentState);
@@ -137,13 +178,20 @@ function Dashboard() {
       });
 
       // success mgs for the all are right
-      alert("Vehicle added successfully..!!!");
+      setvehicleAddError(false);
+      setmaintainanceAddSuccess(false);
+      setmaintainanceAddError(false);
+      setvehicleAddSuccess(true);
 
       // set it to defualt to state
       setVehicleNAME("");
       setVehicleID("");
     } else {
-      alert("Both the fields are mandatory!!!");
+      // alert("Both the fields are mandatory!!!");
+      setvehicleAddSuccess(false);
+      setmaintainanceAddSuccess(false);
+      setmaintainanceAddError(false);
+      setvehicleAddError(true);
     }
   };
 
@@ -160,10 +208,16 @@ function Dashboard() {
       })
       .then(function () {
         // success mgs for the all are right
-        alert("Vehicle maintainance added successfully..!!!");
+        setvehicleAddSuccess(false);
+        setvehicleAddError(false);
+        setmaintainanceAddError(false);
+        setmaintainanceAddSuccess(true);
       })
       .catch(function (error) {
-        console.error("Error writing maintainance module", error);
+        setvehicleAddSuccess(false);
+        setvehicleAddError(false);
+        setmaintainanceAddSuccess(false);
+        setmaintainanceAddError(true);
       });
   };
 
@@ -190,38 +244,56 @@ function Dashboard() {
             </Menu.Item>
             <SubMenu key="track" icon={<DesktopOutlined />} title="Track">
               <Menu.Item key="speed">
-                <Link href="#speedSection">Speed</Link>
+                <Link href="#speedSection" onClick={navClickHandle}>
+                  Speed
+                </Link>
               </Menu.Item>
               <Menu.Item key="fuel">
-                <Link href="#fuelSection">Fuel</Link>
+                <Link href="#fuelSection" onClick={navClickHandle}>
+                  Fuel
+                </Link>
               </Menu.Item>
               <Menu.Item key="fuel_refill">
-                <Link href="#fuelRefillSection">Fuel Refill</Link>
+                <Link href="#fuelRefillSection" onClick={navClickHandle}>
+                  Fuel Refill
+                </Link>
               </Menu.Item>
               <Menu.Item key="overspeeding">
-                <Link href="#overSpeedingSection">OverSpeeding</Link>
+                <Link href="#overSpeedingSection" onClick={navClickHandle}>
+                  OverSpeeding
+                </Link>
               </Menu.Item>
               <Menu.Item key="maintainance">
-                <Link href="#maintainanceSection">Maintainance</Link>
+                <Link href="#maintainanceSection" onClick={navClickHandle}>
+                  Maintainance
+                </Link>
               </Menu.Item>
             </SubMenu>
             <Menu.Item
               key="accidentAlert"
               icon={<NotificationsActiveOutlinedIcon />}
             >
-              <Link href="#accidentAlertSection">Accident alert</Link>
+              <Link href="#accidentAlertSection" onClick={navClickHandle}>
+                Accident alert
+              </Link>
             </Menu.Item>
             <Menu.Item
               key="fuelTheftAlert"
               icon={<NotificationImportantIcon />}
             >
-              <Link href="#fuelTheftAlertSection">FuelTheft alert</Link>
+              <Link href="#fuelTheftAlertSection" onClick={navClickHandle}>
+                FuelTheft alert
+              </Link>
             </Menu.Item>
             <Menu.Item key="addVehicle" icon={<LocalTaxiIcon />}>
-              <Link href="#addVehicleSection">Add Vehicle</Link>
+              <Link href="#addVehicleSection" onClick={navClickHandle}>
+                Add Vehicle
+              </Link>
             </Menu.Item>
             <Menu.Item key="addMaintainance" icon={<PostAddIcon />}>
-              <Link href="#addVehicleSection">Add Maintainance</Link>
+              <Link href="#addVehicleSection" onClick={navClickHandle}>
+                Add Maintainance
+              </Link>
             </Menu.Item>
             <Menu.Item key="reportIssue" icon={<ReportProblemOutlinedIcon />}>
               <Link
@@ -240,9 +312,13 @@ function Dashboard() {
             <Breadcrumb style={{ margin: "16px 0" }}>
               <Breadcrumb.Item>User</Breadcrumb.Item>
               <Breadcrumb.Item>Dashboard</Breadcrumb.Item>
-              <p className="h6 text-left mb-1">
-                Status : {liveState ? "Active" : "Inactive"}
-              </p>
+              <div>
+                <p className="h6 text-left mb-1">
+                  Status : {liveState ? "Active" : "Inactive"}
+                  {/* {vehicleModel}
+                  {vehicleModelId} */}
+                </p>
+              </div>
             </Breadcrumb>
             <div
               className="site-layout-background"
@@ -440,7 +516,7 @@ function Dashboard() {
               </MDBContainer>
 
               {/* back to top */}
-              <Link href="#header">
+              <Link href="#header" onClick={navClickHandle}>
                 <Button
                   // ghost
                   icon={<NavigationIcon />}
@@ -457,6 +533,46 @@ function Dashboard() {
               {/* End */}
             </div>
           </Content>
+
+          {/* snakbar notifiers */}
+          <Snackbar
+            open={vehicleAddSuccess}
+            autoHideDuration={3000}
+            onClose={handleClose}
+          >
+            <Alert onClose={handleClose} severity="success">
+              Vehicle added successfully.
+            </Alert>
+          </Snackbar>
+          <Snackbar
+            open={vehicleAddError}
+            autoHideDuration={3000}
+            onClose={handleClose}
+          >
+            <Alert onClose={handleClose} severity="error">
+              All the field are mendatory!!!
+            </Alert>
+          </Snackbar>
+          <Snackbar
+            open={maintainanceAddSuccess}
+            autoHideDuration={3000}
+            onClose={handleClose}
+          >
+            <Alert onClose={handleClose} severity="success">
+              Maintainance added successfully.
+            </Alert>
+          </Snackbar>
+          <Snackbar
+            open={maintainanceAddError}
+            autoHideDuration={3000}
+            onClose={handleClose}
+          >
+            <Alert onClose={handleClose} severity="error">
+              All the field are mendatory!!!
+            </Alert>
+          </Snackbar>
+
+          {/* footer */}
           <FooterLayout />
         </Layout>
       </Layout>

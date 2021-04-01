@@ -12,7 +12,8 @@ function HeaderLayout() {
   const [{ user }] = useStateValue();
 
   // logout
-  const logout = () => {
+  const logout = (event) => {
+    event.preventDefualt();
     fireConfig.auth().signOut();
   };
 
