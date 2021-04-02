@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
-import "./App.css";
-import Dashboard from "./component/dashboard/Dashboard";
 import { auth } from "firebase";
-import Home from "./component/Login/home";
 import { useStateValue } from "./component/ContextProvider/StateProvider";
+import Home from "./component/Login/home";
+import Dashboard from "./component/dashboard/Dashboard";
+import "./App.css";
 
 function App() {
   const [{ user }, dispatch] = useStateValue();

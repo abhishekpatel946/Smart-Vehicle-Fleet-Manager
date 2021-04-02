@@ -1,4 +1,3 @@
-// import * as firebase from "firebase/app";
 import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
@@ -17,7 +16,6 @@ const fireConfig = {
 
 firebase.initializeApp(fireConfig);
 
-// initialize performance monitoring and get a reference to the service
 export const perf = firebase.performance();
 export const auth = firebase.auth();
 export const db = firebase.firestore();
