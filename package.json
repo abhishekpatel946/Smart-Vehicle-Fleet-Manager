@@ -20,7 +20,7 @@
     "bootstrap": "^4.5.3",
     "cloc": "^2.7.0",
     "date-fns": "^2.16.1",
-    "dayjs": "^1.9.7",
+    "dayjs": "^1.10.4",
     "dotenv": "^8.2.0",
     "firebase": "^7.24.0",
     "firebase-tools": "^9.6.1",
