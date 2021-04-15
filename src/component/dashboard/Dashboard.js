@@ -87,11 +87,6 @@ function Dashboard() {
     setCollapseState({ collapsed });
   };
 
-  // navigation clickHandler
-  const navClickHandle = (event) => {
-    event.preventDefault();
-  };
-
   // form onSubmit handler
   const submitHandler = (event) => {
     event.preventDefault();
@@ -244,56 +239,38 @@ function Dashboard() {
             </Menu.Item>
             <SubMenu key="track" icon={<DesktopOutlined />} title="Track">
               <Menu.Item key="speed">
-                <Link href="#speedSection" onClick={navClickHandle}>
-                  Speed
-                </Link>
+                <Link href="#speedSection">Speed</Link>
               </Menu.Item>
               <Menu.Item key="fuel">
-                <Link href="#fuelSection" onClick={navClickHandle}>
-                  Fuel
-                </Link>
+                <Link href="#fuelSection">Fuel</Link>
               </Menu.Item>
               <Menu.Item key="fuel_refill">
-                <Link href="#fuelRefillSection" onClick={navClickHandle}>
-                  Fuel Refill
-                </Link>
+                <Link href="#fuelRefillSection">Fuel Refill</Link>
               </Menu.Item>
               <Menu.Item key="overspeeding">
-                <Link href="#overSpeedingSection" onClick={navClickHandle}>
-                  OverSpeeding
-                </Link>
+                <Link href="#overSpeedingSection">OverSpeeding</Link>
               </Menu.Item>
               <Menu.Item key="maintainance">
-                <Link href="#maintainanceSection" onClick={navClickHandle}>
-                  Maintainance
-                </Link>
+                <Link href="#maintainanceSection">Maintainance</Link>
               </Menu.Item>
             </SubMenu>
             <Menu.Item
               key="accidentAlert"
               icon={<NotificationsActiveOutlinedIcon />}
             >
-              <Link href="#accidentAlertSection" onClick={navClickHandle}>
-                Accident alert
-              </Link>
+              <Link href="#accidentAlertSection">Accident alert</Link>
             </Menu.Item>
             <Menu.Item
               key="fuelTheftAlert"
               icon={<NotificationImportantIcon />}
             >
-              <Link href="#fuelTheftAlertSection" onClick={navClickHandle}>
-                FuelTheft alert
-              </Link>
+              <Link href="#fuelTheftAlertSection">FuelTheft alert</Link>
             </Menu.Item>
             <Menu.Item key="addVehicle" icon={<LocalTaxiIcon />}>
-              <Link href="#addVehicleSection" onClick={navClickHandle}>
-                Add Vehicle
-              </Link>
+              <Link href="#addVehicleSection">Add Vehicle</Link>
             </Menu.Item>
             <Menu.Item key="addMaintainance" icon={<PostAddIcon />}>
-              <Link href="#addVehicleSection" onClick={navClickHandle}>
-                Add Maintainance
-              </Link>
+              <Link href="#addVehicleSection">Add Maintainance</Link>
             </Menu.Item>
             <Menu.Item key="reportIssue" icon={<ReportProblemOutlinedIcon />}>
               <Link
@@ -516,7 +493,7 @@ function Dashboard() {
               </MDBContainer>
 
               {/* back to top */}
-              <Link href="#header" onClick={navClickHandle}>
+              <Link href="#header">
                 <Button
                   // ghost
                   icon={<NavigationIcon />}
@@ -550,7 +527,7 @@ function Dashboard() {
             onClose={handleClose}
           >
             <Alert onClose={handleClose} severity="error">
-              All the field are mendatory!!!
+              All the field's are mendatory!!!
             </Alert>
           </Snackbar>
           <Snackbar
@@ -568,7 +545,7 @@ function Dashboard() {
             onClose={handleClose}
           >
             <Alert onClose={handleClose} severity="error">
-              All the field are mendatory!!!
+              All the field's are mendatory!!!
             </Alert>
           </Snackbar>
 
