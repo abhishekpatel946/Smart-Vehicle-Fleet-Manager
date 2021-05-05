@@ -171,6 +171,35 @@ function Dashboard() {
         speed: "0",
         timestamp: "0",
       });
+      db.collection("data")
+        .doc(vehicleID)
+        .collection("accident_alert")
+        .doc()
+        .set({
+          id: "0",
+          accident: "0",
+          geolocation_lat: "0",
+          geolocation_long: "0",
+          timestamp: "0",
+        });
+      db.collection("data")
+        .doc(vehicleID)
+        .collection("fuel_theft_alert")
+        .doc()
+        .set({
+          id: "0",
+          fuelTheft: "0",
+          geolocation_lat: "0",
+          geolocation_long: "0",
+          timestamp: "0",
+        });
+      db.collection("data")
+        .doc(vehicleID)
+        .collection("module_state")
+        .doc()
+        .set({
+          state: "0",
+        });
 
       // success mgs for the all are right
       setvehicleAddError(false);
