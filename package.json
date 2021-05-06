@@ -31,7 +31,7 @@
     "mdbreact": "^4.6.1",
     "moment": "^2.29.1",
     "react": "^16.13.1",
-    "react-bootstrap": "^1.4.0",
+    "react-bootstrap": "^1.5.2",
     "react-bootstrap-table-next": "^4.0.3",
     "react-bootstrap-table2-paginator": "^2.1.2",
     "react-bootstrap-table2-toolkit": "^2.1.3",
