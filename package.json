@@ -28,7 +28,7 @@
     "font-awesome": "^4.7.0",
     "fusioncharts": "^3.15.3",
     "luxon": "^1.25.0",
-    "mdbreact": "^4.6.1",
+    "mdbreact": "^5.1.0",
     "moment": "^2.29.1",
     "react": "^16.13.1",
     "react-bootstrap": "^1.4.0",
